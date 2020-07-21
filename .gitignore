@@ -1,0 +1,5 @@
+playground
+debug.log
+*.map
+.vscode
+node_modules
