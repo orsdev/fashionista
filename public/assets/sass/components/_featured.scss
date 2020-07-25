@@ -1,0 +1,96 @@
+.featured {
+   background: rgb(255, 255, 255);
+   padding-left: 60px;
+   padding-right: 60px;
+}
+
+.item {
+   position: relative;
+   width: 400px !important;
+   height: 400px !important;
+   padding: 20px 5px;
+   overflow: hidden;
+
+   figcaption {
+      position: absolute;
+      bottom: 50px;
+      left: 20px;
+      background: brown;
+      font-size: 2rem;
+      color: white;
+      padding: 2px 5px;
+   }
+
+   p {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 500;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background: black;
+      padding: 2px 5px;
+      box-shadow: 2px 4px 5px 0.1px gainsboro;
+   }
+
+   button {
+      outline: none;
+      border: none;
+      color: orangered;
+      font-weight: 600;
+      font-size: 1.5rem;
+      background: transparent;
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+
+      &:hover {
+         color: rgb(224, 79, 26);
+      }
+   }
+
+   img {
+      width: calc(100% -50px);
+      margin: auto;
+      height: 90%;
+      object-fit: contain;
+   }
+}
+
+.slick-active {
+   &:focus {
+      border: none !important;
+      outline: none !important;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .featured {
+      padding-left: 20px;
+      padding-right: 20px;
+
+      .item {
+         position: relative;
+         width: 300px !important;
+         height: 300px !important;
+      }
+
+      figcaption {
+         left: 35px;
+      }
+   }
+}
+
+@media screen and (max-width: 300px) {
+   .featured {
+      width: 100%;
+      .item {
+         width: 250px !important;
+         height: 250px !important;
+      }
+
+      figcaption {
+         left: 35px;
+      }
+   }
+}
