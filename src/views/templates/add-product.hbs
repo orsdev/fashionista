@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADD PRODUCT</title>
+</head>
+
+<body>
+  <form action="/admin/add-product" method="post">
+    <div class="form-group">
+      <input type="text" name="title" id="title" placeholder="Product Name">
+    </div>
+    <div class="form-group">
+      <label for="tag">Tag</label>
+      <input type="text" name="tag" id="tag" placeholder="eg Women, Men, Babies etc">
+    </div>
+    <div class="form-group">
+      <p>Feature Product</p>
+      <label for="feature-yes">
+        <input type="checkbox" name="feature" id="feature-yes"> Yes
+      </label>
+      <label for="feature-no">
+        <input type="checkbox" name="feature" id="feature-no"> No
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="product-image">Product Image</label>
+      <input type="file" name="product-image" id="product-image">
+    </div>
+    <div class="form-group">
+      <button type="submit">Upload Product</button>
+    </div>
+  </form>
+</body>
+
+</html>
