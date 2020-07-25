@@ -4,3 +4,5 @@ debug.log
 .vscode
 node_modules
 *.env
+img
+sass
