@@ -8,8 +8,12 @@ adminRouter.get('/products', async (req, res) => {
   res.send('admin product page')
 });
 
-adminRouter.post('/add-products', jsonParser, async (req, res) => {
-  res.send('admin add-product')
+adminRouter.get('/add-product', async (req, res) => {
+  res.render('add-product');
+});
+
+adminRouter.post('/add-product', jsonParser, async (req, res) => {
+  res.send('add-product');
 });
 
 module.exports = adminRouter;
