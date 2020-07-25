@@ -1,0 +1,234 @@
+.medium-header {
+  margin-bottom: 60px;
+}
+.medium-header h2 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.ptb {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .medium-header h2 {
+    font-size: 2.5rem;
+  }
+}
+.featured {
+  background: white;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.item {
+  position: relative;
+  width: 400px !important;
+  height: 400px !important;
+  padding: 20px 5px;
+  overflow: hidden;
+}
+.item figcaption {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+  background: brown;
+  font-size: 2rem;
+  color: white;
+  padding: 2px 5px;
+}
+.item p {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 500;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  background: black;
+  padding: 2px 5px;
+  box-shadow: 2px 4px 5px 0.1px gainsboro;
+}
+.item button {
+  outline: none;
+  border: none;
+  color: orangered;
+  font-weight: 600;
+  font-size: 1.5rem;
+  background: transparent;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+}
+.item button:hover {
+  color: #e04f1a;
+}
+.item img {
+  width: calc(100% -50px);
+  margin: auto;
+  height: 90%;
+  object-fit: contain;
+}
+
+.slick-active:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+@media screen and (max-width: 500px) {
+  .featured {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .featured .item {
+    position: relative;
+    width: 300px !important;
+    height: 300px !important;
+  }
+  .featured figcaption {
+    left: 35px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .featured {
+    width: 100%;
+  }
+  .featured .item {
+    width: 250px !important;
+    height: 250px !important;
+  }
+  .featured figcaption {
+    left: 35px;
+  }
+}
+.products {
+  background: white;
+}
+.products__name {
+  position: absolute;
+  bottom: 30px;
+  left: 2px;
+  background: brown;
+  font-size: 1.8rem;
+  color: white;
+  padding: 2px 5px;
+}
+.products__price {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 500;
+  position: absolute;
+  top: 10px;
+  left: 2px;
+  background: black;
+  padding: 2px 5px;
+  box-shadow: 2px 4px 5px 0.1px gainsboro;
+}
+.products__grid {
+  display: grid;
+  grid-template: repeat(7, 8vw)/repeat(8, 1fr);
+  gap: 1.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+}
+.products__grid .add-to-cart-btn {
+  outline: none;
+  border: none;
+  color: orangered;
+  font-weight: 600;
+  font-size: 1.5rem;
+  background: transparent;
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+}
+.products__grid .add-to-cart-btn:hover {
+  color: #e04f1a;
+}
+.products__grid img {
+  width: 100%;
+  height: calc(100% - 50px);
+  object-fit: contain;
+  display: block;
+}
+.products__grid figure {
+  position: relative;
+  background: rgba(245, 229, 229, 0.7);
+}
+.products__grid-item-1 {
+  grid-row: 1/span 2;
+  grid-column: 1/span 2;
+}
+.products__grid-item-2 {
+  grid-row: 1/span 3;
+  grid-column: 3/span 2;
+}
+.products__grid-item-3 {
+  grid-row: 1/span 2;
+  grid-column: 5/7;
+}
+.products__grid-item-4 {
+  grid-row: 1/span 2;
+  grid-column: 7/-1;
+}
+.products__grid-item-5 {
+  grid-row: 3/span 3;
+  grid-column: 1/span 2;
+}
+.products__grid-item-6 {
+  grid-row: 4/span 2;
+  grid-column: 3/span 2;
+}
+.products__grid-item-7 {
+  grid-row: 5/8;
+  grid-column: 5/7;
+}
+.products__grid-item-8 {
+  grid-row: 3/span 2;
+  grid-column: 5/span 2;
+}
+.products__grid-item-9 {
+  grid-row: 3/span 3;
+  grid-column: 7/-1;
+}
+.products__grid-item-10 {
+  grid-row: 6/span 2;
+  grid-column: 7/-1;
+}
+.products__grid-item-11 {
+  grid-row: 6/span 2;
+  grid-column: 1/span 2;
+}
+.products__grid-item-12 {
+  grid-row: 6/span 2;
+  grid-column: 3/5;
+}
+
+@media screen and (max-width: 950px) {
+  .products__grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .products__grid figure {
+    width: 350px;
+    height: 250px;
+  }
+}
+@media screen and (max-width: 755px) {
+  .products__grid figure {
+    width: 250px;
+  }
+}
+@media screen and (max-width: 555px) {
+  .products__grid figure {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+/*# sourceMappingURL=home.css.map */
