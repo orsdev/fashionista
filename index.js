@@ -10,7 +10,7 @@ const port = process.env.PORT;
 const staticPath = path.join(__dirname, 'public');
 const viewPath = path.join(__dirname, 'src', 'views', 'templates');
 
-app.set('view engine', 'hbs');
+app.set('view engine', 'pug');
 app.set('views', viewPath);
 
 app.use(express.static(staticPath));
