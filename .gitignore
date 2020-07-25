@@ -5,4 +5,3 @@ debug.log
 node_modules
 *.env
 img
-sass
