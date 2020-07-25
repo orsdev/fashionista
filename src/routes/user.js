@@ -7,7 +7,7 @@ const urlencodedParser = bodyParser.urlencoded({
 });
 
 userRouter.get('/', async (req, res) => {
-  res.render('home');
+  res.render('home', { pageTitle: 'FASHIONIT | HOME' });
 });
 
 userRouter.post('/user', urlencodedParser, async (req, res) => {

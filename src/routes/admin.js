@@ -9,7 +9,7 @@ adminRouter.get('/products', async (req, res) => {
 });
 
 adminRouter.get('/add-product', async (req, res) => {
-  res.render('add-product');
+  res.render('add-product', { pageTitle: 'FASHIONIT | ADD PRODUCT' });
 });
 
 adminRouter.post('/add-product', jsonParser, async (req, res) => {
