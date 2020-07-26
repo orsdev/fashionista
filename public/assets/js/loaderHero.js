@@ -32,7 +32,7 @@ function loaderAnimation() {
   }, .3);
 
   return tl;
-}
+};
 
 function removeLoader() {
   const tl = gsap.timeline();
@@ -42,8 +42,12 @@ function removeLoader() {
     yPercent: -100
   }, .1);
 
+  tl.to('body', {
+    overflowY: 'auto'
+  });
+
   return tl;
-}
+};
 
 function heroAnimation() {
   const tl = gsap.timeline();
@@ -80,5 +84,5 @@ function heroAnimation() {
     stagger: .2
   }, .4);
 
-  return tl
-}
+  return tl;
+};
