@@ -1,10 +1,27 @@
 .footer {
-  padding: 50px 10px;
-  text-align: center;
+  padding: 70px 10px;
+  background: #181717;
+  color: white;
 }
-.footer small {
-  font-size: 1.3rem;
+.footer__logo {
+  font-family: "Pacifico", cursive;
+  font-size: 3rem;
+  width: 100%;
+  text-align: left;
+}
+.footer hr {
+  margin: 40px 0;
+}
+.footer__copyright {
+  text-align: center;
+  font-size: 1.5rem;
   opacity: 0.6;
+}
+.footer__copyright .logo {
+  color: orangered;
+  font-style: italic;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /*# sourceMappingURL=footer.css.map */

@@ -1,9 +1,29 @@
 .footer {
-   padding: 50px 10px;
-   text-align: center;
+   padding: 70px 10px;
+   background: rgb(24, 23, 23);
+   color: white;
 
-   small {
-      font-size: 1.3rem;
+   &__logo {
+      font-family: "Pacifico", cursive;
+      font-size: 3rem;
+      width: 100%;
+      text-align: left;
+   }
+
+   hr {
+      margin: 40px 0;
+   }
+
+   &__copyright {
+      text-align: center;
+      font-size: 1.5rem;
       opacity: 0.6;
+
+      .logo {
+         color: orangered;
+         font-style: italic;
+         padding-left: 5px;
+         padding-right: 5px;
+      }
    }
 }
