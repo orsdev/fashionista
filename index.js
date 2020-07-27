@@ -2,6 +2,7 @@ require('./src/db/mongoose');
 const express = require('express');
 const path = require('path');
 const adminRouter = require('./src/routes/admin');
+const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.static(staticPath));
 // ROUTER MIDDLEWARES
 app.use('/admin', adminRouter);
 app.use(userRouter);
+app.use(shopRouter);
 
 // 404 PAGE MIDDLEWARE
 app.use('/', (req, res) => {
