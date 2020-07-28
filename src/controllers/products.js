@@ -3,9 +3,9 @@ exports.getAllProducts = async (req, res) => {
 };
 
 exports.getAddProductPage = async (req, res) => {
-  res.render('add-product', { pageTitle: 'FASHIONIT | ADD PRODUCT' });
+  res.render('admin/add-product', { pageTitle: 'FASHIONIT | ADD PRODUCT' });
 };
 
 exports.postAddProduct = async (req, res) => {
-  res.send('add-product');
+  res.send('admin/add-product');
 };
