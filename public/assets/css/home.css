@@ -20,6 +20,275 @@
     font-size: 2.5rem;
   }
 }
+.header {
+  position: relative;
+}
+
+.header__banner {
+  background: black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.header__banner a {
+  text-decoration: none;
+  color: white;
+}
+.header__banner-logo {
+  width: calc(100% - 180px);
+}
+.header__banner-logo a {
+  font-family: "Pacifico", cursive;
+  font-size: 2rem;
+}
+.header__banner-auth {
+  width: 140px;
+  cursor: pointer;
+}
+.header__banner-auth span {
+  font-size: 1.5rem;
+}
+.header__banner-auth span:hover {
+  color: wheat;
+}
+.header__banner-cart {
+  width: 40px;
+}
+.header__banner-cart a {
+  font-size: 2.5rem;
+}
+
+@media screen and (max-width: 350px) {
+  .header__banner-logo a, .header__banner-auth span {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 310px) {
+  .header {
+    position: relative;
+  }
+  .header__banner {
+    flex-direction: column;
+  }
+  .header__banner div {
+    text-align: center;
+    width: 100%;
+    padding: 8px 5px;
+  }
+}
+.header__hero-nav {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  text-align: center;
+  background: rgba(26, 25, 25, 0.3);
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.header__hero-nav a {
+  color: white;
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+.header__hero-nav a:not(:last-child) {
+  margin-right: 15px;
+}
+.header__hero-nav a:hover {
+  color: wheat;
+}
+
+.header__hero {
+  position: relative;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/heroBG.jpg);
+  background-position: 20% center;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  overflow: hidden;
+}
+.header__hero-text {
+  width: 100%;
+  text-align: center;
+  align-self: center;
+  color: white;
+  padding: 0 20px;
+}
+.header__hero-text p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.header__hero-text h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  font-style: italic;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: orangered;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  z-index: 1;
+}
+.header__hero-text h3::before {
+  position: absolute;
+  top: 0;
+  content: "";
+  width: 90%;
+  height: 121px;
+  z-index: -1;
+  background: transparent;
+  box-shadow: 0 1px 10px 1px #3a3535;
+}
+.header__hero-text h3 span {
+  display: block;
+  margin-top: 5px;
+  transform-origin: top right;
+  transform: rotate(-10deg);
+  padding-right: 10px;
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+}
+.header__hero-text h1 {
+  font-size: 8rem;
+  color: white;
+}
+.header__hero-text h1 span {
+  position: relative;
+  font-weight: 100;
+  letter-spacing: 30px;
+}
+.header__hero-text h1 span::after {
+  content: "NEW";
+  position: absolute;
+  top: 2px;
+  left: -8px;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 20px;
+}
+.header__hero-social {
+  position: absolute;
+  right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 50px;
+}
+.header__hero-social a {
+  color: white;
+  font-size: 2.5rem;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.header__hero-social a i {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.header__hero-social a i.fa-facebook::after, .header__hero-social a i.fa-twitter::after, .header__hero-social a i.fa-instagram::after {
+  position: absolute;
+  content: "";
+  top: 40px;
+  left: 25px;
+  background: white;
+  width: 2px;
+  height: 60px;
+  z-index: 3;
+}
+
+@media screen and (max-width: 950px) {
+  .header__hero-text h1 {
+    font-size: 7.5rem;
+  }
+}
+@media screen and (max-width: 730px) {
+  .header__hero-text h1 {
+    font-size: 6rem;
+  }
+}
+@media screen and (max-width: 571px) {
+  .header__hero-text h1 {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 451px) {
+  .header__hero-text {
+    text-align: center;
+  }
+  .header__hero-text h1 {
+    font-size: 4rem;
+  }
+  .header__hero-text h1 span {
+    display: block;
+    letter-spacing: normal;
+    font-weight: 600;
+    color: white;
+  }
+  .header__hero-text h1 span::after {
+    display: none;
+  }
+  .header__hero-social {
+    position: absolute;
+    left: 0;
+    align-items: flex-end;
+    justify-self: flex-end;
+    bottom: 2px;
+    flex-direction: row;
+    width: calc(100% - 100px);
+    margin: auto;
+  }
+  .header__hero-social a {
+    height: 40px;
+  }
+  .header__hero-social a i {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+  .header__hero-social a i.fa-facebook::after, .header__hero-social a i.fa-twitter::after, .header__hero-social a i.fa-instagram::after {
+    display: none;
+  }
+}
+@media screen and (max-width: 350px) {
+  .header__hero-text {
+    text-align: center;
+  }
+  .header__hero-text h1 {
+    font-size: 3.5rem;
+  }
+  .header__hero-text h1 span {
+    display: block;
+    letter-spacing: 100%;
+  }
+  .header__hero-text h1 span::after {
+    display: none;
+  }
+  .header__hero-text .sub-header {
+    word-wrap: break-word;
+  }
+  .header__hero-social {
+    width: calc(100% - 10px);
+  }
+}
 .featured {
   background: white;
   padding-left: 60px;
@@ -131,7 +400,8 @@
 .products__grid {
   display: grid;
   grid-template: repeat(7, 8vw)/repeat(8, 1fr);
-  gap: 1.5rem;
+  column-gap: 1.5rem;
+  row-gap: 3rem;
   padding-left: 20px;
   padding-right: 20px;
   justify-content: center;
