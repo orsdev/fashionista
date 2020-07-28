@@ -9,7 +9,6 @@ block stylesheets
   //- EXTERNAL STYLESHEETS
   link(rel="stylesheet" href="/assets/css/loader.css")
   link(rel="stylesheet" href="/assets/css/home.css")
-  link(rel="stylesheet" href="/assets/css/header.css")
 
 block contents
 
@@ -32,7 +31,7 @@ block contents
         a(href="#") FASHIONIT
 
       div.header__banner-auth.text-center
-        a(href="/register") Log in | Signup
+        span Log in | Signup
 
       div.header__banner-cart.text-center
         a(href="/checkout")
@@ -41,8 +40,8 @@ block contents
     div.header__hero
       nav.header__hero-nav
         a(href="/shop") SHOP
-        a(href="/checkout") CATEGORIES
-        a(href="/about") CHECKOUT
+        a(href="/categories") CATEGORIES
+        a(href="/checkout") CHECKOUT
 
       div.header__hero-social.social
         a(href="#" target="_blank" rel="noopener noreferrer")
