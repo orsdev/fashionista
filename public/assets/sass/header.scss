@@ -227,25 +227,6 @@
    }
 }
 
-@media screen and (max-width: 500px) {
-   .headerer {
-      &__hero {
-         &-nav {
-            display: flex;
-            flex-direction: column;
-
-            a {
-               margin: 0;
-
-               &:not(:last-child) {
-                  margin-bottom: 10px;
-               }
-            }
-         }
-      }
-   }
-}
-
 @media screen and (max-width: 451px) {
    .header {
       &__hero {

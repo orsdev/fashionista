@@ -180,18 +180,6 @@
     font-size: 4rem;
   }
 }
-@media screen and (max-width: 500px) {
-  .headerer__hero-nav {
-    display: flex;
-    flex-direction: column;
-  }
-  .headerer__hero-nav a {
-    margin: 0;
-  }
-  .headerer__hero-nav a:not(:last-child) {
-    margin-bottom: 10px;
-  }
-}
 @media screen and (max-width: 451px) {
   .header__hero-text {
     text-align: center;
