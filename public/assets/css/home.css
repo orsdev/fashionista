@@ -24,85 +24,147 @@
   position: relative;
 }
 
-.header__banner {
-  background: black;
-  padding: 10px;
+.header__nav {
+  width: 100%;
+  position: relative;
+  background: #1a1919;
+  z-index: 2;
   display: flex;
   align-items: center;
-  color: white;
+  padding: 20px 10px;
 }
-.header__banner a {
-  text-decoration: none;
-  color: white;
+.header__nav-logo {
+  width: 100px;
 }
-.header__banner-logo {
-  width: calc(100% - 180px);
-}
-.header__banner-logo a {
+.header__nav-logo a {
   font-family: "Pacifico", cursive;
   font-size: 2rem;
 }
-.header__banner-auth {
-  width: 140px;
-  cursor: pointer;
+.header__nav-toggle {
+  width: calc(100% - 100px);
+  text-align: right;
+  display: none;
 }
-.header__banner-auth span {
-  font-size: 1.5rem;
+.header__nav-toggle i {
+  color: white;
+  font-size: 3rem;
 }
-.header__banner-auth span:hover {
-  color: wheat;
-}
-.header__banner-cart {
-  width: 40px;
-}
-.header__banner-cart a {
-  font-size: 2.5rem;
-}
-
-@media screen and (max-width: 350px) {
-  .header__banner-logo a, .header__banner-auth span {
-    font-size: 1.5rem;
-  }
-}
-@media screen and (max-width: 310px) {
-  .header {
-    position: relative;
-  }
-  .header__banner {
-    flex-direction: column;
-  }
-  .header__banner div {
-    text-align: center;
-    width: 100%;
-    padding: 8px 5px;
-  }
-}
-.header__hero-nav {
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  text-align: center;
-  background: rgba(26, 25, 25, 0.3);
-  z-index: 2;
-  overflow: hidden;
+.header__nav-bar {
+  position: relative;
+  width: calc(100% - 100px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
 }
-.header__hero-nav a {
+.header__nav-links {
+  width: calc(100% - 80px);
+}
+.header__nav-auth {
+  width: 40px;
+  cursor: pointer;
+}
+.header__nav-auth span {
+  font-size: 3rem;
+  color: white;
+}
+.header__nav-auth span:hover {
+  color: wheat;
+}
+.header__nav-cart {
+  width: 40px;
+}
+.header__nav-cart a i {
+  font-size: 2.5rem;
+}
+.header__nav a {
   color: white;
   font-weight: 600;
   font-size: 1.4rem;
   text-decoration: none;
 }
-.header__hero-nav a:not(:last-child) {
+.header__nav a:not(:last-child) {
   margin-right: 15px;
 }
-.header__hero-nav a:hover {
+.header__nav a:hover {
   color: wheat;
 }
+.header .show-menu {
+  display: inline-block;
+}
 
+.header ul {
+  position: absolute;
+  background: white;
+  width: 200px;
+  height: 150px;
+  list-style: none;
+  display: none;
+}
+
+@media screen and (max-width: 650px) {
+  .header {
+    overflow: hidden;
+  }
+  .header__nav {
+    text-align: left;
+  }
+  .header__nav-toggle {
+    display: inline-block;
+  }
+  .header__nav-toggle i:hover {
+    color: wheat;
+  }
+  .header__nav-bar {
+    position: absolute;
+    top: -300px;
+    left: 0;
+    background: black;
+    z-index: 14500;
+    width: 300px;
+    padding: 40px 20px;
+    flex-direction: column;
+  }
+  .header__nav-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+  .header__nav-links a:hover {
+    background: white;
+    padding: 10px 5px;
+    color: orangered;
+  }
+  .header__nav-links a:not(:last-child) {
+    padding-bottom: 10px;
+  }
+  .header__nav-auth {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .header__nav-auth span {
+    display: inline-block;
+    width: 100%;
+  }
+  .header__nav-auth span:hover {
+    background: white;
+    padding: 2px 5px;
+    color: orangered;
+  }
+  .header__nav-cart {
+    text-align: left;
+    width: 100%;
+  }
+  .header__nav-cart a {
+    display: inline-block;
+    width: 100%;
+  }
+  .header__nav-cart a:hover {
+    background: white;
+    padding: 10px 5px;
+    color: orangered;
+  }
+}
 .header__hero {
   position: relative;
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/heroBG.jpg);
@@ -129,7 +191,7 @@
   font-weight: 600;
   font-style: italic;
   position: absolute;
-  top: 50px;
+  top: 0;
   left: 0;
   background: orangered;
   padding: 5px 10px;
