@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const adminRouter = new express.Router();
-const productsController = require('../controllers/products');
+const router = new express.Router();
+const adminController = require('../controllers/admin');
 
 const jsonParser = bodyParser.json();
 
-adminRouter.get('/products', productsController.getAllProducts);
+router.get('/products', adminController.getAllProducts);
 
-adminRouter.get('/add-product', productsController.getAddProductPage);
+router.get('/add-product', adminController.getAddProductPage);
 
-adminRouter.post('/add-product', jsonParser, productsController.postAddProduct);
+router.post('/add-product', jsonParser, adminController.postAddProduct);
 
-module.exports = adminRouter;
+module.exports = router;
