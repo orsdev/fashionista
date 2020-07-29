@@ -26,22 +26,40 @@ block contents
 
   //- HEADER SECTION
   header.header
-    div.header__banner
-      div.header__banner-logo
+
+    nav.header__nav.text-center
+      div.header__nav-logo
         a(href="#") FASHIONIT
 
-      div.header__banner-auth.text-center
-        span Log in | Signup
+      div.header__nav-bar#menu
+        div.header__nav-links
+          a(href="/shop") SHOP
+          a(href="#") CATEGORIES
+            ul.categories-dropdown
+              li
+                a(href="#") MEN
+                a(href="#") WOMEN
+          a(href="/shop/orders") ORDERS
 
-      div.header__banner-cart.text-center
-        a(href="/checkout")
-          i.fa.fa-cart-arrow-down(aria-hidden="true")
+        div.header__nav-auth.text-center
+          div.header__auth-container
+            span
+              i.fa.fa-user(aria-hidden="true")
+
+            ul.header__nav-auth-dropdown
+              li
+                a(href="/login") Login
+              li
+                a(href="/register") Register
+
+        div.header__nav-cart.text-center
+          a(href="/checkout")
+            i.fa.fa-cart-arrow-down(aria-hidden="true")
+
+      div.header__nav-toggle 
+        i.fa.fa-bars(aria-hidden="true" data-toggle="true" id="hambuger-menu")
 
     div.header__hero
-      nav.header__hero-nav
-        a(href="/shop") SHOP
-        a(href="/categories") CATEGORIES
-
       div.header__hero-social.social
         a(href="#" target="_blank" rel="noopener noreferrer")
           i.fa.fa-facebook(aria-hidden="true")
@@ -179,3 +197,4 @@ block scripts
   script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js")
   script(src="/assets/js/loaderHero.js")
   script(src="/assets/js/slickSlider.js")
+  script(src="/assets/js/navtoggle.js")

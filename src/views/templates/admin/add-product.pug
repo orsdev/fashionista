@@ -4,6 +4,7 @@ block contents
 
   form(action="/admin/add-product" method="post")
     div.form-group
+      label(for="tag") Product Title
       input(type="text" name="title" id="title" placeholder="Product Name")
 
     div.form-group
@@ -21,8 +22,16 @@ block contents
         span No
 
     div.form-group
+      label(for="product-price") Product Price
+      input(type="number" name="price" id="product-price" step="0.01")
+
+    div.form-group
       label(for="product-image") Product Image
       input(type="file" name="product-image" id="product-image")
+
+    div.form-group
+      label(for="description") Product Description
+      textarea(name="description" cols="30" rows="10" id="description")
 
     div.form-group
       button(type="submit") Upload Product
