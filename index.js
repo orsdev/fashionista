@@ -4,6 +4,7 @@ const path = require('path');
 const adminRouter = require('./src/routes/admin');
 const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
+const errorController = require('./src/controllers/error');
 
 const app = express();
 const port = process.env.PORT;
@@ -22,9 +23,7 @@ app.use(userRouter);
 app.use(shopRouter);
 
 // 404 PAGE MIDDLEWARE
-app.use('/', (req, res) => {
-  res.status(404).send('404 page');
-})
+app.use('/', errorController.getErrorPage);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
