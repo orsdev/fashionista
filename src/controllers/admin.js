@@ -1,3 +1,5 @@
+const ProductsClass = require("../model/products");
+
 exports.getAllProducts = async (req, res) => {
   res.send('get all products page');
 };
@@ -7,5 +9,6 @@ exports.getAddProductPage = async (req, res) => {
 };
 
 exports.postAddProduct = async (req, res) => {
-  res.send('admin/add-product');
+  const body = req.body;
+  products = await ProductsClass.postProduct(req, res, body);
 };
