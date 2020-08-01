@@ -23,7 +23,7 @@ module.exports = class Product {
 
   static getHomeProducts = async (req, res, limit = 12) => {
 
-    const products = await ProductsSchema.find({})
+    const products = await ProductsSchema.find({ feature: 'no' })
       .limit(limit)
       .sort('updatedAt');
 
