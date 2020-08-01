@@ -24,19 +24,19 @@ function toggleNav() {
   }
 }
 
-function categoriesDropdown(e) {
+function categoriesDropdown() {
   const elem = document.querySelector('.categories-dropdown');
   elem.classList.toggle('show-dropdown');
-  gsap.from('.show-dropdown', {
+  gsap.from(elem, {
     duration: .2,
     height: 0
   });
 }
 
-function authDropdown(e) {
+function authDropdown() {
   const elem = document.querySelector('.auth-dropdown');
   elem.classList.toggle('show-dropdown');
-  gsap.from('.show-dropdown', {
+  gsap.from(elem, {
     duration: .2,
     height: 0
   });
