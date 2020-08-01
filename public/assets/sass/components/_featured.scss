@@ -33,19 +33,25 @@
       box-shadow: 2px 4px 5px 0.1px gainsboro;
    }
 
-   button {
-      outline: none;
-      border: none;
-      color: orangered;
-      font-weight: 600;
-      font-size: 1.5rem;
-      background: transparent;
+   form {
       position: absolute;
       bottom: 15px;
       width: 100%;
 
-      &:hover {
-         color: rgb(224, 79, 26);
+      button {
+         outline: none;
+         border: none;
+         color: orangered;
+         font-weight: 600;
+         font-size: 1.5rem;
+         background: transparent;
+         display: inline-block;
+         width: 130px;
+         margin: auto;
+
+         &:hover {
+            color: rgb(224, 79, 26);
+         }
       }
    }
 
