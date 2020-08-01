@@ -1,5 +1,5 @@
-require('./src/db/mongoose');
 const express = require('express');
+require('./src/db/mongoose');
 const path = require('path');
 const adminRouter = require('./src/routes/admin');
 const shopRouter = require('./src/routes/shop');
