@@ -2,6 +2,8 @@ const express = require('express');
 const router = new express.Router();
 const shopController = require('../controllers/shop');
 
+router.get('/login', shopController.getLoginPage);
+
 router.get('/', shopController.getHomePage);
 
 router.get('/shop', shopController.getAllProducts);

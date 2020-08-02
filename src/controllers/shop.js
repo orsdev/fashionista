@@ -22,6 +22,12 @@ exports.getHomePage = async (req, res) => {
   }
 };
 
+exports.getLoginPage = (req, res) => {
+  res.render('auth/login', {
+    pageTitle: 'FASHIONIT | LOGIN',
+  });
+};
+
 exports.getAllProducts = async (req, res) => {
 
   try {
