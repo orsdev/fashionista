@@ -1,0 +1,9 @@
+@import "./includes/color";
+@import "./authenticate/nav";
+@import "./authenticate/form";
+
+.container {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+}

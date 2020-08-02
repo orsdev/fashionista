@@ -1,0 +1,27 @@
+extends ../../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/authenticate.css")
+
+block contents
+  .container
+    include ../../includes/nav.pug
+
+    section.form
+      form(action="/login" method="post")
+        .form-group
+          label(for="fullname") Fullname
+          input(type="text" name="fullname" required)
+        .form-group
+          label(for="email") EMAIL
+          input(type="email" name="email" required)
+        .form-group
+          label(for="password") PASSWORD
+          input(type="password" name="password" required)
+        .form-group
+          button(type="submit") REGISTER
+        .form-register
+          span Have an account? 
+            a(href="/login") Login 
+
+    include ../../includes/footer.pug

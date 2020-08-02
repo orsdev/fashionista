@@ -1,0 +1,101 @@
+.header {
+  position: relative;
+}
+.header__nav {
+  width: 100%;
+  position: relative;
+  background: #181717;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+}
+.header__nav-logo {
+  width: 150px;
+}
+.header__nav-logo a {
+  font-family: "Pacifico", cursive;
+  font-size: 2rem;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.form {
+  flex: 1;
+  padding: 100px 30px;
+  width: 600px;
+  margin: auto;
+}
+.form-register {
+  width: 100%;
+  margin: auto;
+  text-align: right;
+}
+.form-register span {
+  font-size: 1.3rem;
+}
+.form-register span a {
+  color: orangered;
+  font-weight: 600;
+}
+.form-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.form-group label {
+  position: relative;
+  top: 15px;
+  left: 10px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  background: #fff;
+}
+.form-group input {
+  width: 100%;
+  padding: 15px 5px;
+  border: 1px solid lightgray;
+}
+.form-group button {
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  background: orangered;
+  height: 50px;
+  padding: 5px;
+  border: none;
+  border: 1px solid #d83526;
+}
+.form-group button:hover {
+  background: #ff581a;
+}
+.form-group button:active, .form-group button:focus {
+  outline: none;
+  border: none;
+  border-bottom: 1px groove lightgray;
+  background: #fff;
+  color: black;
+}
+
+@media (max-width: 680px) {
+  .form {
+    width: 90%;
+  }
+}
+@media (max-width: 450px) {
+  .form {
+    width: 98%;
+  }
+  .form-register {
+    text-align: center;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/*# sourceMappingURL=authenticate.css.map */
