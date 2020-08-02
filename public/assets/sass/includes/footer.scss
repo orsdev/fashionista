@@ -1,7 +1,9 @@
+@import "./color";
+
 .footer {
    padding: 70px 10px;
-   background: rgb(24, 23, 23);
-   color: white;
+   background: $ashBlack;
+   color: $white;
 
    &__logo {
       font-family: "Pacifico", cursive;
@@ -20,7 +22,7 @@
       opacity: 0.6;
 
       .logo {
-         color: orangered;
+         color: $orangered;
          font-style: italic;
          padding-left: 5px;
          padding-right: 5px;

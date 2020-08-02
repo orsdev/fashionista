@@ -1,5 +1,5 @@
 .featured {
-   background: rgb(255, 255, 255);
+   background: $white;
    padding-left: 60px;
    padding-right: 60px;
 }
@@ -15,22 +15,22 @@
       position: absolute;
       bottom: 50px;
       left: 20px;
-      background: brown;
+      background: $brown;
       font-size: 2rem;
-      color: white;
+      color: $white;
       padding: 2px 5px;
    }
 
    p {
-      color: white;
+      color: $white;
       font-size: 1.8rem;
       font-weight: 500;
       position: absolute;
       top: 10px;
       left: 20px;
-      background: black;
+      background: $black;
       padding: 2px 5px;
-      box-shadow: 2px 4px 5px 0.1px gainsboro;
+      box-shadow: 2px 4px 5px 0.1px $gainsboro;
    }
 
    form {
@@ -41,7 +41,7 @@
       button {
          outline: none;
          border: none;
-         color: orangered;
+         color: $orangered;
          font-weight: 600;
          font-size: 1.5rem;
          background: transparent;
@@ -50,7 +50,7 @@
          margin: auto;
 
          &:hover {
-            color: rgb(224, 79, 26);
+            color: darken($orangered, 20%);
          }
       }
    }

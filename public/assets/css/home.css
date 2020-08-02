@@ -5,7 +5,7 @@
 .header__nav {
   width: 100%;
   position: relative;
-  background: #1a1919;
+  background: #181717;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@
   display: none;
 }
 .header__nav-toggle i {
-  color: white;
+  color: #fff;
   font-size: 3rem;
 }
 .header__nav-bar {
@@ -50,18 +50,18 @@
 }
 .header__nav ul a {
   display: block;
-  color: white;
+  color: #fff;
   width: 100%;
   padding: 10px 2px;
 }
 .header__nav a {
   text-decoration: none;
-  color: white;
+  color: #fff;
   font-weight: 600;
 }
 .header__nav-links {
   width: calc(100% - 80px);
-  color: white;
+  color: #fff;
 }
 .header__nav-links .categories {
   position: relative;
@@ -79,7 +79,7 @@
   font-size: 1.4rem;
   font-weight: 600;
   text-decoration: none;
-  color: white;
+  color: #fff;
 }
 .header__nav-links a:not(:last-child) {
   margin-right: 15px;
@@ -91,7 +91,7 @@
   width: 40px;
 }
 .header__nav-auth .auth {
-  color: white;
+  color: #fff;
   position: relative;
   display: inline-block;
 }
@@ -141,7 +141,7 @@
     position: absolute;
     top: -300px;
     left: 0;
-    background: black;
+    background: #000;
     z-index: 1000;
     width: 200px;
     padding: 40px 20px;
@@ -159,7 +159,7 @@
   }
   .header__nav-bar .auth ul li:hover,
 .header__nav-bar .categories ul li:hover {
-    background: white;
+    background: #fff;
     color: orangered;
   }
   .header__nav-bar span,
@@ -179,11 +179,11 @@
     width: 100%;
   }
   .header__nav-links .categories span:hover {
-    background: white;
+    background: #fff;
     color: orangered;
   }
   .header__nav-links a:hover {
-    background: white;
+    background: #fff;
     color: orangered;
   }
   .header__nav-auth {
@@ -200,7 +200,7 @@
     width: 100%;
   }
   .header__nav-auth .auth .fa:hover {
-    background: white;
+    background: #fff;
     color: orangered;
   }
   .header__nav-cart {
@@ -216,7 +216,7 @@
     width: 100%;
   }
   .header__nav-cart a .fa:hover {
-    background: white;
+    background: #fff;
     color: orangered;
   }
 }
@@ -234,7 +234,7 @@
   width: 100%;
   text-align: center;
   align-self: center;
-  color: white;
+  color: #fff;
   padding: 0 20px;
 }
 .header__hero-text p {
@@ -280,7 +280,7 @@
 }
 .header__hero-text h1 {
   font-size: 8rem;
-  color: white;
+  color: #fff;
 }
 .header__hero-text h1 span {
   position: relative;
@@ -292,7 +292,7 @@
   position: absolute;
   top: 2px;
   left: -8px;
-  color: white;
+  color: #fff;
   font-weight: 300;
   letter-spacing: 20px;
 }
@@ -307,7 +307,7 @@
   width: 50px;
 }
 .header__hero-social a {
-  color: white;
+  color: #fff;
   font-size: 2.5rem;
   width: 100%;
   height: 120px;
@@ -326,7 +326,7 @@
   content: "";
   top: 40px;
   left: 25px;
-  background: white;
+  background: #fff;
   width: 2px;
   height: 60px;
   z-index: 3;
@@ -358,7 +358,7 @@
     display: block;
     letter-spacing: normal;
     font-weight: 600;
-    color: white;
+    color: #fff;
   }
   .header__hero-text h1 span::after {
     display: none;
@@ -407,7 +407,7 @@
   }
 }
 .featured {
-  background: white;
+  background: #fff;
   padding-left: 60px;
   padding-right: 60px;
 }
@@ -425,17 +425,17 @@
   left: 20px;
   background: brown;
   font-size: 2rem;
-  color: white;
+  color: #fff;
   padding: 2px 5px;
 }
 .item p {
-  color: white;
+  color: #fff;
   font-size: 1.8rem;
   font-weight: 500;
   position: absolute;
   top: 10px;
   left: 20px;
-  background: black;
+  background: #000;
   padding: 2px 5px;
   box-shadow: 2px 4px 5px 0.1px gainsboro;
 }
@@ -456,7 +456,7 @@
   margin: auto;
 }
 .item form button:hover {
-  color: #e04f1a;
+  color: #992900;
 }
 .item img {
   width: calc(100% -50px);
@@ -497,7 +497,7 @@
   }
 }
 .products {
-  background: white;
+  background: #fff;
 }
 .products__name {
   position: absolute;
@@ -505,17 +505,17 @@
   left: 2px;
   background: brown;
   font-size: 1.8rem;
-  color: white;
+  color: #fff;
   padding: 2px 5px;
 }
 .products__price {
-  color: white;
+  color: #fff;
   font-size: 1.8rem;
   font-weight: 500;
   position: absolute;
   top: 10px;
   left: 2px;
-  background: black;
+  background: #000;
   padding: 2px 5px;
   box-shadow: 2px 4px 5px 0.1px gainsboro;
 }
@@ -545,7 +545,7 @@
   margin: auto;
 }
 .products__grid form button:hover {
-  color: #e04f1a;
+  color: #992900;
 }
 .products__grid img {
   width: 100%;
