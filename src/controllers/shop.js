@@ -28,6 +28,12 @@ exports.getLoginPage = (req, res) => {
   });
 };
 
+exports.getRegisterPage = (req, res) => {
+  res.render('auth/register', {
+    pageTitle: 'FASHIONIT | REGISTER',
+  });
+};
+
 exports.getAllProducts = async (req, res) => {
 
   try {
