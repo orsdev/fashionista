@@ -1,4 +1,3 @@
-@import "components/utils";
-@import "components/header";
-@import "components/featured";
-@import "components/products";
+@import "./home/header";
+@import "./home/featured";
+@import "./home/products";

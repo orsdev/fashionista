@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+
+html {
+   scroll-behavior: smooth;
+   font-size: 62.5%;
+}
+
+body {
+   box-sizing: border-box;
+   max-width: 100%;
+   overflow-x: hidden;
+   font-family: "Poppins", sans-serif;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+   display: block;
+}
+
+@import "./includes/utils";
