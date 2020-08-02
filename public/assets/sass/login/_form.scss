@@ -1,0 +1,83 @@
+.form {
+   flex: 1;
+   padding: 100px 30px;
+   width: 600px;
+   margin: auto;
+
+   &-register {
+      width: 100%;
+      margin: auto;
+      text-align: right;
+
+      span {
+         font-size: 1.3rem;
+
+         a {
+            color: $orangered;
+            font-weight: 600;
+         }
+      }
+   }
+
+   &-group {
+      position: relative;
+      width: 100%;
+      margin-bottom: 20px;
+
+      label {
+         position: relative;
+         top: 15px;
+         left: 10px;
+         font-size: 1.8rem;
+         font-weight: 600;
+         background: $white;
+      }
+
+      input {
+         width: 100%;
+         padding: 15px 5px;
+         border: 1px solid lightgray;
+      }
+
+      button {
+         width: 100%;
+         font-size: 2rem;
+         font-weight: 600;
+         color: $white;
+         background: $orangered;
+         height: 50px;
+         padding: 5px;
+         border: none;
+         border: 1px solid #d83526;
+
+         &:hover {
+            background: lighten($orangered, 5%);
+         }
+
+         &:active,
+         &:focus {
+            outline: none;
+            border: none;
+            border-bottom: 1px groove lightgray;
+            background: $white;
+            color: black;
+         }
+      }
+   }
+}
+
+@media (max-width: 680px) {
+   .form {
+      width: 90%;
+   }
+}
+
+@media (max-width: 450px) {
+   .form {
+      width: 98%;
+
+      &-register {
+         text-align: center;
+      }
+   }
+}
