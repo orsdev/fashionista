@@ -11,18 +11,18 @@ block stylesheets
   link(rel="stylesheet" href="/assets/css/home.css")
 
 block contents
-
-  //- PRE LOADER
-  div.loader
-    div.loader-grid.left
-    div.loader-grid.right
-    div.loader-grid.left-right
-    div.loader-grid.right-left
-    div.loader-container
-      div.lds
-        div
-        div
-        div
+  if loader === true
+    //- PRE LOADER
+    div.loader
+      div.loader-grid.left
+      div.loader-grid.right
+      div.loader-grid.left-right
+      div.loader-grid.right-left
+      div.loader-container
+        div.lds
+          div
+          div
+          div
 
   //- HEADER SECTION
   header.header
@@ -229,6 +229,11 @@ block scripts
   script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js")
   script(type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js")
-  script(src="/assets/js/loaderHero.js")
+
+  if loader === true
+    script(src="/assets/js/animation/loaderHero.js")
+  else 
+    script(src="/assets/js/animation/hero.js")
+
   script(src="/assets/js/slickSlider.js")
   script(src="/assets/js/toggles.js")
