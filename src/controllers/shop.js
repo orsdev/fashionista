@@ -11,11 +11,21 @@ exports.getHomePage = async (req, res) => {
     let featured = (!mergedProducts[0].length) ? 'No Featured Products' : mergedProducts[0];
     let products = (!mergedProducts[1].length) ? 'No Products' : mergedProducts[1];
 
-    res.render('home', {
-      pageTitle: 'FASHIONIT | HOME',
-      featured,
-      products
-    });
+    if (req.path === "/") {
+      res.render('home', {
+        pageTitle: 'FASHIONIT | HOME',
+        loader: true,
+        featured,
+        products
+      });
+    } else {
+      res.render('home', {
+        pageTitle: 'FASHIONIT | HOME',
+        loader: false,
+        featured,
+        products
+      });
+    }
 
   } catch (e) {
     res.status(400).send({ error: 'Bad Request' });
