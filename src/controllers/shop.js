@@ -59,6 +59,16 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+exports.getSingleProduct = async (req, res) => {
+
+  try {
+    const product = await ProductsClass.getSingleProduct(req, res);
+    res.send(product);
+  } catch (e) {
+    res.status(404).send({ error: 'Product not Found!' })
+  }
+}
+
 exports.getCart = async (req, res) => {
   res.render('shop/cart', {
     pageTitle: 'FASHIONIT | CART'
