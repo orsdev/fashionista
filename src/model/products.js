@@ -37,4 +37,10 @@ module.exports = class Product {
 
     return products;
   }
+
+  static getSingleProduct = async (req, res) => {
+    const id = req.params.productId;
+    const product = await ProductsSchema.findById(id);
+    return product;
+  }
 }
