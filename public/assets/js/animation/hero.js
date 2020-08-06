@@ -5,7 +5,7 @@ window.onload = () => {
   setTimeout(function () {
     gsap.timeline()
       .add(heroAnimation())
-  }, 500);
+  }, 100);
 };
 
 function heroAnimation() {
