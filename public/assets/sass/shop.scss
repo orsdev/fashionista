@@ -1,6 +1,10 @@
 @import "./includes/color";
 
 .header-title {
+   position: relative;
+   z-index: 1;
+   padding-top: 120px;
+   padding-bottom: 30px;
    padding-left: 10px;
    padding-right: 10px;
 
@@ -39,10 +43,10 @@
 
    &__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 210px));
-      grid-template-rows: repeat(auto-fit, minmax(250px, 260px));
-      column-gap: 3rem;
-      row-gap: 7rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+      // grid-template-rows: repeat(auto-fit, minmax(250px, 260px));
+      column-gap: 60px;
+      row-gap: 100px;
       padding-left: 20px;
       padding-right: 20px;
       justify-content: center;

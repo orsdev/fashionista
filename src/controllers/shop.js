@@ -52,6 +52,7 @@ exports.getAllProducts = async (req, res) => {
 
     res.render('shop/shop', {
       pageTitle: 'FASHIONIT | SHOP',
+      path: 'shop/shop',
       products
     });
   } catch (e) {

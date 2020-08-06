@@ -5,10 +5,10 @@ block stylesheets
   link(rel="stylesheet" href="/assets/css/shop.css")
 
 block contents
+  .header
+    include ../../includes/headerNav.pug
 
-  include ../../includes/headerNav.pug
-
-  section.header-title.text-center.ptb
+  section.header-title.text-center
     h2 THE SHOP
 
   section.products.ptb
@@ -132,8 +132,9 @@ block contents
         form.text-center(action="/cart" method="post")
           input(type="hidden" name="productId" value="")
           button.add-to-cart-btn(data-id="") ADD TO CART
+
   include ../../includes/footer.pug
 
 block scripts
-
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js")
   script(src="/assets/js/toggles.js")
