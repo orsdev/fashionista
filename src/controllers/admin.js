@@ -8,7 +8,14 @@ exports.getAddProductPage = async (req, res) => {
   res.render('admin/add-product', { pageTitle: 'FASHIONIT | ADD PRODUCT' });
 };
 
-exports.postAddProduct = async (req, res) => {
-  const body = req.body;
-  products = await ProductsClass.postProduct(req, res, body);
+exports.postAddProduct = (req, res) => {
+  ProductsClass.postProduct(req, res);
 };
+
+exports.patchUpdateProduct = (req, res) => {
+  ProductsClass.patchUpdateProduct(req, res);
+}
+
+exports.deleteProduct = (req, res) => {
+  ProductsClass.deleteProduct(req, res);
+}

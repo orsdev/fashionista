@@ -11,4 +11,8 @@ router.get('/add-product', adminController.getAddProductPage);
 
 router.post('/add-product', jsonParser, adminController.postAddProduct);
 
+router.patch('/edit-product/:productId', jsonParser, adminController.patchUpdateProduct);
+
+router.delete('/:productId', adminController.deleteProduct);
+
 module.exports = router;

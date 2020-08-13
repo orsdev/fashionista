@@ -52,11 +52,11 @@ exports.getAllProducts = async (req, res) => {
 
     res.render('shop/shop', {
       pageTitle: 'FASHIONIT | SHOP',
-      path: 'shop/shop',
+      path: '/shop',
       products
     });
   } catch (e) {
-    res.status(400).send({ error: 'Bad Request' });
+    return res.status(400).send({ error: 'Bad Request' });
   }
 };
 
@@ -64,9 +64,14 @@ exports.getSingleProduct = async (req, res) => {
 
   try {
     const product = await ProductsClass.getSingleProduct(req, res);
-    res.send(product);
+
+    if (!product) {
+      return res.status(404).send({ error: 'Product not found.' });
+    }
+
+    return res.send(product);
   } catch (e) {
-    res.status(404).send({ error: 'Product not Found!' })
+    return res.status(500).send({ error: 'Bad Request.' })
   }
 }
 
