@@ -19,7 +19,8 @@ nav(class="navbar navbar-expand-sm navbar-dark bg-dark py-4")
 
 
       li.nav-item.mr-3
-        a(href="/shop" class="nav-link") SHOP
+        if path !== "/shop"
+          a(href="/shop" class="nav-link") SHOP
 
       li(class="nav-item dropdown")
         a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") CATEGORIES
