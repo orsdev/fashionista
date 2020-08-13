@@ -1,35 +1,36 @@
-nav.header__nav.text-center
-  div.header__nav-logo
-    a(href="/home") FASHIONIT
+nav(class="navbar navbar-expand-sm navbar-dark bg-dark py-4")
+  a(class="navbar-brand" href="/home")
+    span FASHIONIT
+  button(class="navbar-toggler d-lg-none border-0" type="button" data-toggle="collapse"
+    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+    aria-label="Toggle navigation")
+    span(class="navbar-toggler-icon")
 
-  div.header__nav-bar#menu
-    div.header__nav-links
-      if path !== 'shop/shop'
-        a(href="/shop") SHOP
-      div.categories
-        span#categories CATEGORIES
-        ul.categories-dropdown
-          li
-            a(href="#") MEN
-          li
-            a(href="#") WOMEN
-      if path !== 'shop/orders'
-        a(href="/shop/orders") ORDERS
+  div(class="collapse navbar-collapse" id="collapsibleNavId")
+    ul(class="navbar-nav ml-auto mt-2 mt-lg-0")
 
-    div.header__nav-auth.text-center
-      div.header__auth-container
-        div.auth
-          i.fa.fa-user#auth(aria-hidden="true")
+      li(class="nav-item dropdown mr-3")
+        a(class="nav-link dropdown-toggle" href="#" id="authDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 
+          i.fa.fa-user(aria-hidden="true")
 
-          ul.auth-dropdown
-            li
-              a(href="/login") LOG IN
-              li
-              a(href="/register") REGISTER
+        div(class="dropdown-menu bg-dark text-center" aria-labelledby="authDropdown")
+          a(class="dropdown-item" href="/login") LOGIN
+          a(class="dropdown-item" href="login") SIGN UP
 
-    div.header__nav-cart.text-center
-      a(href="/checkout")
-        i.fa.fa-cart-arrow-down(aria-hidden="true")
 
-  div.header__nav-toggle 
-    i.fa.fa-bars(aria-hidden="true" data-toggle="true" id="hambuger-menu")
+      li.nav-item.mr-3
+        a(href="/shop" class="nav-link") SHOP
+
+      li(class="nav-item dropdown")
+        a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") CATEGORIES
+
+        div(class="dropdown-menu bg-dark text-center" aria-labelledby="navbarDropdown")
+          a(class="dropdown-item" href="#") MEN
+          a(class="dropdown-item" href="#") WOMEN 
+
+      li.nav-item.mr-3
+        a(href="/orders" class="nav-link") ORDERS
+
+      li.nav-item
+        a(href="/checkout" class="nav-link")
+          i.fa.fa-cart-arrow-down(aria-hidden="true")

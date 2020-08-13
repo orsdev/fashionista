@@ -2,272 +2,36 @@
 
 .header {
    position: relative;
+}
 
-   &__nav {
-      width: 100%;
-      position: relative;
-      background: $ashBlack;
-      display: flex;
-      align-items: center;
-      padding: 20px 10px;
+.navbar {
+   &-brand {
+      font-family: "Pacifico", cursive;
+      font-size: 2rem;
+   }
 
-      &-logo {
-         width: 100px;
-
-         a {
-            font-family: "Pacifico", cursive;
-            font-size: 2rem;
-         }
-      }
-
-      &-toggle {
-         width: calc(100% - 100px);
-         text-align: right;
-         display: none;
-
-         i {
-            color: $white;
-            font-size: 3rem;
-         }
-      }
-
-      &-bar {
-         position: relative;
-         width: calc(100% - 100px);
-         display: flex;
-         align-items: center;
-         cursor: pointer;
-      }
-
-      ul {
-         position: absolute;
-         left: 50%;
-         transform: translateX(-50%);
-         -webkit-transform: translateX(-50%);
-         -moz-transform: translateX(-50%);
-         background: rgb(37, 37, 37);
-         width: 150px;
-         padding: 20px 5px;
-         list-style: none;
-         -ms-transform: translateX(-50%);
-         -o-transform: translateX(-50%);
-         z-index: 10;
-      }
-
-      ul a {
-         display: block;
-         color: $white;
-         width: 100%;
-         padding: 10px 2px;
-      }
-
-      a {
-         text-decoration: none;
+   &-nav {
+      .nav-item .nav-link,
+      .dropdown-item {
          color: $white;
          font-weight: 600;
+         font-size: 1.4rem;
       }
 
-      &-links {
-         width: calc(100% - 80px);
-         color: $white;
+      .fa {
+         font-size: 2rem;
+      }
 
-         .categories {
-            position: relative;
-            display: inline-block;
-            margin-right: 15px;
+      .dropdown-item {
+         padding: 10px 2px;
 
-            span {
-               font-size: 1.4rem;
-               font-weight: 600;
-
-               &:hover {
-                  color: $wheat;
-               }
-            }
-         }
-
-         a {
-            font-size: 1.4rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: $white;
-
-            &:not(:last-child) {
-               margin-right: 15px;
-            }
-
-            &:hover {
-               color: $wheat;
-            }
+         &:hover {
+            color: black;
          }
       }
-
-      &-auth {
-         width: 40px;
-
-         .auth {
-            color: $white;
-            position: relative;
-            display: inline-block;
-
-            .fa {
-               font-size: 3rem;
-
-               &:hover {
-                  color: $wheat;
-               }
-            }
-
-            ul a {
-               font-size: 1.4rem;
-
-               &:hover {
-                  color: $wheat;
-               }
-            }
-         }
-      }
-
-      &-cart {
-         width: 40px;
-
-         a {
-            i {
-               font-size: 2.5rem;
-            }
-         }
-      }
-
-      .categories-dropdown,
-      .auth-dropdown {
-         display: none;
-      }
-   }
-
-   .show-menu {
-      display: inline-block;
-   }
-
-   .show-dropdown {
-      display: block;
    }
 }
 
-@media screen and (max-width: 650px) {
-   .header {
-      &__nav {
-         text-align: left;
-
-         &-toggle {
-            display: inline-block;
-
-            i:hover {
-               color: $wheat;
-            }
-         }
-
-         &-bar {
-            position: absolute;
-            top: -300px;
-            left: 0;
-            background: $black;
-            z-index: 1000;
-            width: 200px;
-            padding: 40px 20px;
-            flex-direction: column;
-
-            .categories ul {
-               top: 30px;
-            }
-
-            .auth ul {
-               top: 40px;
-            }
-
-            .auth ul,
-            .categories ul {
-               li > a:hover {
-                  color: $orangered !important;
-               }
-
-               li:hover {
-                  background: $white;
-                  color: $orangered;
-               }
-            }
-
-            span,
-            a,
-            i {
-               padding: 10px 2px;
-            }
-         }
-
-         &-links {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-
-            .categories,
-            a,
-            span {
-               display: inline-block;
-               width: 100%;
-            }
-
-            .categories {
-               span:hover {
-                  background: $white;
-                  color: $orangered;
-               }
-            }
-
-            a:hover {
-               background: $white;
-               color: $orangered;
-            }
-         }
-
-         &-auth {
-            text-align: left;
-            width: 100%;
-
-            .auth {
-               width: 100%;
-
-               .fa {
-                  display: inline-block;
-                  padding-top: 4px;
-                  padding-bottom: 4px;
-                  width: 100%;
-
-                  &:hover {
-                     background: $white;
-                     color: $orangered;
-                  }
-               }
-            }
-         }
-
-         &-cart {
-            text-align: left;
-            width: 100%;
-
-            a {
-               display: inline-block;
-               width: 100%;
-
-               .fa {
-                  display: inline-block;
-                  width: 100%;
-
-                  &:hover {
-                     background: $white;
-                     color: $orangered;
-                  }
-               }
-            }
-         }
-      }
-   }
+.dropdown-toggle::after {
+   display: none;
 }
