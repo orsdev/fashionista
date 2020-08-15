@@ -9,7 +9,7 @@ exports.getAddProductPage = async (req, res) => {
 };
 
 exports.postAddProduct = async (req, res) => {
-  const product = await ProductClass.postProduct(req, res);
+  const product = ProductClass.postProduct(req, res);
 
   product.save()
     .then((response) => res.send({ message: 'Product upload successfull' }))
