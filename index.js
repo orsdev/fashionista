@@ -5,7 +5,6 @@ const adminRouter = require('./src/routes/admin');
 const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
 const errorController = require('./src/controllers/error');
-
 const app = express();
 const port = process.env.PORT;
 
