@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const uri = process.env.DB_URI;
 
 try {
@@ -6,7 +7,7 @@ try {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   });
 } catch (error) {
   console.log(error);
