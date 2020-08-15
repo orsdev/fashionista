@@ -1,4 +1,4 @@
-const ProductsClass = require("../model/products");
+const { ProductClass } = require('../model/product');
 
 exports.getAllProducts = async (req, res) => {
   res.send('get all products page');
@@ -8,14 +8,18 @@ exports.getAddProductPage = async (req, res) => {
   res.render('admin/add-product', { pageTitle: 'FASHIONIT | ADD PRODUCT' });
 };
 
-exports.postAddProduct = (req, res) => {
-  ProductsClass.postProduct(req, res);
+exports.postAddProduct = async (req, res) => {
+  const product = await ProductClass.postProduct(req, res);
+
+  product.save()
+    .then((response) => res.send({ message: 'Product upload successfull' }))
+    .catch((e) => res.status(400).send({ error: e.message }));
 };
 
 exports.patchUpdateProduct = (req, res) => {
-  ProductsClass.patchUpdateProduct(req, res);
-}
+  ProductClass.patchUpdateProduct(req, res);
+};
 
 exports.deleteProduct = (req, res) => {
-  ProductsClass.deleteProduct(req, res);
-}
+  ProductClass.deleteProduct(req, res);
+};
