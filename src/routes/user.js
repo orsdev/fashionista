@@ -1,11 +1,13 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const isAuth = require('../middleware/auth');
 const userController = require('../controllers/user');
 
 const router = new express.Router();
 
-const jsonParser = bodyParser.json();
+router.get('/checkout', isAuth, userController.getCheckout);
 
-router.post('/user', jsonParser, userController.postUserInfo);
+router.get('/cart', isAuth, userController.getCart);
+
+router.get('/orders', isAuth, userController.getOrders);
 
 module.exports = router;

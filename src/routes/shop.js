@@ -1,24 +1,15 @@
 const express = require('express');
+const isAuth = require('../middleware/auth');
+const productController = require('../controllers/product');
 
 const router = new express.Router();
-const productController = require('../controllers/product');
 
 router.get('/', productController.getHomePage);
 
 router.get('/home', productController.getHomePage);
 
-router.get('/login', productController.getLoginPage);
+router.get('/shop', productController.getShop);
 
-router.get('/register', productController.getRegisterPage);
-
-router.get('/shop', productController.getAllProducts);
-
-router.get('/shop/:productId', productController.getSingleProduct);
-
-router.get('/shop/checkout', productController.getCheckout);
-
-router.get('/shop/cart', productController.getCart);
-
-router.get('/shop/orders', productController.getOrders);
+router.get('/shop/:productId', isAuth, productController.getSingleProduct);
 
 module.exports = router;

@@ -1,19 +1,17 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
-const router = new express.Router();
+const isAuth = require('../middleware/auth');
 const adminController = require('../controllers/admin');
 
-const jsonParser = bodyParser.json();
+const router = new express.Router();
 
-router.get('/products', adminController.getAllProducts);
+router.get('/products', isAuth, adminController.getAllProducts);
 
-router.get('/add-product', adminController.getAddProductPage);
+router.get('/add-product', isAuth, adminController.getAddProductPage);
 
-router.post('/add-product', jsonParser, adminController.postAddProduct);
+router.post('/add-product', isAuth, adminController.postAddProduct);
 
-router.patch('/edit-product/:productId', jsonParser, adminController.patchUpdateProduct);
+router.patch('/edit-product/:productId', isAuth, adminController.patchUpdateProduct);
 
-router.delete('/:productId', adminController.deleteProduct);
+router.delete('/:productId', isAuth, adminController.deleteProduct);
 
 module.exports = router;
