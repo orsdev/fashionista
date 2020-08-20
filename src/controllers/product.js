@@ -22,7 +22,7 @@ exports.getHomePage = async (req, res) => {
         pageTitle: 'FASHIONIT | HOME',
         loader: false,
         featured,
-        products,
+        products
       });
     }
   } catch (e) {
@@ -30,19 +30,7 @@ exports.getHomePage = async (req, res) => {
   }
 };
 
-exports.getLoginPage = (req, res) => {
-  res.render('auth/login', {
-    pageTitle: 'FASHIONIT | LOGIN',
-  });
-};
-
-exports.getRegisterPage = (req, res) => {
-  res.render('auth/register', {
-    pageTitle: 'FASHIONIT | REGISTER',
-  });
-};
-
-exports.getAllProducts = async (req, res) => {
+exports.getShop = async (req, res) => {
   try {
     const allProducts = await ProductClass.getAllProducts(req, res, 20);
     const products = (!allProducts.length) ? 'No Products' : allProducts;
@@ -69,22 +57,4 @@ exports.getSingleProduct = async (req, res) => {
   } catch (e) {
     return res.status(500).send({ error: 'Bad Request.' });
   }
-};
-
-exports.getCart = async (req, res) => {
-  res.render('shop/cart', {
-    pageTitle: 'FASHIONIT | CART',
-  });
-};
-
-exports.getOrders = async (req, res) => {
-  res.render('shop/orders', {
-    pageTitle: 'FASHIONIT | YOUR ORDERS',
-  });
-};
-
-exports.getCheckout = async (req, res) => {
-  res.render('shop/checkout', {
-    pageTitle: 'FASHIONIT | CHECKOUT',
-  });
 };

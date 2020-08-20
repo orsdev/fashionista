@@ -1,9 +1,17 @@
-const { UserClass } = require('../model/user');
+exports.getCart = async (req, res) => {
+  res.render('shop/cart', {
+    pageTitle: 'FASHIONIT | CART',
+  });
+};
 
-exports.postUserInfo = async (req, res) => {
-  const user = UserClass.postAddUser(req, res);
+exports.getOrders = async (req, res) => {
+  res.render('shop/orders', {
+    pageTitle: 'FASHIONIT | YOUR ORDERS',
+  });
+};
 
-  user.save()
-    .then((response) => res.send({ message: 'Account created' }))
-    .catch((e) => res.status(400).send({ error: e.message }));
+exports.getCheckout = async (req, res) => {
+  res.render('shop/checkout', {
+    pageTitle: 'FASHIONIT | CHECKOUT',
+  });
 };
