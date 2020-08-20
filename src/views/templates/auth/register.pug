@@ -7,17 +7,34 @@ block contents
   .container-fluid.px-0
     include ../../includes/nav.pug
 
+    if errorMessage
+      .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+        span.h2 #{errorMessage}
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
+
+    if successMessage
+      .alert.alert-success.alert-dismissible.fade.show.text-center.px-1.py-4
+        span.h2 #{successMessage}
+          a(href="/login" class="text-danger h4") 
+            strong.text-danger.h2 Log in to your account
+
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
+
     section.form
       form(action="/register" method="post")
         .form-group
+          input(type="hidden" name="_csrf" value=csrfToken)
+        .form-group
           label(for="fullname") Fullname
-          input(type="text" name="fullname" required)
+          input(type="text" name="fullName" required)
         .form-group
           label(for="email") EMAIL
-          input(type="email" name="email" required)
+          input(type="email" name="userEmail" required)
         .form-group
           label(for="password") PASSWORD
-          input(type="password" name="password" required)
+          input(type="password" name="userPassword" required)
         .form-group
           button(type="submit") REGISTER
         .form-register
