@@ -98,11 +98,34 @@ userSchema.methods.addToCart = function (productId) {
 const User = mongoose.model('User', userSchema);
 
 class UserClass {
-  static postAddUser(req, res) {
+  static postAddUser(req, res, cb) {
     const { body } = req;
-    const user = new User(body);
-    return user;
-  }
+
+    const findUser = User.findOne({ userEmail: body.userEmail });
+
+    findUser.then((user) => {
+
+      if (user) {
+        req.flash('error', 'Email already in use.');
+        req.session.save(() => {
+          return res.redirect('/register');
+        })
+      } else {
+        cb(new User(body));
+      }
+
+    })
+
+    // if (findUser) {
+    //   req.flash('error', 'Email already in use.');
+    //   req.session.save(() => {
+    //     return res.redirect('/register');
+    //   })
+    // } else {
+    //   const user = new User(body);
+    //   return user;
+    // }
+  };
 
   static async getUserCredentials(req, res, email, password) {
     const user = await User.findOne({ userEmail: email });
