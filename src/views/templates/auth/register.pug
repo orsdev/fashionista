@@ -9,15 +9,15 @@ block contents
 
     if errorMessage
       .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
-        span.h2 #{errorMessage}
+        span.h3 #{errorMessage}
         button(type="close" class="close" data-dismiss="alert" aria-label="Close")
           span(aria-hidden="true" class="h1") &times;
 
     if successMessage
       .alert.alert-success.alert-dismissible.fade.show.text-center.px-1.py-4
-        span.h2 #{successMessage}
+        span.h3 #{successMessage}
           a(href="/login" class="text-danger h4") 
-            strong.text-danger.h2 Log in to your account
+            strong.text-danger.h3 Log in to your account
 
         button(type="close" class="close" data-dismiss="alert" aria-label="Close")
           span(aria-hidden="true" class="h1") &times;

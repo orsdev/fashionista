@@ -1,32 +1,32 @@
 extends ../../layout/layout
 
 block stylesheets
-   link(rel="stylesheet" href="/assets/css/authenticate.css")
+  link(rel="stylesheet" href="/assets/css/authenticate.css")
 
 block contents
-   .container-fluid.px-0
-      include ../../includes/nav.pug
+  .container-fluid.px-0
+    include ../../includes/nav.pug
 
-      if errorMessage
-         .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
-            span.h2 #{errorMessage}
-            button(type="close" class="close" data-dismiss="alert" aria-label="Close")
-               span(aria-hidden="true" class="h1") &times;
+    if errorMessage
+      .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+        span.h3 #{errorMessage}
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
 
-      section.form
-         form(action="/login" method="post")
-            .form-group
-               input(type="hidden" name="_csrf" value=csrfToken)
-            .form-group
-               label(for="email") EMAIL
-               input(type="email" name="userEmail" required)
-            .form-group
-               label(for="password") PASSWORD
-               input(type="password" name="userPassword" required)
-            .form-group
-               button(type="submit") LOGIN
-            .form-register
-               span Don't have an account? 
-                  a(href="/register") Register 
+    section.form
+      form(action="/login" method="post")
+        .form-group
+          input(type="hidden" name="_csrf" value=csrfToken)
+        .form-group
+          label(for="email") EMAIL
+          input(type="email" name="userEmail" required)
+        .form-group
+          label(for="password") PASSWORD
+          input(type="password" name="userPassword" required)
+        .form-group
+          button(type="submit") LOGIN
+        .form-register
+          span Don't have an account? 
+            a(href="/register") Register 
 
-      include ../../includes/footer.pug
+    include ../../includes/footer.pug
