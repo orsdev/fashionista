@@ -114,17 +114,7 @@ class UserClass {
         cb(new User(body));
       }
 
-    })
-
-    // if (findUser) {
-    //   req.flash('error', 'Email already in use.');
-    //   req.session.save(() => {
-    //     return res.redirect('/register');
-    //   })
-    // } else {
-    //   const user = new User(body);
-    //   return user;
-    // }
+    });
   };
 
   static async getUserCredentials(req, res, email, password) {
