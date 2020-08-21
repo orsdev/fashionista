@@ -4,6 +4,9 @@ block contents
 
   form(action="/admin/add-product" method="post")
     div.form-group
+      input(type="hidden" name="_csrf" value=csrfToken)
+
+    div.form-group
       label(for="tag") Product Title
       input(type="text" name="title" id="title" placeholder="Product Name")
 
