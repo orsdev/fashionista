@@ -64,27 +64,6 @@ exports.postCreateUser = async (req, res) => {
       });
 
   });
-
-  // user.save()
-  //   .then((response) => {
-
-  //     req.flash('message', 'Your account has been created successfully.');
-  //     req.session.save((err) => {
-  //       if (err) {
-  //         console.log('Session cannot be saved!-' + err);
-  //       };
-  //       return res.redirect('/register');
-  //     });
-  //   }).catch((e) => {
-  //     req.flash('error', 'Registration failed. Please try again later');
-
-  //     req.session.save((err) => {
-  //       if (err) {
-  //         console.log('Session cannot be saved!-' + err);
-  //       };
-  //       return res.redirect('/register');
-  //     });
-  //   });
 };
 
 exports.loginUser = async (req, res) => {
