@@ -59,25 +59,33 @@ block contents
         img(src="assets/img/products/men/grey-shirt.png" alt="")
         figcaption.products__name.text-center GREY SHIRT
         p.products__price $20
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.item
         img(src="assets/img/products/women/red-gown.png" alt="")
         figcaption.products__name.text-center RED GOWN
         p.products__price $100
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.item
         img(src="assets/img/products/men/scott-backpack.png" alt="")
         figcaption.products__name.text-center SCOTT BACKPACK
         p.products__price $50
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.item
         img(src="assets/img/products/women/blue-gown.png" alt="")
         figcaption.products__name.text-center BLUE GOWN
         p.products__price $200
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
   //- PRODUCTS SECTION
   section.products.ptb
@@ -88,74 +96,98 @@ block contents
       figure.products__grid-item-1
         img(src="assets/img/products/men/red-polo.png" alt="")
         figcaption.products__name.text-center RED POLO
-        p.products__price $60   
-        include ../includes/add-to-cart.pug
+        p.products__price $60
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="5f231f4e77034e05c8f45345")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-2
         img(src="assets/img/products/women/floral-gown.png" alt="")
         figcaption.products__name.text-center FLORAL DRESS
-        p.products__price $120  
-        include ../includes/add-to-cart.pug
+        p.products__price $120
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-3
         img(src="assets/img/products/men/wallet.png" alt="")
         figcaption.products__name.text-center WALLET
-        p.products__price $40       
-        include ../includes/add-to-cart.pug
+        p.products__price $40
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-4
         img(src="assets/img/products/women/blue-jean.png" alt="")
         figcaption.products__name.text-center BLUE JEAN
-        p.products__price $80  
-        include ../includes/add-to-cart.pug
+        p.products__price $80
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-5
         img(src="assets/img/products/women/jade-necklace.png" alt="")
         figcaption.products__name.text-center JADE NECKLACE
-        p.products__price $180    
-        include ../includes/add-to-cart.pug
+        p.products__price $180
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-6
         img(src="assets/img/products/men/brown-belt.png" alt="")
         figcaption.products__name.text-center BELT
         p.products__price $30
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-7
         img(src="assets/img/products/women/pink-lipstick.png" alt="")
         figcaption.products__name.text-center LIP GLOSS
         p.products__price $55
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-8
         img(src="assets/img/products/women/slippers.png" alt="")
         figcaption.products__name.text-center SLIPPERS
         p.products__price $25
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-9
         img(src="assets/img/products/men/black-shirt.png" alt="")
         figcaption.products__name.text-center BLACK SHIRT
         p.products__price $49.59
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-10
         img(src="assets/img/products/men/nike-shoe.png" alt="")
         figcaption.products__name.text-center NIKE
         p.products__price $200
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-11
         img(src="assets/img/products/men/white-shirt.png" alt="")
         figcaption.products__name.text-center WHITE SHIRT
         p.products__price $65
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
       figure.products__grid-item-12
         img(src="assets/img/products/women/leather-brown.png" alt="")
         figcaption.products__name.text-center LEATHER BAG
         p.products__price $215
-        include ../includes/add-to-cart.pug
+        form.text-center(action="/cart" method="post")
+          input(type="hidden" name="productId" value="")
+          button.add-to-cart-btn(data-id="") ADD TO CART
 
   include ../includes/footer.pug
 
