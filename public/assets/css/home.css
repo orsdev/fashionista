@@ -1,5 +1,6 @@
 .header {
   position: relative;
+  z-index: 10;
 }
 
 .header__hero {
@@ -22,43 +23,6 @@
 .header__hero-text p {
   font-size: 2rem;
   font-weight: bold;
-}
-.header__hero-text h3 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  font-style: italic;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: orangered;
-  padding: 5px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 120px;
-  z-index: 1;
-}
-.header__hero-text h3::before {
-  position: absolute;
-  top: 0;
-  content: "";
-  width: 90%;
-  height: 121px;
-  z-index: -1;
-  background: transparent;
-  box-shadow: 0 1px 10px 1px #3a3535;
-}
-.header__hero-text h3 span {
-  display: block;
-  margin-top: 5px;
-  transform-origin: top right;
-  transform: rotate(-10deg);
-  padding-right: 10px;
-  -webkit-transform: rotate(-10deg);
-  -moz-transform: rotate(-10deg);
-  -ms-transform: rotate(-10deg);
-  -o-transform: rotate(-10deg);
 }
 .header__hero-text h1 {
   font-size: 8rem;

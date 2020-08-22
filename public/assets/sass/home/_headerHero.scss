@@ -26,46 +26,6 @@
             font-weight: bold;
          }
 
-         h3 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            font-style: italic;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: $orangered;
-            padding: 5px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 120px;
-            z-index: 1;
-
-            &::before {
-               position: absolute;
-               top: 0;
-               content: "";
-               width: 90%;
-               height: 121px;
-               z-index: -1;
-               background: transparent;
-               box-shadow: 0 1px 10px 1px rgb(58, 53, 53);
-            }
-
-            span {
-               display: block;
-               margin-top: 5px;
-               transform-origin: top right;
-               transform: rotate(-10deg);
-               padding-right: 10px;
-               -webkit-transform: rotate(-10deg);
-               -moz-transform: rotate(-10deg);
-               -ms-transform: rotate(-10deg);
-               -o-transform: rotate(-10deg);
-            }
-         }
-
          h1 {
             font-size: 8rem;
             color: $white;
