@@ -1,3 +1,5 @@
+const { UserClass } = require('../model/user');
+
 exports.getCart = async (req, res) => {
   res.render('shop/cart', {
     pageTitle: 'FASHIONIT | CART',
@@ -15,3 +17,7 @@ exports.getCheckout = async (req, res) => {
     pageTitle: 'FASHIONIT | CHECKOUT',
   });
 };
+
+exports.addToCart = async (req, res) => {
+  UserClass.addToCart(req, res);
+}

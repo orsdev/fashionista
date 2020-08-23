@@ -151,6 +151,17 @@ class UserClass {
       });
     }
   }
+
+  static async addToCart(req, res) {
+    const { productId } = req.body;
+    req.user.addToCart(productId)
+      .then((response) => {
+        return res.redirect('/home');
+      })
+      .catch((err) => {
+        return res.redirect('/home');
+      });
+  }
 }
 
 module.exports = {
