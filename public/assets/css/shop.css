@@ -71,4 +71,10 @@
   position: relative;
 }
 
+@media (max-width: 500px) {
+  .header-title h2 {
+    font-size: 3.5rem;
+  }
+}
+
 /*# sourceMappingURL=shop.css.map */
