@@ -11,5 +11,13 @@ module.exports = {
         "ecmaVersion": 11
     },
     "rules": {
+        "no-console": "off",
+        "comma-dangle": "off",
+        "prefer-destructuring": "off",
+        "padded-blocks": "off",
+        "func-names": "off",
+        "arrow-parens": "off",
+        "no-underscore-dangle": "off",
+        "max-len": "off"
     }
 };

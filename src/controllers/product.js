@@ -11,22 +11,23 @@ exports.getHomePage = async (req, res) => {
     const products = (!mergedProducts[1].length) ? 'No Products' : mergedProducts[1];
 
     if (req.path === '/') {
-      res.render('home', {
+      return res.render('home', {
         pageTitle: 'FASHIONIT | HOME',
         loader: true,
         featured,
         products,
       });
-    } else {
-      res.render('home', {
-        pageTitle: 'FASHIONIT | HOME',
-        loader: false,
-        featured,
-        products
-      });
     }
+
+    return res.render('home', {
+      pageTitle: 'FASHIONIT | HOME',
+      loader: false,
+      featured,
+      products
+    });
+
   } catch (e) {
-    res.status(400).send({ error: 'Bad Request' });
+    return res.status(400).send({ error: 'Bad Request' });
   }
 };
 
@@ -35,7 +36,7 @@ exports.getShop = async (req, res) => {
     const allProducts = await ProductClass.getAllProducts(req, res, 20);
     const products = (!allProducts.length) ? 'No Products' : allProducts;
 
-    res.render('shop/shop', {
+    return res.render('shop/shop', {
       pageTitle: 'FASHIONIT | SHOP',
       path: '/shop',
       products,
@@ -50,7 +51,9 @@ exports.getSingleProduct = async (req, res) => {
     const product = await ProductClass.getSingleProduct(req, res);
 
     if (!product) {
-      return res.status(404).send({ message: 'Product not found.' });
+      return res.status(404).send({
+        message: 'Product not found.'
+      });
     }
 
     return res.send(product);

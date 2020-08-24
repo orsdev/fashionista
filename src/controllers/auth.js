@@ -9,7 +9,7 @@ exports.getLoginPage = (req, res) => {
     error = null;
   }
 
-  res.render('auth/login', {
+  return res.render('auth/login', {
     pageTitle: 'FASHIONIT | LOGIN',
     errorMessage: error
   });
@@ -31,7 +31,7 @@ exports.getRegisterPage = (req, res) => {
     message = null;
   }
 
-  res.render('auth/register', {
+  return res.render('auth/register', {
     pageTitle: 'FASHIONIT | REGISTER',
     errorMessage: error,
     successMessage: message
@@ -39,26 +39,24 @@ exports.getRegisterPage = (req, res) => {
 };
 
 exports.postCreateUser = async (req, res) => {
-  UserClass.postAddUser(req, res, function (user) {
+  UserClass.postAddUser(req, res, (user) => {
 
     user.save()
-      .then((response) => {
-        if (!response) return res.redirect('/register');
-
+      .then(() => {
         req.flash('message', 'Your account has been created successfully.');
         req.session.save((err) => {
           if (err) {
-            console.log('Session cannot be saved!-' + err);
-          };
+            console.log(`Session cannot be saved!- ${err}`);
+          }
           return res.redirect('/register');
         });
-      }).catch((e) => {
+      }).catch(() => {
 
         req.flash('error', 'Registration failed. Please try again later');
         req.session.save((err) => {
           if (err) {
-            console.log('Session cannot be saved!-' + err);
-          };
+            console.log(`Session cannot be saved!- ${err}`);
+          }
           return res.redirect('/register');
         });
       });
@@ -72,11 +70,11 @@ exports.loginUser = async (req, res) => {
 };
 
 exports.logoutUser = (req, res) => {
-  req.session.destroy(function (err) {
+  req.session.destroy((err) => {
     if (err) {
-      console.log('Something went wrong-' + err);
-    };
+      console.log(`Something went wrong-- ${err}`);
+    }
 
     return res.redirect('/home');
-  })
+  });
 };

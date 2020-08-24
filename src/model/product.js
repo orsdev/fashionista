@@ -36,7 +36,7 @@ const ProductsSchema = mongoose.model('Products', productsShema);
 class ProductClass {
 
   static postProduct = (req, res) => {
-    const body = req.body;
+    const { body } = req;
     const product = new ProductsSchema(body);
     return product;
   }

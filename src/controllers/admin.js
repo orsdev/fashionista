@@ -12,7 +12,7 @@ exports.postAddProduct = async (req, res) => {
   const product = ProductClass.postProduct(req, res);
 
   product.save()
-    .then((response) => res.send({ message: 'Product upload successfull' }))
+    .then(() => res.send({ message: 'Product upload successfull' }))
     .catch((e) => res.status(400).send({ error: e.message }));
 };
 

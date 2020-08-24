@@ -7,7 +7,7 @@ exports.getCart = async (req, res) => {
     .execPopulate()
     .then((response) => {
 
-      let cart = (response.cart.items.length && response.cart.items);
+      const cart = (response.cart.items.length && response.cart.items);
 
       return res.render('shop/cart', {
         pageTitle: 'FASHIONIT | CART',
@@ -16,21 +16,17 @@ exports.getCart = async (req, res) => {
       });
 
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-exports.getOrders = async (req, res) => {
-  res.render('shop/orders', {
-    pageTitle: 'FASHIONIT | YOUR ORDERS',
-  });
-};
+exports.getOrders = async (req, res) => res.render('shop/orders', {
+  pageTitle: 'FASHIONIT | YOUR ORDERS',
+});
 
-exports.getCheckout = async (req, res) => {
-  res.render('shop/checkout', {
-    pageTitle: 'FASHIONIT | CHECKOUT',
-  });
-};
+exports.getCheckout = async (req, res) => res.render('shop/checkout', {
+  pageTitle: 'FASHIONIT | CHECKOUT',
+});
 
 exports.addToCart = async (req, res) => {
   UserClass.addToCart(req, res);
-}
+};
