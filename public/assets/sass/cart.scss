@@ -1,0 +1,118 @@
+@import "./includes/color";
+
+.header-title {
+   position: relative;
+   z-index: 1;
+   padding-top: 120px;
+   padding-bottom: 30px;
+   padding-left: 10px;
+   padding-right: 10px;
+
+   h2 {
+      font-size: 5rem;
+   }
+}
+
+.empty-cart {
+   p {
+      font-size: 2.5rem;
+      font-weight: bold;
+   }
+
+   button {
+      width: 155px;
+      line-height: 15px;
+
+      a {
+         color: $orangered;
+         font-weight: bold;
+         font-size: 1.5rem;
+         text-decoration: none;
+         border-bottom: 3px solid $orangered;
+
+         &:hover {
+            color: darken($orangered, 10%);
+         }
+      }
+   }
+}
+
+.cart {
+   background: rgba(0, 0, 0, 0.1);
+   display: flex;
+   flex-wrap: wrap;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 205px));
+   justify-content: center;
+   gap: 20px;
+
+   figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding: 5px 10px;
+      width: 200px;
+      height: 220px;
+      background: whitesmoke;
+
+      img {
+         width: 80%;
+         height: 150px;
+      }
+
+      figcaption {
+         display: inline-block;
+         width: 100%;
+         padding: 7px 2px;
+         color: white;
+         letter-spacing: 5px;
+         font-size: 1.5rem;
+         font-weight: bolder;
+         margin-top: -10px;
+         background: rgba(0, 0, 0, 0.4);
+      }
+
+      section {
+         display: flex;
+         align-items: center;
+         align-content: center;
+         width: 100%;
+      }
+
+      span {
+         font-size: 2rem;
+         font-weight: bolder;
+         padding: 7px 2px;
+
+         &:last-child {
+            color: $orangered;
+         }
+      }
+
+      form {
+         position: absolute;
+         top: -10px;
+         right: -12px;
+         width: 50px;
+
+         button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            letter-spacing: 1px;
+            font-weight: bold;
+            border-radius: 50%;
+            height: 45px;
+            width: 45px;
+         }
+      }
+   }
+}
+
+@media (max-width: 500px) {
+   .header-title {
+      h2 {
+         font-size: 3.5rem;
+      }
+   }
+}

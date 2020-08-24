@@ -1,8 +1,36 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title #{pageTitle}
-  body
-    h1 CART PAGE
+extends ../../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+  link(rel="stylesheet" href="/assets/css/cart.css")
+
+block contents
+  .header
+    include ../../includes/headerNav.pug
+
+  section.header-title.text-center
+    h2 SHOPPING CART
+
+  if !cart
+    section.text-center.empty-cart.mt-5.px-2
+      p Your cart is empty.
+      button.btn.btn-lg.mt-3
+        a(href="/shop") RETURN TO SHOP
+  else
+    div.ptb
+      div.cart.container.mx-auto.py-4.text-center
+
+        for item in cart
+          figure
+            img(src="" alt=item.productId.title)
+            figcaption #{item.productId.title}
+            section
+              span.price $#{item.productId.price}
+              span.times &times; 
+              span.quantity #{item.quantity}
+            form.text-center(action="/cart" method="post")
+              input(type="hidden" name="_csrf" value=csrfToken)
+              input(type="hidden" name="productId" value=item.productId._id)
+              button(type="submit" class="btn btn-success") ORDER
+
+  include ../../includes/footer.pug
