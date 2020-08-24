@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
+const morgan = require('morgan');
 const adminRouter = require('./src/routes/admin');
 const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
@@ -44,9 +45,13 @@ const viewPath = path.join(__dirname, 'src', 'views', 'templates');
 app.set('view engine', 'pug');
 app.set('views', viewPath);
 
+
 app.use(express.static(staticPath));
 
+app.use(morgan('dev'));
+
 app.use(urlencoded);
+app.use(bodyParser.json());
 app.use(session(sess));
 
 app.use(csrfProtection);
