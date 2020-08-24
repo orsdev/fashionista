@@ -1,9 +1,22 @@
 const { UserClass } = require('../model/user');
 
 exports.getCart = async (req, res) => {
-  res.render('shop/cart', {
-    pageTitle: 'FASHIONIT | CART',
-  });
+
+  UserClass.getCartItems(req, res)
+    .populate('cart.items.productId')
+    .execPopulate()
+    .then((response) => {
+
+      let cart = (response.cart.items.length && response.cart.items);
+
+      return res.render('shop/cart', {
+        pageTitle: 'FASHIONIT | CART',
+        path: '/cart',
+        cart
+      });
+
+    })
+    .catch(err => console.log(err));
 };
 
 exports.getOrders = async (req, res) => {

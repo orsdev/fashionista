@@ -18,20 +18,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cart: [{
-    items: {
-      productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Products',
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-    },
-  },
-  ]
+  cart: {
+    items: [
+      {
+        productId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Products',
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+      }
+    ]
+  }
 }, {
   timestamps: true,
 });
@@ -60,7 +61,6 @@ userSchema.methods.toJSON = function () {
   const userObject = user.toObject();
 
   delete userObject.userPassword;
-  delete userObject.cart;
   delete userObject.createdAt;
   delete userObject.updatedAt;
 
@@ -70,26 +70,23 @@ userSchema.methods.toJSON = function () {
 userSchema.methods.addToCart = function (productId) {
   const user = this;
 
-  const cartItemIndex = user.cart.findIndex((prod) => {
-    return prod.items.productId.toString() === productId.toString();
+  const cartItemIndex = user.cart.items.findIndex((prod) => {
+    return prod.productId.toString() === productId.toString();
   });
 
-
   if (cartItemIndex >= 0) {
-    let getCartItem = user.cart[cartItemIndex];
-    let getQuantity = getCartItem.items.quantity;
+    let getCartItem = user.cart.items[cartItemIndex];
+    let getQuantity = getCartItem.quantity;
     let updateCartQuantity = getQuantity + 1;
 
-    user.cart[cartItemIndex].items.quantity = updateCartQuantity;
+    user.cart.items[cartItemIndex].quantity = updateCartQuantity;
   } else {
     let cartItem = {
-      items: {
-        productId: productId,
-        quantity: 1
-      }
+      productId: productId,
+      quantity: 1
     };
 
-    user.cart.push(cartItem);
+    user.cart.items.push(cartItem);
   }
 
   return user.save();
@@ -111,6 +108,11 @@ class UserClass {
           return res.redirect('/register');
         })
       } else {
+
+        body.cart = {
+          items: []
+        }
+
         cb(new User(body));
       }
 
@@ -161,6 +163,10 @@ class UserClass {
       .catch((err) => {
         return res.redirect('/home');
       });
+  }
+
+  static getCartItems(req, res) {
+    return req.user;
   }
 }
 

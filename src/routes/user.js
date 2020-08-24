@@ -6,7 +6,7 @@ const router = new express.Router();
 
 router.get('/checkout', userController.getCheckout);
 
-router.get('/cart', userController.getCart);
+router.get('/cart', isAuth, userController.getCart);
 
 router.get('/orders', userController.getOrders);
 
