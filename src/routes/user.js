@@ -8,8 +8,8 @@ router.get('/checkout', userController.getCheckout);
 
 router.get('/cart', isAuth, userController.getCart);
 
-router.get('/orders', userController.getOrders);
-
 router.post('/cart', isAuth, userController.addToCart);
+
+router.post('/remove-cart-product', isAuth, userController.removeCartProduct);
 
 module.exports = router;
