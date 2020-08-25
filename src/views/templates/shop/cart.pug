@@ -9,7 +9,7 @@ block contents
     include ../../includes/headerNav.pug
 
   section.header-title.text-center
-    h2 SHOPPING CART
+    h2 CART
 
   if !cart
     section.text-center.empty-cart.mt-3.mb-5.px-2
@@ -28,10 +28,14 @@ block contents
               span.price $#{item.productId.price}
               span.times &times; 
               span.quantity #{item.quantity}
-            form.text-center(action="/cart" method="post")
+            form.text-center.order(action="/order" method="post")
               input(type="hidden" name="_csrf" value=csrfToken)
               input(type="hidden" name="productId" value=item.productId._id)
               button(type="submit" class="btn btn-success") ORDER
+            form.text-center.remove-from-cart(action="/remove-cart-product" method="post")
+              input(type="hidden" name="_csrf" value=csrfToken)
+              input(type="hidden" name="productId" value=item.productId._id)
+              button(type="submit" class="btn btn-danger") &minus;
 
   .footer-light
     include ../../includes/footer.pug

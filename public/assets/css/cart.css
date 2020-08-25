@@ -35,7 +35,7 @@
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(200px, 205px));
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
 }
 .cart figure {
   display: flex;
@@ -76,21 +76,34 @@
 .cart figure span:last-child {
   color: orangered;
 }
-.cart figure form {
-  position: absolute;
-  top: -10px;
-  right: -12px;
-  width: 50px;
-}
-.cart figure form button {
+.cart figure button {
   display: flex;
   justify-content: center;
   align-items: center;
   letter-spacing: 1px;
   font-weight: bold;
   border-radius: 50%;
+}
+.cart figure form.order {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  width: 50px;
+}
+.cart figure form.order button {
   height: 45px;
   width: 45px;
+}
+.cart figure form.remove-from-cart {
+  position: absolute;
+  bottom: 1px;
+  right: -12px;
+  width: 30px;
+}
+.cart figure form.remove-from-cart button {
+  width: 30px;
+  height: 30px;
+  font-size: 2rem;
 }
 
 @media (max-width: 500px) {
