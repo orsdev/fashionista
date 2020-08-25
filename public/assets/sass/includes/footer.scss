@@ -1,9 +1,7 @@
 @import "./color";
 
 .footer {
-   padding: 70px 10px;
-   background: $ashBlack;
-   color: $white;
+   padding: 40px 10px;
 
    &__logo {
       font-family: "Pacifico", cursive;
@@ -13,7 +11,7 @@
    }
 
    hr {
-      margin: 40px 0;
+      margin: 20px 0;
    }
 
    &__copyright {
@@ -28,4 +26,14 @@
          padding-right: 5px;
       }
    }
+}
+
+.footer-dark {
+   background: $ashBlack;
+   color: $white;
+}
+
+.footer-light {
+   background: darken($white, 2%);
+   color: black;
 }

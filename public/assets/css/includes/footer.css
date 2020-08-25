@@ -1,7 +1,5 @@
 .footer {
-  padding: 70px 10px;
-  background: #181717;
-  color: #fff;
+  padding: 40px 10px;
 }
 .footer__logo {
   font-family: "Pacifico", cursive;
@@ -10,7 +8,7 @@
   text-align: left;
 }
 .footer hr {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 .footer__copyright {
   text-align: center;
@@ -22,6 +20,16 @@
   font-style: italic;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.footer-dark {
+  background: #181717;
+  color: #fff;
+}
+
+.footer-light {
+  background: #fafafa;
+  color: black;
 }
 
 /*# sourceMappingURL=footer.css.map */
