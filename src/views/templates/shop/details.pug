@@ -1,0 +1,34 @@
+extends ../../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+  link(rel="stylesheet" href="/assets/css/details.css")
+
+block contents
+
+  .header
+    include ../../includes/headerNav.pug
+
+  .container-fluid.px-5.ptb.mt-5.mx-auto
+    .row
+      .col-md-5.col-lg-4
+        .product--image.text-center.text-lg-right.px-4   
+          img(src="" alt=product.title)
+
+
+      .col-md-7.col-lg-6.product--content
+        h2.product--title #{product.title}
+          hr
+        p.product--price.font-weight-bold.text-primary.my-2 $#{product.price}
+        p.product--details.lead #{product.description}
+        form(action="/cart" method="post" class="mt-5")
+          input(type="hidden" name="_csrf" value=csrfToken)
+          input(type="hidden" name="productId" value=product._id)
+          .form-group
+            label(for="quantity") Quantity
+            input(type="number" name="quantity" min="1" required value="1")
+            button.add-to-cart-btn.btn.btn-primary.btn-lg ADD TO CART
+
+
+  .footer-light
+    include ../../includes/footer.pug

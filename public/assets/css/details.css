@@ -1,0 +1,82 @@
+.product--image {
+  width: 100%;
+}
+.product--image img {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+
+.product--title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.product--title hr {
+  width: calc(100% - 100px);
+  border: 2px groove;
+}
+
+.product--details {
+  font-size: 1.4rem;
+}
+
+.product--price {
+  font-size: 1.6rem;
+}
+
+form .form-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 250px;
+}
+form label {
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  background: white;
+}
+form input[type=number] {
+  margin-right: 5px;
+  width: 120px;
+  padding: 2px 3px;
+  height: 40px;
+  font-size: 1.7rem;
+  border-radius: 0;
+  border: 1px solid lightgray;
+}
+form button.btn {
+  font-weight: bold;
+  border-radius: 0;
+  height: 40px;
+  padding: 2px 4px;
+  height: 40px;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .product--content {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 360px) {
+  .product--image img {
+    width: calc(100% - 5px);
+  }
+
+  form .form-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  form .form-group input,
+form .form-group button {
+    width: 100%;
+  }
+  form .form-group button {
+    margin-top: 10px;
+  }
+}
+
+/*# sourceMappingURL=details.css.map */
