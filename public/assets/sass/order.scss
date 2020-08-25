@@ -1,0 +1,46 @@
+@import "./includes/color";
+
+.header-title {
+   position: relative;
+   z-index: 1;
+   padding-top: 120px;
+   padding-bottom: 30px;
+   padding-left: 10px;
+   padding-right: 10px;
+
+   h2 {
+      font-size: 5rem;
+   }
+}
+
+.empty-order {
+   p {
+      font-size: 2.5rem;
+      font-weight: bold;
+   }
+
+   button {
+      width: 160px;
+      line-height: 15px;
+
+      a {
+         color: $orangered;
+         font-weight: bold;
+         font-size: 1.5rem;
+         text-decoration: none;
+         border-bottom: 3px solid $orangered;
+
+         &:hover {
+            color: darken($orangered, 10%);
+         }
+      }
+   }
+}
+
+@media (max-width: 500px) {
+   .header-title {
+      h2 {
+         font-size: 3.5rem;
+      }
+   }
+}

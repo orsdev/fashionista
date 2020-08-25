@@ -1,8 +1,24 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title #{pageTitle}
-  body
-    h1 YOUR ORDERS
+extends ../../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+  link(rel="stylesheet" href="/assets/css/order.css")
+
+block contents
+  .header
+    include ../../includes/headerNav.pug
+
+  section.header-title.text-center
+    h2 ORDERS
+
+  if !orders
+    section.text-center.empty-order.mt-3.mb-5.px-2
+      p Nothing Here.
+      button.btn.btn-lg.mt-3
+        a(href="/shop") RETURN TO SHOP
+  else
+    div.ptb
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae atque dolorum ullam distinctio aliquid labore eum amet incidunt ex molestiae!
+
+  .footer-light
+    include ../../includes/footer.pug
