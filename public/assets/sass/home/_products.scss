@@ -32,25 +32,19 @@
       padding-right: 20px;
       justify-content: center;
 
-      form {
+      .addcart-link {
          position: absolute;
          bottom: 5px;
          width: 100%;
+         color: $orangered;
+         font-weight: 600;
+         font-size: 1.5rem;
+         display: inline-block;
+         width: 100%;
+         text-decoration: none;
 
-         button {
-            outline: none;
-            border: none;
-            color: $orangered;
-            font-weight: 600;
-            font-size: 1.5rem;
-            background: transparent;
-            display: inline-block;
-            width: 130px;
-            margin: auto;
-
-            &:hover {
-               color: darken($orangered, 20%);
-            }
+         &:hover {
+            color: darken($orangered, 20%);
          }
       }
 
