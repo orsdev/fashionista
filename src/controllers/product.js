@@ -46,7 +46,7 @@ exports.getShop = async (req, res) => {
   }
 };
 
-exports.getSingleProduct = async (req, res) => {
+exports.getProductDetails = async (req, res) => {
   try {
     const product = await ProductClass.getSingleProduct(req, res);
 
@@ -56,7 +56,10 @@ exports.getSingleProduct = async (req, res) => {
       });
     }
 
-    return res.send(product);
+    return res.render('shop/details', {
+      product
+    })
+
   } catch (e) {
     return res.status(500).send({ error: 'Bad Request.' });
   }

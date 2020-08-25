@@ -9,6 +9,6 @@ router.get('/home', productController.getHomePage);
 
 router.get('/shop', productController.getShop);
 
-router.get('/shop/:productId', productController.getSingleProduct);
+router.get('/shop/details/:productId', productController.getProductDetails);
 
 module.exports = router;

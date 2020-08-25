@@ -67,8 +67,8 @@ class ProductClass {
   }
 
   static getSingleProduct = async (req, res) => {
-    const id = req.params.productId;
-    const product = await ProductsSchema.findById(id);
+    const { productId } = req.params;
+    const product = await ProductsSchema.findById(productId);
     return product;
   }
 
