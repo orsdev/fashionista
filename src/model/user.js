@@ -66,25 +66,31 @@ userSchema.methods.toJSON = function () {
   return userObject;
 };
 
-userSchema.methods.addToCart = function (productId) {
+userSchema.methods.addToCart = function (productId, quantity) {
   const user = this;
 
   const cartItemIndex = user.cart.items.findIndex((prod) => prod.productId.toString() === productId.toString());
 
   if (cartItemIndex >= 0) {
-    const getCartItem = user.cart.items[cartItemIndex];
-    const getQuantity = getCartItem.quantity;
-    const updateCartQuantity = getQuantity + 1;
-
-    user.cart.items[cartItemIndex].quantity = updateCartQuantity;
+    user.cart.items[cartItemIndex].quantity = Number(quantity);
   } else {
     const cartItem = {
       productId,
-      quantity: 1
+      quantity: Number(quantity)
     };
 
     user.cart.items.push(cartItem);
   }
+
+  return user.save();
+};
+
+userSchema.methods.removeFromCart = function (productId) {
+  const user = this;
+
+  const removeProduct = user.cart.items.filter((prod) => prod.productId.toString() !== productId.toString());
+
+  user.cart.items = removeProduct;
 
   return user.save();
 };
@@ -144,11 +150,18 @@ class UserClass {
     }
   }
 
-  static async addToCart(req, res) {
-    const { productId } = req.body;
-    req.user.addToCart(productId)
-      .then(() => res.redirect('/home'))
+  static addToCart(req, res) {
+    const { productId, quantity } = req.body;
+    req.user.addToCart(productId, quantity)
+      .then(() => res.redirect('/cart'))
       .catch(() => res.redirect('/home'));
+  }
+
+  static removeCartProduct(req, res) {
+    const { productId } = req.body;
+    req.user.removeFromCart(productId)
+      .then(() => res.redirect('/cart'))
+      .catch(() => res.redirect('/cart'));
   }
 
   static getCartItems(req, res) {
