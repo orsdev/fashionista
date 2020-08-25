@@ -9,11 +9,11 @@ exports.getOrders = (req, res) => {
       })
       .catch((err) => {
 
-      })
-  })
+      });
+  });
 
   res.render('shop/orders', {
     pageTitle: 'FASHIONIT | YOUR ORDERS',
     path: '/orders'
-  })
+  });
 };

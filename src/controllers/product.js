@@ -58,7 +58,7 @@ exports.getProductDetails = async (req, res) => {
 
     return res.render('shop/details', {
       product
-    })
+    });
 
   } catch (e) {
     return res.status(500).send({ error: 'Bad Request.' });

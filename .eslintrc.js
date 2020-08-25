@@ -18,6 +18,7 @@ module.exports = {
         "func-names": "off",
         "arrow-parens": "off",
         "no-underscore-dangle": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "no-unused-vars": "off"
     }
 };

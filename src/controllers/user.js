@@ -29,4 +29,4 @@ exports.addToCart = (req, res) => {
 
 exports.removeCartProduct = (req, res) => {
   UserClass.removeCartProduct(req, res);
-}
+};
