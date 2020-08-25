@@ -1,6 +1,6 @@
 const { UserClass } = require('../model/user');
 
-exports.getCart = async (req, res) => {
+exports.getCart = (req, res) => {
 
   UserClass.getCartItems(req, res)
     .populate('cart.items.productId')
@@ -19,14 +19,14 @@ exports.getCart = async (req, res) => {
     .catch((err) => console.log(err));
 };
 
-exports.getOrders = async (req, res) => res.render('shop/orders', {
-  pageTitle: 'FASHIONIT | YOUR ORDERS',
-});
-
-exports.getCheckout = async (req, res) => res.render('shop/checkout', {
+exports.getCheckout = (req, res) => res.render('shop/checkout', {
   pageTitle: 'FASHIONIT | CHECKOUT',
 });
 
-exports.addToCart = async (req, res) => {
+exports.addToCart = (req, res) => {
   UserClass.addToCart(req, res);
 };
+
+exports.removeCartProduct = (req, res) => {
+  UserClass.removeCartProduct(req, res);
+}
