@@ -10,6 +10,7 @@ const morgan = require('morgan');
 const adminRouter = require('./src/routes/admin');
 const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
+const orderRouter = require('./src/routes/order');
 const authRouter = require('./src/routes/auth');
 const errorController = require('./src/controllers/error');
 
@@ -68,6 +69,7 @@ app.use('/admin', adminRouter);
 app.use(authRouter);
 app.use(userRouter);
 app.use(shopRouter);
+app.use(orderRouter);
 
 // 404 PAGE MIDDLEWARE
 app.use('/', errorController.getErrorPage);
