@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const flashError = require('../utils/flashError');
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -85,6 +86,7 @@ userSchema.methods.addToCart = function (productId, quantity) {
   return user.save();
 };
 
+// For not populated cart productId
 userSchema.methods.removeFromCart = function (productId) {
   const user = this;
 
@@ -95,44 +97,58 @@ userSchema.methods.removeFromCart = function (productId) {
   return user.save();
 };
 
+// For populated cart productId
+userSchema.methods.removeFromOrderCart = async function (productId) {
+  const user = this;
+
+  const removeProduct = user.cart.items.filter((prod) => prod.productId._id.toString() !== productId.toString());
+
+  user.cart.items = removeProduct;
+
+  return user.save();
+};
+
 const User = mongoose.model('User', userSchema);
 
 class UserClass {
-  static postAddUser(req, res, cb) {
-    const { body } = req;
+  static async postAddUser(req, res, cb) {
 
-    const findUser = User.findOne({ userEmail: body.userEmail });
+    try {
+      const { body } = req;
 
-    findUser.then((user) => {
+      const findUser = await User.findOne({ userEmail: body.userEmail });
 
-      if (user) {
-        req.flash('error', 'Email already in use.');
-        req.session.save(() => res.redirect('/register'));
-      } else {
-
-        body.cart = {
-          items: []
-        };
-
-        cb(new User(body));
+      if (findUser) {
+        const errMessage = 'Email already in use';
+        return flashError(req, res, errMessage, '/register');
       }
 
-    });
+      body.cart = {
+        items: []
+      };
+
+      cb(new User(body));
+
+    } catch (err) {
+      const errMessage = 'Registration failed. Please try again later.';
+      return flashError(req, res, errMessage, '/register');
+    }
+
   }
 
   static async getUserCredentials(req, res, email, password) {
     const user = await User.findOne({ userEmail: email });
 
     if (!user) {
-      req.flash('error', 'Email or Password incorrect');
-      return req.session.save(() => res.redirect('/login'));
+      const errMessage = 'Email or Password incorrect';
+      return flashError(req, res, errMessage, '/login');
     }
 
     const isMatchedPassword = bcrypt.compareSync(password, user.userPassword);
 
     if (!isMatchedPassword) {
-      req.flash('error', 'Email or Password incorrect');
-      return req.session.save(() => res.redirect('/login'));
+      const errMessage = 'Email or Password incorrect';
+      return flashError(req, res, errMessage, '/login');
     }
 
     if (user && isMatchedPassword) {
