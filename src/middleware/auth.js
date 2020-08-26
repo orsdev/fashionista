@@ -1,6 +1,6 @@
 const { User } = require('../model/user');
 
-module.exports = (req, res, next) => {
+const isAuth = (req, res, next) => {
   if (!(req.session.isAuthenticated && req.session.user)) {
     return res.redirect('/login');
   }
@@ -11,3 +11,5 @@ module.exports = (req, res, next) => {
   }).catch(() => res.redirect('/login'));
 
 };
+
+module.exports = isAuth;

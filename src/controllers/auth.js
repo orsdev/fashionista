@@ -1,4 +1,6 @@
 const { UserClass } = require('../model/user');
+const flashMessage = require('../utils/flashMessage');
+const flashError = require('../utils/flashError');
 
 exports.getLoginPage = (req, res) => {
 
@@ -43,24 +45,12 @@ exports.postCreateUser = async (req, res) => {
 
     user.save()
       .then(() => {
-        req.flash('message', 'Your account has been created successfully.');
-        req.session.save((err) => {
-          if (err) {
-            console.log(`Session cannot be saved!- ${err}`);
-          }
-          return res.redirect('/register');
-        });
+        const message = 'Your account has been created successfully.';
+        return flashMessage(req, res, message, '/register');
       }).catch(() => {
-
-        req.flash('error', 'Registration failed. Please try again later');
-        req.session.save((err) => {
-          if (err) {
-            console.log(`Session cannot be saved!- ${err}`);
-          }
-          return res.redirect('/register');
-        });
+        const errMessage = 'Registration failed. Please try again later.';
+        return flashError(req, res, errMessage, '/register');
       });
-
   });
 };
 
@@ -69,12 +59,10 @@ exports.loginUser = async (req, res) => {
   await UserClass.getUserCredentials(req, res, userEmail, userPassword);
 };
 
-exports.logoutUser = (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.log(`Something went wrong-- ${err}`);
-    }
+exports.logoutUser = (req, res) => req.session.destroy((err) => {
+  if (err) {
+    console.log(`Something went wrong-- ${err}`);
+  }
 
-    return res.redirect('/home');
-  });
-};
+  return res.redirect('/home');
+});
