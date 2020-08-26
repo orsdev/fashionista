@@ -13,12 +13,28 @@ block contents
 
   if !orders
     section.text-center.empty-order.mt-3.mb-5.px-2
-      p Nothing Here.
+      p You have no orders.
       button.btn.btn-lg.mt-3
         a(href="/shop") RETURN TO SHOP
   else
-    div.ptb
-      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae atque dolorum ullam distinctio aliquid labore eum amet incidunt ex molestiae!
+    .container.px-5.mx-auto.ptb
+      .orders.text-center
+        for prod in orders
+          .orders--item
+            .product--image.text-center.text-lg-right.px-4   
+              img(src="" alt=prod.product.title)
+            h2.product--title #{prod.product.title}
+            p.product--price.font-weight-bold.my-2
+              span.mr-2 TOTAL PRICE:
+              span.text-success $#{prod.product.price * prod.quantity}
+            form(action="/checkout" method="post" class="mt-5 checkout")
+              input(type="hidden" name="_csrf" value=csrfToken)
+              input(type="hidden" name="productId" value=prod.product._id)
+              button.add-to-cart-btn.btn.btn-primary.btn-lg Checkout
+            form(action="/cancel-order" method="post" class="mt-2 cancel-order")
+              input(type="hidden" name="_csrf" value=csrfToken)
+              input(type="hidden" name="productId" value=prod.product._id)
+              button.add-to-cart-btn.btn.btn-lg.text-light Cancel Order
 
   .footer-light
     include ../../includes/footer.pug

@@ -1,5 +1,13 @@
 @import "./includes/color";
 
+.orders {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 210px));
+   gap: 30px;
+   justify-content: center;
+   align-items: center;
+}
+
 .header-title {
    position: relative;
    z-index: 1;
@@ -34,6 +42,62 @@
             color: darken($orangered, 10%);
          }
       }
+   }
+}
+
+.product--image {
+   width: 100%;
+
+   img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;
+   }
+}
+
+.product--title {
+   font-size: 2.3rem;
+   font-weight: bold;
+
+   hr {
+      width: calc(100% - 100px);
+      border: 2px groove;
+   }
+}
+
+.product--price {
+   span:first-child {
+      font-size: 1.7rem;
+   }
+   span:last-child {
+      font-size: 1.9rem;
+   }
+}
+
+form {
+   .form-group {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 250px;
+   }
+
+   button.btn {
+      width: 100%;
+      font-weight: bold;
+      border-radius: 0;
+      height: 40px;
+      padding: 2px 4px;
+      height: 40px;
+      font-size: 1.5rem;
+   }
+}
+
+.cancel-order button {
+   background: $orangered;
+
+   &:hover {
+      background: darken($orangered, 5%);
    }
 }
 
