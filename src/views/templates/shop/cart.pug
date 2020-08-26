@@ -8,6 +8,12 @@ block contents
   .header
     include ../../includes/headerNav.pug
 
+  if errorMessage
+    .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+      span.h3 #{errorMessage}
+      button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true" class="h1") &times;
+
   section.header-title.text-center
     h2 CART
 
