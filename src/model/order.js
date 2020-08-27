@@ -27,7 +27,6 @@ const Order = mongoose.model('Order', orderSchema);
 
 class OrderClass {
   static addToOrders = (req, res, body, cb) => {
-
     cb(new Order(body));
   };
 
@@ -37,10 +36,12 @@ class OrderClass {
     } catch (e) {
       return res.send('something went wrong');
     }
-  }
+  };
 
+  static getAllOrders(req, res) {
+    const order = Order.find({ 'user.userId': req.user._id });
+    return order;
+  };
 }
 
-module.exports = {
-  OrderClass
-}
+module.exports = OrderClass;
