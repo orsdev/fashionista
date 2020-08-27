@@ -1,6 +1,7 @@
 const { UserClass } = require('../model/user');
 const flashMessage = require('../utils/flashMessage');
 const flashError = require('../utils/flashError');
+const sendWelcomeMessage = require('../mail/welcomeMessage');
 
 exports.getLoginPage = (req, res) => {
 
@@ -44,8 +45,9 @@ exports.postCreateUser = async (req, res) => {
   UserClass.postAddUser(req, res, (user) => {
 
     user.save()
-      .then(() => {
+      .then((response) => {
         const message = 'Your account has been created successfully.';
+        sendWelcomeMessage(response.userEmail, response.fullName);
         return flashMessage(req, res, message, '/register');
       }).catch(() => {
         const errMessage = 'Registration failed. Please try again later.';
