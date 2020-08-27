@@ -1,11 +1,19 @@
-const { OrderClass } = require('../model/order');
+const OrderClass = require('../model/order');
 const flashError = require('../utils/flashError');
 
 exports.getOrder = (req, res) => {
-  res.render('shop/orders', {
-    pageTitle: 'FASHIONIT | YOUR ORDERS',
-    path: '/orders'
-  });
+  OrderClass.getAllOrders(req, res)
+    .then((response) => {
+      const orders = response.length && response[0].products;
+      return res.render('shop/orders', {
+        pageTitle: 'FASHIONIT | YOUR ORDERS',
+        path: '/order',
+        orders
+      });
+    }).catch((err) => {
+      const errMessage = 'Failed to order product. We are currently working on this problem';
+      return flashError(req, res, errMessage, '/cart');
+    });
 };
 
 exports.postOrder = async (req, res) => {
