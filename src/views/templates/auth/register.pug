@@ -22,19 +22,26 @@ block contents
         button(type="close" class="close" data-dismiss="alert" aria-label="Close")
           span(aria-hidden="true" class="h1") &times;
 
+    if validationError
+      .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+        for error in validationError 
+          span.h3.d-block #{error.msg}
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
+
     section.form
       form(action="/register" method="post")
         .form-group
           input(type="hidden" name="_csrf" value=csrfToken)
         .form-group
           label(for="fullname") Fullname
-          input(type="text" name="fullName" required)
+          input(type="text" name="fullName" value=oldInput ? oldInput.fullName : '' required)
         .form-group
           label(for="email") EMAIL
-          input(type="email" name="userEmail" required)
+          input(type="email" name="userEmail" value= oldInput ? oldInput.userEmail : '' required)
         .form-group
           label(for="password") PASSWORD
-          input(type="password" name="userPassword" required)
+          input(type="password" name="userPassword" value=oldInput ? oldInput.userPassword : '' required)
         .form-group
           button(type="submit") REGISTER
         .form-register

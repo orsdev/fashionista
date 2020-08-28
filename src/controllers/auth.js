@@ -2,6 +2,7 @@ const { UserClass } = require('../model/user');
 const flashMessage = require('../utils/flashMessage');
 const flashError = require('../utils/flashError');
 const sendWelcomeMessage = require('../mail/welcomeMessage');
+const { validationResult } = require('express-validator');
 
 exports.getLoginPage = (req, res) => {
 
@@ -42,6 +43,16 @@ exports.getRegisterPage = (req, res) => {
 };
 
 exports.postCreateUser = async (req, res) => {
+  const { fullName, userEmail, userPassword } = req.body;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('auth/register', {
+      validationError: errors.array(),
+      oldInput: { fullName, userEmail, userPassword }
+    })
+  }
+
   UserClass.postAddUser(req, res, (user) => {
 
     user.save()
@@ -58,6 +69,15 @@ exports.postCreateUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
   const { userEmail, userPassword } = req.body;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('auth/login', {
+      validationError: errors.array(),
+      oldInput: { userEmail, userPassword }
+    })
+  }
+
   await UserClass.getUserCredentials(req, res, userEmail, userPassword);
 };
 
