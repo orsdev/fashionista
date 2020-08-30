@@ -168,12 +168,13 @@ class UserClass {
   }
 
   static addToCart(req, res, next) {
+
     const { productId, quantity } = req.body;
     req.user.addToCart(productId, quantity)
       .then((response) => {
         if (!response) {
           return res.redirect('/404');
-        }
+        };
         return res.redirect('/cart');
       })
       .catch(() => {
@@ -183,6 +184,7 @@ class UserClass {
   }
 
   static removeCartProduct(req, res, next) {
+
     const { productId } = req.body;
     req.user.removeFromCart(productId)
       .then(() => {

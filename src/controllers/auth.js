@@ -51,7 +51,7 @@ exports.postCreateUser = async (req, res) => {
       validationError: errors.array(),
       oldInput: { fullName, userEmail, userPassword }
     })
-  }
+  };
 
   UserClass.postAddUser(req, res, (user) => {
 

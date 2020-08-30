@@ -26,15 +26,16 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 class OrderClass {
-  static addToOrders = (req, res, body, cb) => {
-    cb(new Order(body));
+  static addToOrders = (req, res, body, callback) => {
+    callback(new Order(body));
   };
 
   static async removeOrder(req, res, productId) {
     try {
       await Order.findByIdAndDelete(productId);
     } catch (e) {
-      return res.send('something went wrong');
+      const error = new Error('Failed to delete order.');
+      return next(error);
     }
   };
 

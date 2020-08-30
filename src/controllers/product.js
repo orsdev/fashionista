@@ -1,6 +1,6 @@
 const { ProductClass } = require('../model/product');
 
-exports.getHomePage = async (req, res) => {
+exports.getHomePage = async (req, res, next) => {
   try {
     const featuredProducts = ProductClass.getFeaturedProducts(req, res, 5);
     const homeProducts = ProductClass.getHomeProducts(req, res, 12);
@@ -27,11 +27,12 @@ exports.getHomePage = async (req, res) => {
     });
 
   } catch (e) {
-    return res.status(400).send({ error: 'Bad Request' });
+    const error = new Error('Unable to fetch homepage products.');
+    return next(error);
   }
 };
 
-exports.getShop = async (req, res) => {
+exports.getShop = async (req, res, next) => {
   try {
     const allProducts = await ProductClass.getAllProducts(req, res, 20);
     const products = (!allProducts.length) ? 'No Products' : allProducts;
@@ -42,25 +43,25 @@ exports.getShop = async (req, res) => {
       products,
     });
   } catch (e) {
-    return res.status(400).send({ error: 'Bad Request' });
+    const error = new Error('Failed to get products.');
+    return next(error);
   }
 };
 
-exports.getProductDetails = async (req, res) => {
+exports.getProductDetails = async (req, res, next) => {
   try {
     const product = await ProductClass.getSingleProduct(req, res);
 
     if (!product) {
-      return res.status(404).send({
-        message: 'Product not found.'
-      });
-    }
+      return res.redirect('/404');
+    };
 
     return res.render('shop/details', {
       product
     });
 
   } catch (e) {
-    return res.status(500).send({ error: 'Bad Request.' });
+    const error = new Error('Unable to get product details page.');
+    return next(error);
   }
 };
