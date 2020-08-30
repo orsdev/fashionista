@@ -111,6 +111,7 @@ userSchema.methods.removeFromOrderCart = async function (productId) {
 const User = mongoose.model('User', userSchema);
 
 class UserClass {
+
   static async postAddUser(req, res, cb) {
 
     try {
@@ -166,18 +167,31 @@ class UserClass {
     }
   }
 
-  static addToCart(req, res) {
+  static addToCart(req, res, next) {
     const { productId, quantity } = req.body;
     req.user.addToCart(productId, quantity)
-      .then(() => res.redirect('/cart'))
-      .catch(() => res.redirect('/home'));
+      .then((response) => {
+        if (!response) {
+          return res.redirect('/404');
+        }
+        return res.redirect('/cart');
+      })
+      .catch(() => {
+        const error = new Error('Adding product to cart failed.');
+        return next(error);
+      });
   }
 
-  static removeCartProduct(req, res) {
+  static removeCartProduct(req, res, next) {
     const { productId } = req.body;
     req.user.removeFromCart(productId)
-      .then(() => res.redirect('/cart'))
-      .catch(() => res.redirect('/cart'));
+      .then(() => {
+        return res.redirect('/cart')
+      })
+      .catch(() => {
+        const error = new Error('Removing product from cart failed.');
+        return next(error);
+      });
   }
 
   static getCartItems(req, res) {

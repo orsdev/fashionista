@@ -12,7 +12,10 @@ const isAuth = (req, res, next) => {
       }
       req.user = user;
       return next();
-    }).catch(() => res.redirect('/login'));
+    }).catch(() => {
+      const error = new Error('Unable to save user session.');
+      return next(error);
+    });
 
 };
 

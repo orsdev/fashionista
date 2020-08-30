@@ -1,6 +1,6 @@
 const { UserClass } = require('../model/user');
 
-exports.getCart = (req, res) => {
+exports.getCart = (req, res, next) => {
   let error = req.flash('error');
   if (error.length > 0) {
     error = error[0];
@@ -12,7 +12,6 @@ exports.getCart = (req, res) => {
     .populate('cart.items.productId')
     .execPopulate()
     .then((response) => {
-
       const cart = (response.cart.items.length && response.cart.items);
       return res.render('shop/cart', {
         pageTitle: 'FASHIONIT | CART',
@@ -22,17 +21,20 @@ exports.getCart = (req, res) => {
       });
 
     })
-    .catch((err) => console.log(err));
+    .catch(() => {
+      const error = new Error('Unable to get cart product(s).');
+      return next(error);
+    });
 };
 
 exports.getCheckout = (req, res) => res.render('shop/checkout', {
   pageTitle: 'FASHIONIT | CHECKOUT',
 });
 
-exports.addToCart = (req, res) => {
-  UserClass.addToCart(req, res);
+exports.addToCart = (req, res, next) => {
+  UserClass.addToCart(req, res, next);
 };
 
-exports.removeCartProduct = (req, res) => {
-  UserClass.removeCartProduct(req, res);
+exports.removeCartProduct = (req, res, next) => {
+  UserClass.removeCartProduct(req, res, next);
 };
