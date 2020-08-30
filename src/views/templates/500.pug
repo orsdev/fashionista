@@ -1,0 +1,23 @@
+extends ../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+
+block contents
+
+  .header
+    include ../includes/headerNav.pug
+
+  .container-fluid.px-5.ptb.mt-5
+    .row
+      .col-12.text-center
+        h1.display-1 500 
+        h2.display-2 Server Error!
+          p.h3.font-weight-light We're working on fixing this, sorry for the inconvenience!
+        if errorMessage
+          p
+            a(class="nav-link h4" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample") Additional Information
+
+            div(class="collapse" id="collapseExample")
+              .card.card-body.col-lg-6.col-md-8.mx-auto
+                span.h3.font-weight-light.text-danger #{errorMessage}
