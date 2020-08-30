@@ -1,8 +1,17 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title #{pageTitle}
-  body
-    h1 PAGE NOT FOUND
+extends ../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+
+block contents
+
+  .header
+    include ../includes/headerNav.pug
+
+  .container-fluid.px-5.ptb.mt-5
+    .row
+      .col-12.text-center
+        h1.display-2 Sorry!
+          p.h3.font-weight-light The page you are looking for might be removed or temporarily unavailable
+          button.btn.btn-outline-dark.btn-lg.mt-3.py-4
+            a(href="/home" class="btn-outline-dark text-decoration-none font-weight-bold") Go Back Home
