@@ -1,0 +1,21 @@
+form {
+   label,
+   p {
+      font-size: 1.8rem;
+   }
+
+   input.form-control,
+   input.d-block {
+      font-size: 2rem;
+   }
+
+   button.btn {
+      font-weight: bold;
+      font-size: 2rem;
+      border-radius: 0;
+   }
+}
+
+.form-group {
+   margin-bottom: 20px;
+}

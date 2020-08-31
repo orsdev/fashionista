@@ -1,0 +1,19 @@
+form label,
+form p {
+  font-size: 1.8rem;
+}
+form input.form-control,
+form input.d-block {
+  font-size: 2rem;
+}
+form button.btn {
+  font-weight: bold;
+  font-size: 2rem;
+  border-radius: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=add-product.css.map */

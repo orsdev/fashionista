@@ -1,42 +1,53 @@
 extends ../../layout/layout.pug
 
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/add-product.css")
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+
 block contents
 
-  form(action="/admin/add-product" method="post")
-    div.form-group
-      input(type="hidden" name="_csrf" value=csrfToken)
+  .header
+    include ../../includes/adminHeaderNav.pug
 
-    div.form-group
-      label(for="tag") Product Title
-      input(type="text" name="title" id="title" placeholder="Product Name")
+  .container-fluid.px-5.ptb.mt-5
+    .col-lg-8.col-md-9.mx-auto
+      form(action="/admin/add-product" method="post")
+        div.form-group
+          input(type="hidden" name="_csrf" value=csrfToken)
 
-    div.form-group
-      label(for="tag") Tag
-      input(type="text" name="tag" id="tag" placeholder="eg Women, Men, Babies etc")
+        div.form-group
+          label(for="tag") Product Title
+          input.form-control.form-control-lg.py-5(type="text" name="title" id="title" placeholder="Name")
 
-    div.form-group
-      p Feature Product
-      label(for="feature-yes")
-        input(type="checkbox" name="feature" id="feature-yes" value="yes")
-        span Yes 
+        div.form-group
+          label(for="tag") Tag
+          input.form-control.form-control-lg.py-5(type="text" name="tag" id="tag" placeholder="eg Women, Men, Babies etc")
 
-      label(for="feature-no")
-        input(type="checkbox" name="feature" id="feature-no" value="no")
-        span No
+        div.form-group
+          p Feature Product
+          label(for="feature-yes").mr-5
+            input(type="checkbox" name="feature" id="feature-yes" value="yes")
+            span.ml-2 Yes 
 
-    div.form-group
-      label(for="product-price") Product Price
-      input(type="number" name="price" id="product-price" step="0.01")
+          label(for="feature-no")
+            input(type="checkbox" name="feature" id="feature-no" value="no")
+            span.ml-2 No
 
-    div.form-group
-      label(for="product-image") Product Image
-      input(type="file" name="product-image" id="product-image")
+        div.form-group
+          label(for="product-price") Product Price
+          input.form-control.form-control-lg.py-5(type="number" name="price" id="product-price" step="0.01")
 
-    div.form-group
-      label(for="description") Product Description
-      textarea(name="description" cols="30" rows="10" id="description")
+        div.form-group
+          label(for="product-image") Product Image
+          input.d-block(type="file" name="product-image" id="product-image")
 
-    div.form-group
-      button(type="submit") Upload Product
+        div.form-group
+          label(for="description") Product Description
+          textarea.form-control.form-control-lg.py-5(name="description" cols="30" rows="10" id="description")
+
+        div.form-group.w-100
+          form.delete-form(action="/admin/add-product" method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            button.btn.btn-lg.btn-outline-success.w-100.py-4(type="submit") Upload Product
 
   include ../../includes/footer.pug

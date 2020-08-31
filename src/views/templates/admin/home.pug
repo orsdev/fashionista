@@ -1,0 +1,33 @@
+extends ../../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/adminHome.css")
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+
+block contents
+
+  .header
+    include ../../includes/adminHeaderNav.pug
+
+
+  .container-fluid.px-5.ptb.mt-5
+    if !(products.length)
+      h1.display-1.text-center No Products
+    else 
+      section.products.ptb
+        .products__grid.text-center
+          for product in products    
+            figure.products__grid-item
+              img(src=product.imgUrl alt=product.title)
+              figcaption.products__name #{product.title}
+              p.products__price $#{product.price}
+              form.edit-form(action="/admin/edit-product" method="post")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(type="hidden" name="productId" value=product_id)
+                button
+                  i(class="fa fa-pencil" aria-hidden="true")
+              form.delete-form(action="/admin/delete-product" method="post")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(type="hidden" name="productId" value=product_id)
+                button 
+                  i(class="fa fa-trash" aria-hidden="true")

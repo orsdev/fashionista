@@ -1,0 +1,23 @@
+nav(class="navbar navbar-expand-md navbar-dark bg-dark py-4")
+  a(class="navbar-brand" href="/home")
+    span FASHIONIT
+  button(class="navbar-toggler d-lg-none border-0" type="button" data-toggle="collapse"
+    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+    aria-label="Toggle navigation")
+    span(class="navbar-toggler-icon")
+
+  div(class="collapse navbar-collapse" id="collapsibleNavId")
+    ul(class="navbar-nav ml-auto px-5")
+
+      if path !== '/admin/home'
+        li.nav-item.mr-3
+          a(href="/admin/home" class="nav-link") ALL PRODUCTS
+
+      if path !== '/admin/add-product'
+        li.nav-item.mr-3
+          a(href="/admin/add-product" class="nav-link") ADD PRODUCT
+
+      li.nav-item
+        form(action="/logout" method="post")
+          input(type="hidden" name="_csrf" value=csrfToken)
+          button(type="submit" class="nav-link btn") LOGOUT
