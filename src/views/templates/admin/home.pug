@@ -20,14 +20,12 @@ block contents
             figure.products__grid-item
               img(src=product.imgUrl alt=product.title)
               figcaption.products__name #{product.title}
-              p.products__price $#{product.price}
-              form.edit-form(action="/admin/edit-product" method="post")
-                input(type="hidden" name="_csrf" value=csrfToken)
-                input(type="hidden" name="productId" value=product_id)
+              p.products__price $#{product.price.toLocaleString()}
+              a(href="/admin/edit-product/"+product._id class="edit")
                 button
                   i(class="fa fa-pencil" aria-hidden="true")
               form.delete-form(action="/admin/delete-product" method="post")
                 input(type="hidden" name="_csrf" value=csrfToken)
-                input(type="hidden" name="productId" value=product_id)
+                input(type="hidden" name="productId" value=product._id)
                 button 
                   i(class="fa fa-trash" aria-hidden="true")

@@ -10,44 +10,64 @@ block contents
     include ../../includes/adminHeaderNav.pug
 
   .container-fluid.px-5.ptb.mt-5
-    .col-lg-8.col-md-9.mx-auto
-      form(action="/admin/add-product" method="post")
+    if errorMessage
+      .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+        span.h3 #{errorMessage}
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
+
+    if successMessage
+      .alert.alert-success.alert-dismissible.fade.show.text-center.px-1.py-4
+        span.h3 #{successMessage}
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
+
+    if validationError
+      .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+        for error in validationError 
+          span.h3.d-block #{error.msg}
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
+
+    .col-lg-8.col-md-9.mx-auto 
+      form(action="/admin/edit-product" method="post" novalidate)
         div.form-group
           input(type="hidden" name="_csrf" value=csrfToken)
 
         div.form-group
+          input(type="hidden" name="productId" value=product._id)
+
+        div.form-group
           label(for="tag") Product Title
-          input.form-control.form-control-lg.py-5(type="text" name="title" id="title" placeholder="Name")
+          input.form-control.form-control-lg.py-5(type="text" name="title" id="title" placeholder="Name" value=product.title required)
 
         div.form-group
           label(for="tag") Tag
-          input.form-control.form-control-lg.py-5(type="text" name="tag" id="tag" placeholder="eg Women, Men, Babies etc")
+          input.form-control.form-control-lg.py-5(type="text" name="tag" id="tag" placeholder="eg Women, Men, Babies etc" value=product.tag required)
 
         div.form-group
           p Feature Product
-          label(for="feature-yes").mr-5
-            input(type="checkbox" name="feature" id="feature-yes" value="yes")
+          label(for="feature").mr-5
+            input(type="radio" name="feature" id="feature-yes" value="yes" checked=product.feature === "yes")
             span.ml-2 Yes 
 
-          label(for="feature-no")
-            input(type="checkbox" name="feature" id="feature-no" value="no")
+          label(for="feature")
+            input(type="radio" name="feature" id="feature-no" value="no" checked=product.feature === "no")
             span.ml-2 No
 
         div.form-group
           label(for="product-price") Product Price
-          input.form-control.form-control-lg.py-5(type="number" name="price" id="product-price" step="0.01")
+          input.form-control.form-control-lg.py-5(type="number" name="price" id="product-price" step="0.01" value=product.price required)
 
         div.form-group
           label(for="product-image") Product Image
-          input.d-block(type="file" name="product-image" id="product-image")
+          input.d-block(type="file" name="product-image" id="product-image" required)
 
         div.form-group
           label(for="description") Product Description
-          textarea.form-control.form-control-lg.py-5(name="description" cols="30" rows="10" id="description")
+          textarea.form-control.form-control-lg.py-5(name="description" cols="30" rows="10" id="description" required) #{product.description} 
 
         div.form-group.w-100
-          form.delete-form(action="/admin/add-product" method="post")
-            input(type="hidden" name="_csrf" value=csrfToken)
-            button.btn.btn-lg.btn-outline-success.w-100.py-4(type="submit") Update Product
+          button.btn.btn-lg.btn-outline-success.w-100.py-4(type="submit") Update Product
 
   include ../../includes/footer.pug

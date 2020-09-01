@@ -26,7 +26,7 @@
   padding-right: 20px;
   justify-content: center;
 }
-.products .edit-form {
+.products .edit {
   position: absolute;
   right: -15px;
   top: 5px;
@@ -50,7 +50,7 @@
   height: 40px;
   background: #000;
 }
-.products form button {
+.products button {
   outline: none;
   border: none;
   color: #fff;
@@ -60,7 +60,7 @@
   display: inline-block;
   margin: auto;
 }
-.products form button:hover {
+.products button:hover {
   color: #c2c2c2;
 }
 .products img {
@@ -68,6 +68,7 @@
   height: 180px;
   object-fit: contain;
   display: block;
+  font-size: 2rem;
 }
 .products figure {
   background: #fff;

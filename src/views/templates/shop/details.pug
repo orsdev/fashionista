@@ -19,7 +19,7 @@ block contents
       .col-md-7.col-lg-6.product--content
         h2.product--title #{product.title}
           hr
-        p.product--price.font-weight-bold.text-primary.my-2 $#{product.price}
+        p.product--price.font-weight-bold.text-primary.my-2 $#{product.price.toLocaleString()}
         p.product--details.lead #{product.description}
         form(action="/cart" method="post" class="mt-5")
           input(type="hidden" name="_csrf" value=csrfToken)
