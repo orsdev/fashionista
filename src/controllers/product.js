@@ -7,8 +7,8 @@ exports.getHomePage = async (req, res, next) => {
 
     const mergedProducts = await Promise.all([featuredProducts, homeProducts]);
 
-    const featured = (!mergedProducts[0].length) ? 'No Featured Products' : mergedProducts[0];
-    const products = (!mergedProducts[1].length) ? 'No Products' : mergedProducts[1];
+    const featured = (!mergedProducts[0].length) ? [] : mergedProducts[0];
+    const products = (!mergedProducts[1].length) ? [] : mergedProducts[1];
 
     if (req.path === '/') {
       return res.render('home', {
@@ -35,7 +35,7 @@ exports.getHomePage = async (req, res, next) => {
 exports.getShop = async (req, res, next) => {
   try {
     const allProducts = await ProductClass.getAllProducts(req, res, 20);
-    const products = (!allProducts.length) ? 'No Products' : allProducts;
+    const products = (!allProducts.length) ? [] : allProducts;
 
     return res.render('shop/shop', {
       pageTitle: 'FASHIONIT | SHOP',

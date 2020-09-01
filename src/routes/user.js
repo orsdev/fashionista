@@ -1,30 +1,26 @@
 const express = require('express');
+const { body } = require('express-validator');
 const isAuth = require('../middleware/auth');
 const userController = require('../controllers/user');
-const { body } = require('express-validator');
 
 const router = new express.Router();
 
-const validateAddCart = (body) => {
-  return [
-    body('productId', 'ProductId is missing.')
-      .isString()
-      .notEmpty()
-      .trim(),
-    body('quantity', 'Quantity missing.')
-      .notEmpty()
-      .trim()
-  ]
-};
+const validateAddCart = (bodyWrapper) => [
+  bodyWrapper('productId', 'ProductId is missing.')
+    .isString()
+    .notEmpty()
+    .trim(),
+  bodyWrapper('quantity', 'Quantity missing.')
+    .notEmpty()
+    .trim()
+];
 
-const validateremoveCart = (body) => {
-  return [
-    body('productId', 'ProductId is missing.')
-      .isString()
-      .notEmpty()
-      .trim()
-  ]
-};
+const validateremoveCart = (bodyWrapper) => [
+  bodyWrapper('productId', 'ProductId is missing.')
+    .isString()
+    .notEmpty()
+    .trim()
+];
 
 router.get('/checkout', userController.getCheckout);
 

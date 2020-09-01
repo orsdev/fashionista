@@ -26,7 +26,7 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 class OrderClass {
-  static addToOrders = (req, res, body, callback) => {
+  static addToOrders(req, res, body, callback) {
     callback(new Order(body));
   };
 

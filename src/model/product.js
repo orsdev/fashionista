@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
+const { capitalizeFirstLetters, capitalizeFirstLetter } = require('../utils/lodashHelper');
 
 const productsShema = new mongoose.Schema({
   title: {
     type: String,
     trim: true,
     required: true,
+  },
+  tag: {
+    type: String,
+    required: true
   },
   description: {
     type: String,
@@ -25,7 +30,8 @@ const productsShema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    required: true
   }
 }, {
   timestamps: true
@@ -37,7 +43,21 @@ class ProductClass {
 
   static postProduct = (req, res) => {
     const { body } = req;
-    const product = new ProductsSchema(body);
+
+    const capitalizeTitle = capitalizeFirstLetters(body.title);
+    const capitalizeTag = capitalizeFirstLetters(body.tag);
+    const capitalizeDescription = capitalizeFirstLetter(body.description);
+
+    const newBody = {
+      ...body,
+      price: Number(body.price),
+      title: capitalizeTitle,
+      tag: capitalizeTag,
+      description: capitalizeDescription,
+      userId: req.user._id
+    };
+
+    const product = new ProductsSchema(newBody);
     return product;
   }
 
@@ -72,34 +92,10 @@ class ProductClass {
     return product;
   }
 
-  static patchUpdateProduct = async (req, res) => {
-    const id = req.params.productId;
-    const updates = Object.keys(req.body);
-    const allowedUpdates = ['title', 'description', 'price', 'feature'];
-    const invalidUpdates = updates.every(value => allowedUpdates.includes(value));
-
-    if (!invalidUpdates) {
-      return res.status(400).send({ message: 'Invalid update.' });
-    };
-
-    try {
-      const product = await ProductsSchema.findById(id);
-
-      if (!product) {
-        return res.status(404).send({ message: 'Product not found.' });
-      }
-
-      updates.forEach((update) => {
-        product[update] = req.body[update];
-      });
-
-      await product.save();
-      return res.send('Product updated successfully.');
-    } catch (e) {
-      const errorMessage = "Unable to update product.";
-      return res.status(500).send({ error: errorMessage });
-    }
-
+  static postUpdateProduct = async (req, res) => {
+    const { productId } = req.body;
+    const product = await ProductsSchema.findById(productId);
+    return product;
   }
 
   static deleteProduct = async (req, res) => {

@@ -1,38 +1,34 @@
 const express = require('express');
-const authController = require('../controllers/auth');
 const { body } = require('express-validator');
+const authController = require('../controllers/auth');
 
-const validateLogin = (body) => {
-  return [
-    body('userEmail')
-      .isEmail()
-      .withMessage('Enter a valid email address.')
-      .notEmpty()
-      .withMessage('Enter your email address.')
-      .normalizeEmail(),
-    body('userPassword', 'Enter your password.')
-      .notEmpty()
-      .trim()
-  ]
-};
+const validateLogin = (bodyWrapper) => [
+  bodyWrapper('userEmail')
+    .isEmail()
+    .withMessage('Enter a valid email address.')
+    .notEmpty()
+    .withMessage('Enter your email address.')
+    .normalizeEmail(),
+  bodyWrapper('userPassword', 'Enter your password.')
+    .notEmpty()
+    .trim()
+];
 
-const validateRegister = (body) => {
-  return [
-    body('userEmail')
-      .isEmail()
-      .withMessage('Enter a valid email address.')
-      .notEmpty()
-      .withMessage('Enter your email address.')
-      .normalizeEmail(),
-    body('fullName', 'Enter your full name.')
-      .notEmpty()
-      .trim(),
-    body('userPassword', 'Password must be at least 5 characters in length & contains only numbers and text.')
-      .isLength({ min: 5 })
-      .isAlphanumeric()
-      .trim()
-  ]
-};
+const validateRegister = (bodyWrapper) => [
+  bodyWrapper('userEmail')
+    .isEmail()
+    .withMessage('Enter a valid email address.')
+    .notEmpty()
+    .withMessage('Enter your email address.')
+    .normalizeEmail(),
+  bodyWrapper('fullName', 'Enter your full name.')
+    .notEmpty()
+    .trim(),
+  bodyWrapper('userPassword', 'Password must be at least 5 characters in length & contains only numbers and text.')
+    .isLength({ min: 5 })
+    .isAlphanumeric()
+    .trim()
+];
 
 const router = new express.Router();
 

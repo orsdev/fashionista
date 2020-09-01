@@ -1,19 +1,16 @@
 const express = require('express');
+const { body } = require('express-validator');
 const isAuth = require('../middleware/auth');
 const orderController = require('../controllers/order');
-const { body } = require('express-validator');
-
-const validateOrder = (body) => {
-  return [
-    body('productId', 'ProductId is missing.')
-      .isString()
-      .notEmpty()
-      .trim()
-  ]
-};
-
 
 const router = new express.Router();
+
+const validateOrder = (bodyWrapper) => [
+  bodyWrapper('productId', 'ProductId is missing.')
+    .isString()
+    .notEmpty()
+    .trim()
+];
 
 router.get('/order', isAuth, orderController.getOrder);
 
