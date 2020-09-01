@@ -47,7 +47,6 @@ const viewPath = path.join(__dirname, 'src', 'views', 'templates');
 app.set('view engine', 'pug');
 app.set('views', viewPath);
 
-app.use(csrfProtection);
 app.use(express.static(staticPath));
 
 app.use(morgan('dev'));
@@ -55,6 +54,7 @@ app.use(morgan('dev'));
 app.use(urlencoded);
 app.use(bodyParser.json());
 app.use(session(sess));
+app.use(csrfProtection);
 
 app.use(flash());
 
