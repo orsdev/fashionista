@@ -12,7 +12,7 @@ const sendWelcomeMessage = (email, name) => {
   sgMail.send(msg)
     .then(() => { }, error => {
       if (error.response) {
-        console.error(error.response.body)
+        console.error(error.response.body);
       }
     });
 };

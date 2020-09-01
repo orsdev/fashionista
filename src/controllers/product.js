@@ -54,7 +54,7 @@ exports.getProductDetails = async (req, res, next) => {
 
     if (!product) {
       return res.redirect('/404');
-    };
+    }
 
     return res.render('shop/details', {
       product

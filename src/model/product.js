@@ -30,7 +30,7 @@ const productsShema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true
   }
 }, {
@@ -41,7 +41,7 @@ const ProductsSchema = mongoose.model('Products', productsShema);
 
 class ProductClass {
 
-  static postProduct = (req, res) => {
+  static postProduct(req, res) {
     const { body } = req;
 
     const capitalizeTitle = capitalizeFirstLetters(body.title);
@@ -61,7 +61,7 @@ class ProductClass {
     return product;
   }
 
-  static getFeaturedProducts = async (req, res, limit = 5) => {
+  static async getFeaturedProducts(req, res, limit = 5) {
     const products = await ProductsSchema.find({ feature: 'yes' })
       .limit(limit)
       .sort('updatedAt');
@@ -69,7 +69,7 @@ class ProductClass {
     return products;
   }
 
-  static getHomeProducts = async (req, res, limit = 12) => {
+  static async getHomeProducts(req, res, limit = 12) {
 
     const products = await ProductsSchema.find({ feature: 'no' })
       .limit(limit)
@@ -78,7 +78,7 @@ class ProductClass {
     return products;
   }
 
-  static getAllProducts = async (req, res, limit = 20) => {
+  static async getAllProducts(req, res, limit = 20) {
     const products = await ProductsSchema.find({})
       .limit(limit)
       .sort('updatedAt');
@@ -86,19 +86,19 @@ class ProductClass {
     return products;
   }
 
-  static getSingleProduct = async (req, res) => {
+  static async getSingleProduct(req, res) {
     const { productId } = req.params;
     const product = await ProductsSchema.findById(productId);
     return product;
   }
 
-  static postUpdateProduct = async (req, res) => {
+  static async postUpdateProduct(req, res) {
     const { productId } = req.body;
     const product = await ProductsSchema.findById(productId);
     return product;
   }
 
-  static deleteProduct = async (req, res) => {
+  static async deleteProduct(req, res) {
     const id = req.params.productId;
 
     try {
@@ -113,4 +113,4 @@ class ProductClass {
 module.exports = {
   ProductsSchema,
   ProductClass
-}
+};

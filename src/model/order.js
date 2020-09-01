@@ -22,27 +22,26 @@ const orderSchema = new mongoose.Schema({
   timestamps: true
 });
 
-
 const Order = mongoose.model('Order', orderSchema);
 
 class OrderClass {
   static addToOrders(req, res, body, callback) {
     callback(new Order(body));
-  };
+  }
 
-  static async removeOrder(req, res, productId) {
+  static async removeOrder(req, res, next, productId) {
     try {
       await Order.findByIdAndDelete(productId);
     } catch (e) {
       const error = new Error('Failed to delete order.');
       return next(error);
     }
-  };
+  }
 
   static getAllOrders(req, res) {
     const order = Order.find({ 'user.userId': req.user._id });
     return order;
-  };
+  }
 }
 
 module.exports = OrderClass;

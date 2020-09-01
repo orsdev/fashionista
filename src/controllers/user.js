@@ -1,12 +1,12 @@
-const { UserClass } = require('../model/user');
 const { validationResult } = require('express-validator');
+const { UserClass } = require('../model/user');
 
 exports.getCart = (req, res, next) => {
-  let error = req.flash('error');
-  if (error.length > 0) {
-    error = error[0];
+  let errorMessage = req.flash('error');
+  if (errorMessage.length > 0) {
+    errorMessage = errorMessage[0];
   } else {
-    error = null;
+    errorMessage = null;
   }
 
   UserClass.getCartItems(req, res)
@@ -18,7 +18,7 @@ exports.getCart = (req, res, next) => {
         pageTitle: 'FASHIONIT | CART',
         path: '/cart',
         cart,
-        errorMessage: error
+        errorMessage
       });
 
     })
@@ -38,7 +38,7 @@ exports.addToCart = (req, res, next) => {
   if (!errors.isEmpty()) {
     const error = new Error('Missing params in cart');
     return next(error);
-  };
+  }
   UserClass.addToCart(req, res, next);
 };
 
@@ -48,6 +48,6 @@ exports.removeCartProduct = (req, res, next) => {
   if (!errors.isEmpty()) {
     const error = new Error('Missing params in cart');
     return next(error);
-  };
+  }
   UserClass.removeCartProduct(req, res, next);
 };

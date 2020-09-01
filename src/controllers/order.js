@@ -1,5 +1,5 @@
-const OrderClass = require('../model/order');
 const { validationResult } = require('express-validator');
+const OrderClass = require('../model/order');
 const flashError = require('../utils/flashError');
 
 exports.getOrder = (req, res, next) => {
@@ -23,7 +23,7 @@ exports.postOrder = async (req, res, next) => {
   if (!errors.isEmpty()) {
     const error = new Error('Unable to order product.');
     return next(error);
-  };
+  }
 
   const { productId } = req.body;
   const findIndex = req.user.cart.items.findIndex((prod) => prod.productId.toString() === productId.toString());
@@ -53,7 +53,7 @@ exports.postOrder = async (req, res, next) => {
           req.user.removeFromOrderCart(productId)
             .then(() => res.redirect('/order'))
             .catch(() => {
-              OrderClass.removeOrder(req, res, userOrder._id);
+              OrderClass.removeOrder(req, res, next, userOrder._id);
               const errMessage = 'Failed to order product. We are currently working on this problem';
               return flashError(req, res, errMessage, '/cart');
             });

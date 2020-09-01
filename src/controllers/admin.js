@@ -1,5 +1,5 @@
-const { ProductClass } = require('../model/product');
 const { validationResult } = require('express-validator');
+const { ProductClass } = require('../model/product');
 const flashError = require('../utils/flashError');
 const flashMessage = require('../utils/flashMessage');
 const flashBodyError = require('../utils/flashBodyError');
@@ -22,7 +22,6 @@ exports.getAdminHome = async (req, res, next) => {
 
 };
 
-
 exports.getAddProductPage = (req, res) => {
   // Failed product upload message
   let error = req.flash('error');
@@ -30,7 +29,7 @@ exports.getAddProductPage = (req, res) => {
     error = error[0];
   } else {
     error = null;
-  };
+  }
 
   // Successful product upload message
   let message = req.flash('message');
@@ -56,15 +55,15 @@ exports.getEditProductPage = async (req, res, next) => {
 
     if (!product) {
       return res.redirect('/404');
-    };
+    }
 
-    // Get Product update form error messages 
+    // Get Product update form error messages
     let validationError = req.flash('bodyError');
     if (validationError.length > 0) {
       validationError = JSON.parse(validationError[0]);
     } else {
       validationError = null;
-    };
+    }
 
     // Get Failed product upload message
     let error = req.flash('error');
@@ -72,8 +71,7 @@ exports.getEditProductPage = async (req, res, next) => {
       error = error[0];
     } else {
       error = null;
-    };
-
+    }
 
     // Get Successful product upload message
     let message = req.flash('message');
@@ -100,15 +98,19 @@ exports.getEditProductPage = async (req, res, next) => {
 
 exports.postAddProduct = (req, res) => {
 
-  const { title, tag, feature, price, description } = req.body;
+  const {
+    title, tag, feature, price, description
+  } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render('admin/add-product', {
       validationError: errors.array(),
-      oldInput: { title, tag, feature, price, description }
-    })
-  };
+      oldInput: {
+        title, tag, feature, price, description
+      }
+    });
+  }
 
   const product = ProductClass.postProduct(req, res);
 
@@ -117,7 +119,7 @@ exports.postAddProduct = (req, res) => {
       if (response) {
         const message = 'Product upload successfull';
         return flashMessage(req, res, message, '/admin/add-product');
-      };
+      }
     })
     .catch((e) => {
       const errMessage = 'Product upload failed. Please try again!';
@@ -127,12 +129,14 @@ exports.postAddProduct = (req, res) => {
 
 exports.postUpdateProduct = async (req, res, next) => {
 
-  const { productId, title, price, tag, description, productImage, feature } = req.body;
+  const {
+    productId, title, price, tag, description, productImage, feature
+  } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return flashBodyError(req, res, errors.array(), '/admin/edit-product/' + productId);
-  };
+    return flashBodyError(req, res, errors.array(), `/admin/edit-product/${productId}`);
+  }
 
   try {
 
@@ -150,14 +154,13 @@ exports.postUpdateProduct = async (req, res, next) => {
       .then((result) => {
         if (result) {
           const message = 'Product updated successfully';
-          return flashMessage(req, res, message, '/admin/edit-product/' + productId);
-        };
+          return flashMessage(req, res, message, `/admin/edit-product/${productId}`);
+        }
       })
       .catch(() => {
         const errMessage = 'Product update failed. Please try again!';
-        return flashError(req, res, errMessage, '/admin/edit-product/' + productId);
-      })
-
+        return flashError(req, res, errMessage, `/admin/edit-product/${productId}`);
+      });
 
   } catch (e) {
     const error = new Error('Unable to update product.');

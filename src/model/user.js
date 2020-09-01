@@ -174,7 +174,7 @@ class UserClass {
       .then((response) => {
         if (!response) {
           return res.redirect('/404');
-        };
+        }
         return res.redirect('/cart');
       })
       .catch(() => {
@@ -187,9 +187,7 @@ class UserClass {
 
     const { productId } = req.body;
     req.user.removeFromCart(productId)
-      .then(() => {
-        return res.redirect('/cart')
-      })
+      .then(() => res.redirect('/cart'))
       .catch(() => {
         const error = new Error('Removing product from cart failed.');
         return next(error);
