@@ -12,7 +12,8 @@ const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
 const orderRouter = require('./src/routes/order');
 const authRouter = require('./src/routes/auth');
-const errorController = require('./src/controllers/error');
+const error404Controller = require('./src/controllers/404');
+const error500Controller = require('./src/controllers/500');
 
 const app = express();
 const port = process.env.PORT;
@@ -46,7 +47,7 @@ const viewPath = path.join(__dirname, 'src', 'views', 'templates');
 app.set('view engine', 'pug');
 app.set('views', viewPath);
 
-
+app.use(csrfProtection);
 app.use(express.static(staticPath));
 
 app.use(morgan('dev'));
@@ -55,7 +56,6 @@ app.use(urlencoded);
 app.use(bodyParser.json());
 app.use(session(sess));
 
-app.use(csrfProtection);
 app.use(flash());
 
 app.use((req, res, next) => {
@@ -65,14 +65,16 @@ app.use((req, res, next) => {
 });
 
 // ROUTER MIDDLEWARES
-app.use('/admin', adminRouter);
+app.use(adminRouter);
 app.use(authRouter);
 app.use(userRouter);
 app.use(shopRouter);
 app.use(orderRouter);
 
 // 404 PAGE MIDDLEWARE
-app.use('/', errorController.getErrorPage);
+app.use(error404Controller.get404Page);
+// 500 PAGE MIDDLEWARE
+app.use(error500Controller.get500Page);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
