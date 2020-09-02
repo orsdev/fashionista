@@ -4,7 +4,7 @@ const path = require('path');
 const csrf = require('csurf');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-var MongoDBStore = require('connect-mongodb-session')(session);
+const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
 const morgan = require('morgan');
 const adminRouter = require('./src/routes/admin');
@@ -26,10 +26,9 @@ const store = new MongoDBStore({
   collection: process.env.SESSION_COLLECTION
 });
 
-
 const sess = {
   secret: process.env.SESSION_SECRET,
-  store: store,
+  store,
   resave: false,
   saveUninitialized: false,
   cookie: {}
@@ -38,8 +37,7 @@ const sess = {
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1);
   sess.cookie.secure = true;
-};
-
+}
 
 const staticPath = path.join(__dirname, 'public');
 const viewPath = path.join(__dirname, 'src', 'views', 'templates');
@@ -78,4 +76,4 @@ app.use(error500Controller.get500Page);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
-}); 
+});
