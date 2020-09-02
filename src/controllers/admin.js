@@ -5,6 +5,23 @@ const flashMessage = require('../utils/flashMessage');
 const flashBodyError = require('../utils/flashBodyError');
 
 exports.getAdminHome = async (req, res, next) => {
+
+  // Failed product upload message
+  let error = req.flash('error');
+  if (error.length > 0) {
+    error = error[0];
+  } else {
+    error = null;
+  }
+
+  // Successful product upload message
+  let message = req.flash('message');
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+
   try {
     const allProducts = await ProductClass.getAllProducts(req, res, 0);
     const products = (!allProducts.length) ? [] : allProducts;
@@ -12,7 +29,9 @@ exports.getAdminHome = async (req, res, next) => {
     res.render('admin/home', {
       path: '/admin/home',
       pageTitle: 'FASHIONIT | ADMIN HOME',
-      products
+      products,
+      errorMessage: error,
+      successMessage: message
     });
 
   } catch (e) {
@@ -170,5 +189,19 @@ exports.postUpdateProduct = async (req, res, next) => {
 };
 
 exports.deleteProduct = (req, res) => {
-  ProductClass.deleteProduct(req, res);
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const errMessage = 'Product id is missing!';
+    return flashError(req, res, errMessage, '/admin/home');
+  };
+
+  ProductClass.deleteProduct(req, res)
+    .then((response) => {
+      const message = `${response.title} Deleted.`;
+      return flashMessage(req, res, message, '/admin/home');
+    }).catch((error) => {
+      const errMessage = `Unable to delete product. Please try again!`;
+      return flashError(req, res, errMessage, '/admin/home');
+    })
 };

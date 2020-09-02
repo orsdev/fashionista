@@ -39,7 +39,8 @@ class OrderClass {
   }
 
   static getAllOrders(req, res) {
-    const order = Order.find({ 'user.userId': req.user._id });
+    const order = Order.find({ 'user.userId': req.user._id })
+      .sort({ updatedAt: -1 });
     return order;
   }
 }

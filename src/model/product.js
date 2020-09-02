@@ -64,7 +64,7 @@ class ProductClass {
   static async getFeaturedProducts(req, res, limit = 5) {
     const products = await ProductsSchema.find({ feature: 'yes' })
       .limit(limit)
-      .sort('updatedAt');
+      .sort({ updatedAt: -1 });
 
     return products;
   }
@@ -81,7 +81,7 @@ class ProductClass {
   static async getAllProducts(req, res, limit = 20) {
     const products = await ProductsSchema.find({})
       .limit(limit)
-      .sort('updatedAt');
+      .sort({ updatedAt: -1 });
 
     return products;
   }
@@ -98,15 +98,10 @@ class ProductClass {
     return product;
   }
 
-  static async deleteProduct(req, res) {
-    const id = req.params.productId;
-
-    try {
-      await ProductsSchema.findByIdAndDelete(id);
-      return res.send('Product deleted successfully');
-    } catch (e) {
-      return res.status(500).send({ error: 'Bad Request.' });
-    }
+  static deleteProduct(req) {
+    const { productId } = req.body;
+    const product = ProductsSchema.findByIdAndDelete(productId);
+    return product;
   }
 }
 

@@ -9,6 +9,17 @@ block contents
   .header
     include ../../includes/adminHeaderNav.pug
 
+  if errorMessage
+    .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+      span.h3 #{errorMessage}
+      button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true" class="h1") &times;
+
+  if successMessage
+    .alert.alert-success.alert-dismissible.fade.show.text-center.px-1.py-4
+      span.h3 #{successMessage}
+      button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true" class="h1") &times;
 
   .container-fluid.px-5.ptb.mt-5
     if !(products.length)

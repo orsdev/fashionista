@@ -7,9 +7,11 @@ const router = new express.Router();
 
 const validateAddProduct = (bodyWrapper) => [
   bodyWrapper('title', 'Enter product title.')
+    .isString()
     .notEmpty()
     .trim(),
   bodyWrapper('tag', 'Enter product tag.')
+    .isString()
     .notEmpty()
     .trim(),
   bodyWrapper('feature')
@@ -25,6 +27,13 @@ const validateAddProduct = (bodyWrapper) => [
     .trim()
 ];
 
+const validateDeleteProduct = (bodyWrapper) => [
+  bodyWrapper('productId', 'Product id is missing.')
+    .isString()
+    .notEmpty()
+    .trim(),
+];
+
 router.get('/admin/home', isAuth, adminController.getAdminHome);
 
 router.get('/admin/add-product', isAuth, adminController.getAddProductPage);
@@ -35,6 +44,6 @@ router.post('/admin/add-product', isAuth, validateAddProduct(body), adminControl
 
 router.post('/admin/edit-product', isAuth, validateAddProduct(body), adminController.postUpdateProduct);
 
-router.delete('/admin/delete-product', isAuth, adminController.deleteProduct);
+router.post('/admin/delete-product', isAuth, validateDeleteProduct(body), adminController.deleteProduct);
 
 module.exports = router;
