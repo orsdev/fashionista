@@ -35,8 +35,8 @@ exports.getAdminHome = async (req, res, next) => {
     });
 
   } catch (e) {
-    const error = new Error('Failed to get products.');
-    return next(error);
+    const err = new Error('Failed to get products.');
+    return next(err);
   }
 
 };
@@ -194,14 +194,14 @@ exports.deleteProduct = (req, res) => {
   if (!errors.isEmpty()) {
     const errMessage = 'Product id is missing!';
     return flashError(req, res, errMessage, '/admin/home');
-  };
+  }
 
   ProductClass.deleteProduct(req, res)
     .then((response) => {
       const message = `${response.title} Deleted.`;
       return flashMessage(req, res, message, '/admin/home');
     }).catch((error) => {
-      const errMessage = `Unable to delete product. Please try again!`;
+      const errMessage = 'Unable to delete product. Please try again!';
       return flashError(req, res, errMessage, '/admin/home');
-    })
+    });
 };
