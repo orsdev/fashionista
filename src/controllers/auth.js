@@ -6,6 +6,10 @@ const sendWelcomeMessage = require('../mail/welcomeMessage');
 
 exports.getLoginPage = (req, res) => {
 
+  if ((req.session.isAuthenticated && req.session.user)) {
+    return res.redirect('/home');
+  };
+
   let error = req.flash('error');
   if (error.length > 0) {
     error = error[0];
@@ -20,6 +24,10 @@ exports.getLoginPage = (req, res) => {
 };
 
 exports.getRegisterPage = (req, res) => {
+
+  if ((req.session.isAuthenticated && req.session.user)) {
+    return res.redirect('/home');
+  };
 
   let error = req.flash('error');
   if (error.length > 0) {
