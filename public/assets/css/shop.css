@@ -22,7 +22,7 @@
   padding: 2px 5px;
 }
 .products__description {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin-bottom: 5px;
 }
 .products__price {
@@ -37,28 +37,24 @@
 }
 .products__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   column-gap: 60px;
   row-gap: 100px;
   padding-left: 20px;
   padding-right: 20px;
   justify-content: center;
+  align-items: center;
 }
-.products form {
+.products .addcart-link {
   width: 100%;
-}
-.products form button {
-  outline: none;
-  border: none;
   color: orangered;
   font-weight: 600;
   font-size: 1.5rem;
-  background: transparent;
   display: inline-block;
-  width: 130px;
-  margin: auto;
+  width: 100%;
+  text-decoration: none;
 }
-.products form button:hover {
+.products .addcart-link:hover {
   color: #992900;
 }
 .products img {
@@ -69,6 +65,7 @@
 }
 .products figure {
   position: relative;
+  height: 320px;
 }
 
 @media (max-width: 500px) {

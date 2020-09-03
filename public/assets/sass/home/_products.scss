@@ -61,51 +61,51 @@
       }
 
       &-item {
-         &-1 {
+         &-0 {
             grid-row: 1 / span 2;
             grid-column: 1 / span 2;
          }
-         &-2 {
+         &-1 {
             grid-row: 1 / span 3;
             grid-column: 3 / span 2;
          }
-         &-3 {
+         &-2 {
             grid-row: 1 / span 2;
             grid-column: 5 / 7;
          }
-         &-4 {
+         &-3 {
             grid-row: 1 / span 2;
             grid-column: 7/-1;
          }
-         &-5 {
+         &-4 {
             grid-row: 3 / span 3;
             grid-column: 1 / span 2;
          }
-         &-6 {
+         &-5 {
             grid-row: 4 / span 2;
             grid-column: 3 / span 2;
          }
-         &-7 {
+         &-6 {
             grid-row: 5/8;
             grid-column: 5/7;
          }
-         &-8 {
+         &-7 {
             grid-row: 3 / span 2;
             grid-column: 5 / span 2;
          }
-         &-9 {
+         &-8 {
             grid-row: 3 / span 3;
+            grid-column: 7/-1;
+         }
+         &-9 {
+            grid-row: 6 / span 2;
             grid-column: 7/-1;
          }
          &-10 {
             grid-row: 6 / span 2;
-            grid-column: 7/-1;
-         }
-         &-11 {
-            grid-row: 6 / span 2;
             grid-column: 1 / span 2;
          }
-         &-12 {
+         &-11 {
             grid-row: 6 / span 2;
             grid-column: 3/5;
          }

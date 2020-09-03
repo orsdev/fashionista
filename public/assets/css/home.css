@@ -24,43 +24,6 @@
   font-size: 2rem;
   font-weight: bold;
 }
-.header__hero-text h3 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  font-style: italic;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: orangered;
-  padding: 5px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 120px;
-  z-index: 1;
-}
-.header__hero-text h3::before {
-  position: absolute;
-  top: 0;
-  content: "";
-  width: 90%;
-  height: 121px;
-  z-index: -1;
-  background: transparent;
-  box-shadow: 0 1px 10px 1px #3a3535;
-}
-.header__hero-text h3 span {
-  display: block;
-  margin-top: 5px;
-  transform-origin: top right;
-  transform: rotate(-10deg);
-  padding-right: 10px;
-  -webkit-transform: rotate(-10deg);
-  -moz-transform: rotate(-10deg);
-  -ms-transform: rotate(-10deg);
-  -o-transform: rotate(-10deg);
-}
 .header__hero-text h1 {
   font-size: 8rem;
   color: #fff;
@@ -332,51 +295,51 @@
   position: relative;
   background: rgba(245, 229, 229, 0.7);
 }
-.products__grid-item-1 {
+.products__grid-item-0 {
   grid-row: 1/span 2;
   grid-column: 1/span 2;
 }
-.products__grid-item-2 {
+.products__grid-item-1 {
   grid-row: 1/span 3;
   grid-column: 3/span 2;
 }
-.products__grid-item-3 {
+.products__grid-item-2 {
   grid-row: 1/span 2;
   grid-column: 5/7;
 }
-.products__grid-item-4 {
+.products__grid-item-3 {
   grid-row: 1/span 2;
   grid-column: 7/-1;
 }
-.products__grid-item-5 {
+.products__grid-item-4 {
   grid-row: 3/span 3;
   grid-column: 1/span 2;
 }
-.products__grid-item-6 {
+.products__grid-item-5 {
   grid-row: 4/span 2;
   grid-column: 3/span 2;
 }
-.products__grid-item-7 {
+.products__grid-item-6 {
   grid-row: 5/8;
   grid-column: 5/7;
 }
-.products__grid-item-8 {
+.products__grid-item-7 {
   grid-row: 3/span 2;
   grid-column: 5/span 2;
 }
-.products__grid-item-9 {
+.products__grid-item-8 {
   grid-row: 3/span 3;
+  grid-column: 7/-1;
+}
+.products__grid-item-9 {
+  grid-row: 6/span 2;
   grid-column: 7/-1;
 }
 .products__grid-item-10 {
   grid-row: 6/span 2;
-  grid-column: 7/-1;
-}
-.products__grid-item-11 {
-  grid-row: 6/span 2;
   grid-column: 1/span 2;
 }
-.products__grid-item-12 {
+.products__grid-item-11 {
   grid-row: 6/span 2;
   grid-column: 3/5;
 }
