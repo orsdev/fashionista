@@ -49,113 +49,35 @@ block contents
         h1.main-header
           span NEW ARRIVAL
 
-  //- FEATURED SECTION 
-  section.featured.ptb
-    div.featured__header.medium-header.text-center
-      h2 FEATURED PRODUCTS
+  //- FEATURED SECTION
+  if (featured.length)
+    section.featured.ptb
+      div.featured__header.medium-header.text-center
+        h2 FEATURED PRODUCTS
 
-    div.slick
-      figure.item
-        img(src="assets/img/products/men/grey-shirt.png" alt="")
-        figcaption.products__name.text-center GREY SHIRT
-        p.products__price $20
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.item
-        img(src="assets/img/products/women/red-gown.png" alt="")
-        figcaption.products__name.text-center RED GOWN
-        p.products__price $100
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.item
-        img(src="assets/img/products/men/scott-backpack.png" alt="")
-        figcaption.products__name.text-center SCOTT BACKPACK
-        p.products__price $50
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.item
-        img(src="assets/img/products/women/blue-gown.png" alt="")
-        figcaption.products__name.text-center BLUE GOWN
-        p.products__price $200
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
+      div.slick
+        for product in featured  
+          figure.item
+            img(src="/"+product.productImage alt=product.title)
+            figcaption.products__name.text-center GREY SHIRT     
+            p.products__price $#{product.price.toLocaleString()}      
+            a(href="/shop/details/"+product._id class="addcart-link text-center") ADD TO CART
 
   //- PRODUCTS SECTION
   section.products.ptb
     div.products__header.medium-header.text-center
       h2 PRODUCTS
 
-    div.products__grid
-      figure.products__grid-item-1
-        img(src="assets/img/products/men/red-polo.png" alt="")
-        figcaption.products__name.text-center RED POLO
-        p.products__price $60
-        a(href="/shop/details/"+"5f4dc8636992a81bc0607444" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-2
-        img(src="assets/img/products/women/floral-gown.png" alt="")
-        figcaption.products__name.text-center FLORAL DRESS
-        p.products__price $120
-        a(href="/shop/details/"+"5f23a910c99e0a1f64f043ca" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-3
-        img(src="assets/img/products/men/wallet.png" alt="")
-        figcaption.products__name.text-center WALLET
-        p.products__price $40
-        a(href="/shop/details/"+"5f23a910c99e0a1f64f043ca" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-4
-        img(src="assets/img/products/women/blue-jean.png" alt="")
-        figcaption.products__name.text-center BLUE JEAN
-        p.products__price $80
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-5
-        img(src="assets/img/products/women/jade-necklace.png" alt="")
-        figcaption.products__name.text-center JADE NECKLACE
-        p.products__price $180
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-6
-        img(src="assets/img/products/men/brown-belt.png" alt="")
-        figcaption.products__name.text-center BELT
-        p.products__price $30
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-7
-        img(src="assets/img/products/women/pink-lipstick.png" alt="")
-        figcaption.products__name.text-center LIP GLOSS
-        p.products__price $55
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-8
-        img(src="assets/img/products/women/slippers.png" alt="")
-        figcaption.products__name.text-center SLIPPERS
-        p.products__price $25
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-9
-        img(src="assets/img/products/men/black-shirt.png" alt="")
-        figcaption.products__name.text-center BLACK SHIRT
-        p.products__price $49.59
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-10
-        img(src="assets/img/products/men/nike-shoe.png" alt="")
-        figcaption.products__name.text-center NIKE
-        p.products__price $200
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-11
-        img(src="assets/img/products/men/white-shirt.png" alt="")
-        figcaption.products__name.text-center WHITE SHIRT
-        p.products__price $65
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
-
-      figure.products__grid-item-12
-        img(src="assets/img/products/women/leather-brown.png" alt="")
-        figcaption.products__name.text-center LEATHER BAG
-        p.products__price $215
-        a(href="/shop/details/"+"5f3fd5d074a9f207d8b43474" class="addcart-link text-center") ADD TO CART
+    if !(products.length)
+      h1.display-3.text-center.text-muted.mt-5 STORE IS EMPTY.
+    else 
+      div.products__grid
+        each product, index in products  
+          figure(class="products__grid-item-"+index)
+            img(src="/"+product.productImage alt=product.title)
+            figcaption.products__name #{product.title}
+            p.products__price $#{product.price.toLocaleString()}
+            a(href="/shop/details/"+product._id class="addcart-link text-center") ADD TO CART
 
   .footer-dark
     include ../includes/footer.pug

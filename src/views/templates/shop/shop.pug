@@ -12,138 +12,19 @@ block contents
     h2 THE SHOP
 
   section.products.ptb
-    .products__grid
-      figure.products__grid-item
-        img(src="assets/img/products/men/red-polo.png" alt="")
-        figcaption.products__name.text-center RED POLO
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        p.products__price $60
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
+    if !(products.length)
+      h1.display-3.text-center.text-muted STORE IS EMPTY.
+    else 
+      div.products__grid.text-center 
+        for product in products  
+          figure(class="products__grid-item")
+            img(src="/"+product.productImage alt=product.title)
+            figcaption.products__name #{product.title}
+            p.products__description
+              span #{"Lorem ipsum dolor sit amet consectetur adipisicing elit".substring(0, 55)+"..."}
+            p.products__price $#{product.price.toLocaleString()}          
+            a(href="/shop/details/"+product._id class="addcart-link") ADD TO CART
 
-      figure.products__grid-item
-        img(src="assets/img/products/women/floral-gown.png" alt="")
-        figcaption.products__name.text-center FLORAL DRESS
-        p.products__price $120
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/men/wallet.png" alt="")
-        figcaption.products__name.text-center WALLET
-        p.products__price $40
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/women/blue-jean.png" alt="")
-        figcaption.products__name.text-center BLUE JEAN
-        p.products__price $80
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/women/jade-necklace.png" alt="")
-        figcaption.products__name.text-center JADE NECKLACE
-        p.products__price $180
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/men/brown-belt.png" alt="")
-        figcaption.products__name.text-center BELT
-        p.products__price $30
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/women/pink-lipstick.png" alt="")
-        figcaption.products__name.text-center LIP GLOSS
-        p.products__price $55
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/women/slippers.png" alt="")
-        figcaption.products__name.text-center SLIPPERS
-        p.products__price $25
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/men/black-shirt.png" alt="")
-        figcaption.products__name.text-center BLACK SHIRT
-        p.products__price $49.59
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/men/nike-shoe.png" alt="")
-        figcaption.products__name.text-center NIKE
-        p.products__price $200
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/men/white-shirt.png" alt="")
-        figcaption.products__name.text-center WHITE SHIRT
-        p.products__price $65
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
-
-      figure.products__grid-item
-        img(src="assets/img/products/women/leather-brown.png" alt="")
-        figcaption.products__name.text-center LEATHER BAG
-        p.products__price $215
-        p.products__description.text-center 
-          span Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.
-        form.text-center(action="/cart" method="post")
-          input(type="hidden" name="_csrf" value=csrfToken)
-          input(type="hidden" name="productId" value="")
-          button.add-to-cart-btn(data-id="") ADD TO CART
 
   .footer-light
     include ../../includes/footer.pug

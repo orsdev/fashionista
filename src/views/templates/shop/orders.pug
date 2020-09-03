@@ -22,7 +22,7 @@ block contents
         for prod in orders
           .orders--item
             .product--image.text-center.text-lg-right.px-4   
-              img(src="" alt=prod.product.title)
+              img(src="/"+prod.productImage alt=prod.product.title)
             h2.product--title #{prod.product.title}
             p.product--price.font-weight-bold.my-2
               span.mr-2 TOTAL PRICE:

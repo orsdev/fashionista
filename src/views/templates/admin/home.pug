@@ -29,7 +29,7 @@ block contents
         .products__grid.text-center
           for product in products    
             figure.products__grid-item
-              img(src=product.imgUrl alt=product.title)
+              img(src="/"+product.productImage alt=product.title)
               figcaption.products__name #{product.title}
               p.products__price $#{product.price.toLocaleString()}
               a(href="/admin/edit-product/"+product._id class="edit")
