@@ -12,6 +12,22 @@
    padding-bottom: 20px;
 }
 
+.alert {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   span {
+      display: inline-block;
+      width: calc(100% - 150px);
+      word-wrap: break-word;
+   }
+
+   button {
+      width: 50px;
+   }
+}
+
 @media screen and (max-width: 500px) {
    .medium-header {
       h2 {

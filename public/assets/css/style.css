@@ -45,6 +45,20 @@ section {
   padding-bottom: 20px;
 }
 
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert span {
+  display: inline-block;
+  width: calc(100% - 150px);
+  word-wrap: break-word;
+}
+.alert button {
+  width: 50px;
+}
+
 @media screen and (max-width: 500px) {
   .medium-header h2 {
     font-size: 2.5rem;
