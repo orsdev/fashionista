@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { capitalizeFirstLetters, capitalizeFirstLetter } = require('../utils/lodashHelper');
 
 const productsShema = new mongoose.Schema({
   title: {
@@ -25,8 +24,9 @@ const productsShema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  imageUrl: {
-    type: String
+  productImage: {
+    type: String,
+    required: true
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -40,26 +40,6 @@ const productsShema = new mongoose.Schema({
 const ProductsSchema = mongoose.model('Products', productsShema);
 
 class ProductClass {
-
-  static postProduct(req, res) {
-    const { body } = req;
-
-    const capitalizeTitle = capitalizeFirstLetters(body.title);
-    const capitalizeTag = capitalizeFirstLetters(body.tag);
-    const capitalizeDescription = capitalizeFirstLetter(body.description);
-
-    const newBody = {
-      ...body,
-      price: Number(body.price),
-      title: capitalizeTitle,
-      tag: capitalizeTag,
-      description: capitalizeDescription,
-      userId: req.user._id
-    };
-
-    const product = new ProductsSchema(newBody);
-    return product;
-  }
 
   static async getFeaturedProducts(req, res, limit = 5) {
     const products = await ProductsSchema.find({ feature: 'yes' })
