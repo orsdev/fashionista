@@ -5,4 +5,5 @@ debug.log
 node_modules
 *.env
 img
+images
 todos.md
