@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const flashError = require('../utils/flashError');
+const { capitalizeFirstLetters } = require('../utils/lodashHelper');
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -124,11 +125,17 @@ class UserClass {
         return flashError(req, res, errMessage, '/register');
       }
 
-      body.cart = {
-        items: []
+      const capitalizeFullName = capitalizeFirstLetters(body.fullName);
+
+      const newBody = {
+        ...body,
+        fullName: capitalizeFullName,
+        cart: {
+          items: []
+        }
       };
 
-      cb(new User(body));
+      cb(new User(newBody));
 
     } catch (err) {
       const errMessage = 'Registration failed. Please try again later.';
