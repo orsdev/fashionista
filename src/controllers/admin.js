@@ -1,8 +1,10 @@
 const { validationResult } = require('express-validator');
-const { ProductClass } = require('../model/product');
+const { ProductClass, ProductsSchema } = require('../model/product');
 const flashError = require('../utils/flashError');
 const flashMessage = require('../utils/flashMessage');
 const flashBodyError = require('../utils/flashBodyError');
+const { capitalizeFirstLetters, capitalizeFirstLetter } = require('../utils/lodashHelper');
+
 
 exports.getAdminHome = async (req, res, next) => {
 
@@ -120,19 +122,47 @@ exports.postAddProduct = (req, res) => {
   const {
     title, tag, feature, price, description
   } = req.body;
+  const productImage = req.file;
+
+  if (!productImage) {
+    return res.status(422).render('admin/add-product', {
+      errorMessage: 'Attached file is not an image',
+      oldInput: {
+        title,
+        tag,
+        feature,
+        price,
+        description,
+        productImage
+      }
+    })
+  };
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).render('admin/add-product', {
+    return res.status(422).render('admin/add-product', {
       validationError: errors.array(),
       oldInput: {
         title, tag, feature, price, description
       }
     });
-  }
+  };
 
-  const product = ProductClass.postProduct(req, res);
+  const capitalizeTitle = capitalizeFirstLetters(title);
+  const capitalizeTag = capitalizeFirstLetters(tag);
+  const capitalizeDescription = capitalizeFirstLetter(description);
 
+  const newBody = {
+    ...req.body,
+    price: Number(price),
+    title: capitalizeTitle,
+    tag: capitalizeTag,
+    productImage: productImage.path,
+    description: capitalizeDescription,
+    userId: req.user._id
+  };
+
+  const product = new ProductsSchema(newBody);
   product.save()
     .then((response) => {
       if (response) {

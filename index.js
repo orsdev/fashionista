@@ -1,8 +1,10 @@
 const express = require('express');
 require('./src/db/mongoose');
 const path = require('path');
+const fs = require('fs');
 const csrf = require('csurf');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
@@ -34,23 +36,57 @@ const sess = {
   cookie: {}
 };
 
+// Multer image storage configuration
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const imagePath = path.join(__dirname, 'images');
+    if (!fs.existsSync(imagePath)) {
+      fs.mkdir(imagePath, function () {
+        cb(null, 'images');
+      });
+    } else {
+      cb(null, 'images');
+    }
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, file.fieldname + '-' + uniqueSuffix + '-' + file.originalname)
+  }
+});
+
+
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1);
   sess.cookie.secure = true;
 }
 
 const staticPath = path.join(__dirname, 'public');
+const imgPath = path.join(__dirname, 'images');
 const viewPath = path.join(__dirname, 'src', 'views', 'templates');
 
 app.set('view engine', 'pug');
 app.set('views', viewPath);
 
 app.use(express.static(staticPath));
+app.use('/images', express.static(imgPath));
 
 app.use(morgan('dev'));
 
 app.use(urlencoded);
 app.use(bodyParser.json());
+app.use(multer({
+  storage,
+  fileFilter(req, file, cb) {
+    if (!/\.(jpe?g|png)$/i.test(file.originalname)) {
+      cb(null, false);
+    } else {
+      cb(null, true);
+    }
+  },
+  limits: {
+    fileSize: 1000000 //1 megabyte
+  }
+}).single('productImage'))
 app.use(session(sess));
 app.use(csrfProtection);
 
