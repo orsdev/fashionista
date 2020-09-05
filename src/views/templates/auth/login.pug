@@ -21,19 +21,24 @@ block contents
           span(aria-hidden="true" class="h1") &times;
 
     section.form
-      form(action="/login" method="post")
+      form(action="/login" method="post" id="login-form")
         .form-group
           input(type="hidden" name="_csrf" value=csrfToken)
         .form-group
           label(for="email") EMAIL
-          input(type="email" name="userEmail" value=oldInput ? oldInput.userEmail : '' required)
+          input(type="email" name="userEmail" value=oldInput ? oldInput.userEmail : '' class="mb-2" id="userEmail" required)
+          span.text-danger.font-weight-bold.h3
         .form-group
           label(for="password") PASSWORD
-          input(type="password" name="userPassword" value=oldInput ?oldInput.userPassword : '' required)
+          input(type="password" name="userPassword" id="userPassword" value=oldInput ?oldInput.userPassword : '' class="mb-2" required)
+          span.text-danger.font-weight-bold.h3 
         .form-group
-          button(type="submit") LOGIN
+          button(type="submit" data-id="loader") LOGIN
         .form-register
           span Don't have an account? 
             a(href="/register") Register 
 
     include ../../includes/footer.pug
+
+block scripts
+  script(src="/assets/js/validateLogin.js")
