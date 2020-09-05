@@ -59,6 +59,13 @@ section {
   width: 50px;
 }
 
+.button-loader {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 5px;
+}
+
 @media screen and (max-width: 500px) {
   .medium-header h2 {
     font-size: 2.5rem;
