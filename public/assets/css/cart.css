@@ -44,7 +44,8 @@
   position: relative;
   padding: 5px 10px;
   width: 200px;
-  height: 220px;
+  height: 100%;
+  min-height: 250px;
   background: whitesmoke;
 }
 .cart figure img {
@@ -63,8 +64,9 @@
   background: rgba(0, 0, 0, 0.4);
 }
 .cart figure section {
+  flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   align-content: center;
   width: 100%;
 }
