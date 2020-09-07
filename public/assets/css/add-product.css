@@ -3,9 +3,14 @@ form p {
   font-size: 1.8rem;
 }
 form input.form-control,
+form p.form-control,
 form input.d-block,
 form textarea.form-control {
   font-size: 2rem;
+}
+form p.text-input {
+  word-break: break-all;
+  outline: 1px solid #ced4da;
 }
 form button.btn {
   font-weight: bold;

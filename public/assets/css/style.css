@@ -45,17 +45,13 @@ section {
   padding-bottom: 20px;
 }
 
-.alert {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .alert span {
   display: inline-block;
-  width: calc(100% - 150px);
-  word-wrap: break-word;
+  width: 80%;
+  margin: auto;
 }
 .alert button {
+  display: inline-block;
   width: 50px;
 }
 

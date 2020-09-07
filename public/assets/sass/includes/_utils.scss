@@ -13,17 +13,14 @@
 }
 
 .alert {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
    span {
       display: inline-block;
-      width: calc(100% - 150px);
-      word-wrap: break-word;
+      width: 80%;
+      margin: auto;
    }
 
    button {
+      display: inline-block;
       width: 50px;
    }
 }
