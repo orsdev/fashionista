@@ -3,7 +3,7 @@ $(window).on('load', function () {
     dots: true,
     infinite: true,
     autoplay: true,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
     centerMode: true,
