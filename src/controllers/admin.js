@@ -132,8 +132,7 @@ exports.postAddProduct = (req, res) => {
         tag,
         feature,
         price,
-        description,
-        productImage
+        description
       }
     })
   };
@@ -179,7 +178,7 @@ exports.postAddProduct = (req, res) => {
 exports.postUpdateProduct = async (req, res, next) => {
 
   const {
-    productId, title, price, tag, description, productImage, feature
+    productId, title, price, tag, description, feature
   } = req.body;
 
   const errors = validationResult(req);
@@ -195,8 +194,12 @@ exports.postUpdateProduct = async (req, res, next) => {
         response.price = price;
         response.tag = tag;
         response.description = description;
-        response.productImage = productImage;
         response.feature = feature;
+
+        if (req.file) {
+          response.productImage = req.file.path;
+        };
+
 
         return response.save();
       })

@@ -77,7 +77,7 @@ app.use(bodyParser.json());
 app.use(multer({
   storage,
   fileFilter(req, file, cb) {
-    if (!/\.(jpe?g|png)$/i.test(file.originalname)) {
+    if (!/\.(jpe?g|png|gif)$/i.test(file.originalname)) {
       cb(null, false);
     } else {
       cb(null, true);
