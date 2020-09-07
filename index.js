@@ -38,22 +38,21 @@ const sess = {
 
 // Multer image storage configuration
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination(req, file, cb) {
     const imagePath = path.join(__dirname, 'images');
     if (!fs.existsSync(imagePath)) {
-      fs.mkdir(imagePath, function () {
+      fs.mkdir(imagePath, () => {
         cb(null, 'images');
       });
     } else {
       cb(null, 'images');
     }
   },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' + uniqueSuffix + '-' + file.originalname)
+  filename(req, file, cb) {
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
+    cb(null, `${file.fieldname}-${uniqueSuffix}-${file.originalname}`);
   }
 });
-
 
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1);
@@ -84,9 +83,9 @@ app.use(multer({
     }
   },
   limits: {
-    fileSize: 1000000 //1 megabyte
+    fileSize: 1000000 // 1 megabyte
   }
-}).single('productImage'))
+}).single('productImage'));
 app.use(session(sess));
 app.use(csrfProtection);
 

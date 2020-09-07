@@ -5,7 +5,6 @@ const flashMessage = require('../utils/flashMessage');
 const flashBodyError = require('../utils/flashBodyError');
 const { capitalizeFirstLetters, capitalizeFirstLetter } = require('../utils/lodashHelper');
 
-
 exports.getAdminHome = async (req, res, next) => {
 
   // Failed product upload message
@@ -134,8 +133,8 @@ exports.postAddProduct = (req, res) => {
         price,
         description
       }
-    })
-  };
+    });
+  }
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -145,7 +144,7 @@ exports.postAddProduct = (req, res) => {
         title, tag, feature, price, description
       }
     });
-  };
+  }
 
   const capitalizeTitle = capitalizeFirstLetters(title);
   const capitalizeTag = capitalizeFirstLetters(tag);
@@ -198,8 +197,7 @@ exports.postUpdateProduct = async (req, res, next) => {
 
         if (req.file) {
           response.productImage = req.file.path;
-        };
-
+        }
 
         return response.save();
       })

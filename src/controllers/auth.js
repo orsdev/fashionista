@@ -8,7 +8,7 @@ exports.getLoginPage = (req, res) => {
 
   if ((req.session.isAuthenticated && req.session.user)) {
     return res.redirect('/home');
-  };
+  }
 
   let error = req.flash('error');
   if (error.length > 0) {
@@ -27,7 +27,7 @@ exports.getRegisterPage = (req, res) => {
 
   if ((req.session.isAuthenticated && req.session.user)) {
     return res.redirect('/home');
-  };
+  }
 
   let error = req.flash('error');
   if (error.length > 0) {
