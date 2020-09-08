@@ -4,6 +4,7 @@ const flashError = require('../utils/flashError');
 const flashMessage = require('../utils/flashMessage');
 const flashBodyError = require('../utils/flashBodyError');
 const { capitalizeFirstLetters, capitalizeFirstLetter } = require('../utils/lodashHelper');
+const deleteFile = require('../utils/deleteFile');
 
 exports.getAdminHome = async (req, res, next) => {
 
@@ -196,6 +197,14 @@ exports.postUpdateProduct = async (req, res, next) => {
         response.feature = feature;
 
         if (req.file) {
+          let oldImagePath = response.productImage;
+          // Delete old product image
+          deleteFile(next, oldImagePath, (err) => {
+            if (err) {
+              return next(err);
+            }
+          });
+
           response.productImage = req.file.path;
         }
 
@@ -219,7 +228,7 @@ exports.postUpdateProduct = async (req, res, next) => {
 
 };
 
-exports.deleteProduct = (req, res) => {
+exports.deleteProduct = (req, res, next) => {
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -229,8 +238,17 @@ exports.deleteProduct = (req, res) => {
 
   ProductClass.deleteProduct(req, res)
     .then((response) => {
-      const message = `${response.title} Deleted.`;
-      return flashMessage(req, res, message, '/admin/home');
+      // Delete product image
+      deleteFile(next, response.productImage, (err) => {
+        if (err) {
+          return next(err);
+        }
+
+        const message = `${response.title} Deleted.`;
+        return flashMessage(req, res, message, '/admin/home');
+
+      });
+
     }).catch((error) => {
       const errMessage = 'Unable to delete product. Please try again!';
       return flashError(req, res, errMessage, '/admin/home');
