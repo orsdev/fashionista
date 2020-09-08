@@ -58,10 +58,11 @@ class ProductClass {
     return products;
   }
 
-  static async getAllProducts(req, res, limit = 20) {
+  static async getAllProducts(req, res, skipNumber, limit = 10) {
     const products = await ProductsSchema.find({})
       .limit(limit)
-      .sort({ updatedAt: -1 });
+      .sort({ updatedAt: -1 })
+      .skip(skipNumber)
 
     return products;
   }

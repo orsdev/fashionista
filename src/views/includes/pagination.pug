@@ -1,0 +1,7 @@
+nav(aria-label="Page navigation" class="w-100")
+  ul.pagination.pagination-lg.justify-content-center
+    - var index = 0;
+    while index < paginationLength
+      - index++;
+      li.page-item(class=page === (index) ? "active" : "")
+        a.page-link(href=path +"?page="+index) #{index}

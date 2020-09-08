@@ -25,6 +25,7 @@ block contents
             p.products__price $#{product.price.toLocaleString()}          
             a(href="/shop/details/"+product._id class="addcart-link") ADD TO CART
 
+      include ../../includes/pagination.pug
 
   .footer-light
     include ../../includes/footer.pug

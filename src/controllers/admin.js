@@ -24,13 +24,35 @@ exports.getAdminHome = async (req, res, next) => {
     message = null;
   }
 
+  let showPerPage = 10;
+  let skippedPage = 0;
+  let page = 0;
+
+
+  if (req.query.page) {
+    const getPageNumber = Number(req.query.page);
+    page = getPageNumber;
+    skippedPage = ((getPageNumber - 1) * showPerPage);
+  }
+
   try {
-    const allProducts = await ProductClass.getAllProducts(req, res, 0);
+    const allProducts = await ProductClass.getAllProducts(req, res, skippedPage, showPerPage);
+    const productsLength = await ProductClass.getAllProducts(req, res, null, null);
     const products = (!allProducts.length) ? [] : allProducts;
+
+    let paginationLength = Math.floor(productsLength.length / showPerPage);
+
+    if ((productsLength.length % showPerPage) !== 0) {
+      paginationLength = paginationLength + 1;
+    }
+
+    page = page === 0 ? 1 : page;
 
     res.render('admin/home', {
       path: '/admin/home',
       pageTitle: 'FASHIONIT | ADMIN HOME',
+      page,
+      paginationLength,
       products,
       errorMessage: error,
       successMessage: message
