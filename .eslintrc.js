@@ -20,6 +20,7 @@ module.exports = {
         "no-underscore-dangle": "off",
         "max-len": "off",
         "no-unused-vars": "off",
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "linebreak-style": "off",
     }
 };

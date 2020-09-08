@@ -197,7 +197,7 @@ exports.postUpdateProduct = async (req, res, next) => {
         response.feature = feature;
 
         if (req.file) {
-          let oldImagePath = response.productImage;
+          const oldImagePath = response.productImage;
           // Delete old product image
           deleteFile(next, oldImagePath, (err) => {
             if (err) {
