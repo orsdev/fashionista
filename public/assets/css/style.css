@@ -68,6 +68,17 @@ section {
   margin: 0;
 }
 
+.pagination {
+  flex-wrap: wrap;
+}
+.pagination .page-item .page-link {
+  font-size: 1.8rem;
+}
+.pagination .active {
+  background: blue !important;
+  color: blue !important;
+}
+
 @media screen and (max-width: 500px) {
   .medium-header h2 {
     font-size: 2.5rem;
