@@ -22,6 +22,14 @@
   color: black;
 }
 
+.cart-link {
+  position: relative;
+}
+.cart-link span {
+  position: absolute;
+  top: -5px;
+}
+
 .dropdown-toggle::after {
   display: none;
 }
