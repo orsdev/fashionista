@@ -23,7 +23,7 @@ exports.getHomePage = async (req, res, next) => {
       pageTitle: 'FASHIONIT | HOME',
       loader: false,
       featured,
-      products
+      products,
     });
 
   } catch (e) {

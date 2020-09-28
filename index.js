@@ -14,6 +14,7 @@ const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
 const orderRouter = require('./src/routes/order');
 const authRouter = require('./src/routes/auth');
+const totalCartItems = require('./src/utils/totalCartItems');
 const error404Controller = require('./src/controllers/404');
 const error500Controller = require('./src/controllers/500');
 
@@ -97,6 +98,9 @@ app.use((req, res, next) => {
   res.locals.userName = req.session.user;
   next();
 });
+
+// Middle for totalCartItems
+app.use(totalCartItems);
 
 // ROUTER MIDDLEWARES
 app.use(adminRouter);

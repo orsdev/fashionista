@@ -32,6 +32,15 @@
    }
 }
 
+.cart-link {
+   position: relative;
+
+   span {
+      position: absolute;
+      top: -5px;
+   }
+}
+
 .dropdown-toggle::after {
    display: none;
 }
