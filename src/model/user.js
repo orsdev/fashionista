@@ -90,22 +90,15 @@ userSchema.methods.addToCart = function (productId, quantity) {
 // For not populated cart productId
 userSchema.methods.removeFromCart = function (productId) {
   const user = this;
-
   const removeProduct = user.cart.items.filter((prod) => prod.productId.toString() !== productId.toString());
-
   user.cart.items = removeProduct;
-
   return user.save();
 };
 
-// For populated cart productId
-userSchema.methods.removeFromOrderCart = async function (productId) {
+// Delete every items in cart
+userSchema.methods.removeAllCartItems = function () {
   const user = this;
-
-  const removeProduct = user.cart.items.filter((prod) => prod.productId._id.toString() !== productId.toString());
-
-  user.cart.items = removeProduct;
-
+  user.cart.items = [];
   return user.save();
 };
 
