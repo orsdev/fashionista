@@ -1,12 +1,19 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  products: [
+  order: [
     {
-      product: { type: Object, required: true },
-      quantity: { type: Number, required: true }
+      product: {
+        type: Object,
+        required: true
+      },
+      quantity: {
+        type: Number,
+        required: true
+      }
     }
   ],
+
   user: {
     userName: {
       type: String,
@@ -17,32 +24,46 @@ const orderSchema = new mongoose.Schema({
       required: true,
       ref: 'User'
     }
-  }
+  },
+
 }, {
   timestamps: true
 });
 
+orderSchema.methods.postOrder = async function (req) {
+  if (req.session.user && req.session.isAuthenticated) {
+    const userCart = await req.user.populate('cart.items.productId').execPopulate();
+    // Get items from cart by destructing
+    const { cart: {
+      items
+    } } = userCart;
+
+
+    for (let keys of items) {
+      this.order.push({
+        product: { ...keys.productId._doc },
+        quantity: keys.quantity
+      });
+    };
+
+    return this.save();
+  }
+}
+
 const Order = mongoose.model('Order', orderSchema);
 
 class OrderClass {
-  static addToOrders(req, res, body, callback) {
-    callback(new Order(body));
-  }
-
-  static async removeOrder(req, res, next, productId) {
-    try {
-      await Order.findByIdAndDelete(productId);
-    } catch (e) {
-      const error = new Error('Failed to delete order.');
-      return next(error);
-    }
+  static addToOrders(req) {
+    return req.order.postOrder(req);
   }
 
   static getAllOrders(req, res) {
-    const order = Order.find({ 'user.userId': req.user._id })
-      .sort({ updatedAt: -1 });
+    const order = Order.find({ 'user.userId': req.user._id });
     return order;
   }
 }
 
-module.exports = OrderClass;
+module.exports = {
+  Order,
+  OrderClass
+}
