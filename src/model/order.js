@@ -34,21 +34,22 @@ orderSchema.methods.postOrder = async function (req) {
   if (req.session.user && req.session.isAuthenticated) {
     const userCart = await req.user.populate('cart.items.productId').execPopulate();
     // Get items from cart by destructing
-    const { cart: {
-      items
-    } } = userCart;
+    const {
+      cart: {
+        items
+      }
+    } = userCart;
 
-
-    for (let keys of items) {
+    for (const keys of items) {
       this.order.push({
         product: { ...keys.productId._doc },
         quantity: keys.quantity
       });
-    };
+    }
 
     return this.save();
   }
-}
+};
 
 const Order = mongoose.model('Order', orderSchema);
 
@@ -66,4 +67,4 @@ class OrderClass {
 module.exports = {
   Order,
   OrderClass
-}
+};

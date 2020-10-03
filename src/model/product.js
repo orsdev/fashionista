@@ -62,7 +62,7 @@ class ProductClass {
     const products = await ProductsSchema.find({})
       .limit(limit)
       .sort({ updatedAt: -1 })
-      .skip(skipNumber)
+      .skip(skipNumber);
 
     return products;
   }

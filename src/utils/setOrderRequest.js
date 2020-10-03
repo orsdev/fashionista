@@ -12,6 +12,6 @@ const setOrderRequest = async (req, res, next) => {
   } else {
     return next();
   }
-}
+};
 
 module.exports = setOrderRequest;

@@ -4,7 +4,7 @@ const initializeOrder = async (req, res, next) => {
   if (req.session.user && req.session.isAuthenticated) {
     try {
       const userOrder = await Order.find({ 'user.userId': req.session.user._id });
-      if (userOrder.length == 0) {
+      if (userOrder.length === 0) {
 
         const cartOrder = {
           order: [],
@@ -12,15 +12,11 @@ const initializeOrder = async (req, res, next) => {
             userName: req.session.user.fullName,
             userId: req.session.user._id
           }
-        }
+        };
 
         const productOrder = new Order(cartOrder);
         productOrder.save()
-          .then((response) => {
-            return next();
-          }).catch((e) => {
-            return next(e);
-          })
+          .then((response) => next()).catch((e) => next(e));
       } else {
         return next();
       }
@@ -30,6 +26,6 @@ const initializeOrder = async (req, res, next) => {
   } else {
     return next();
   }
-}
+};
 
 module.exports = initializeOrder;

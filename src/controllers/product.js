@@ -33,7 +33,7 @@ exports.getHomePage = async (req, res, next) => {
 };
 
 exports.getShop = async (req, res, next) => {
-  let showPerPage = 10;
+  const showPerPage = 10;
   let skippedPage = 0;
   let page = 0;
 
@@ -51,7 +51,7 @@ exports.getShop = async (req, res, next) => {
     let paginationLength = Math.floor(productsLength.length / showPerPage);
 
     if ((productsLength.length % showPerPage) !== 0) {
-      paginationLength = paginationLength + 1;
+      paginationLength += 1;
     }
 
     page = page === 0 ? 1 : page;
