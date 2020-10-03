@@ -23,25 +23,24 @@ block contents
       button.btn.btn-lg.mt-3
         a(href="/shop") RETURN TO SHOP
   else
-    div.ptb
-      div.cart.container.mx-auto.py-4.text-center
+    .px-3
+      div.ptb.cart-container.px-4
+        div.cart.container.mx-auto.py-4.text-center
 
-        for item in cart
-          figure
-            img(src="/"+item.productId.productImage alt=item.productId.title)
-            figcaption #{item.productId.title}
-            section
-              span.price $#{item.productId.price}
-              span.times &times; 
-              span.quantity #{item.quantity}
-            form.text-center.order(action="/order" method="post")
-              input(type="hidden" name="_csrf" value=csrfToken)
-              input(type="hidden" name="productId" value=item.productId._id)
-              button(type="submit" class="btn btn-success") ORDER
-            form.text-center.remove-from-cart(action="/remove-cart-product" method="post")
-              input(type="hidden" name="_csrf" value=csrfToken)
-              input(type="hidden" name="productId" value=item.productId._id)
-              button(type="submit" class="btn btn-danger") &minus;
-
+          for item in cart
+            figure
+              img(src="/"+item.productId.productImage alt=item.productId.title)
+              figcaption #{item.productId.title}
+              section
+                span.price $#{item.productId.price}
+                span.times &times; 
+                span.quantity #{item.quantity}
+              form.text-center.remove-from-cart(action="/remove-cart-product" method="post")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(type="hidden" name="productId" value=item.productId._id)
+                button(type="submit" class="btn btn-danger") &minus;
+        form(action="/order" class="checkout-form text-center mt-2" method="post")
+          input(type="hidden" name="_csrf" value=csrfToken)
+          button(type="submit" class="mx-auto btn btn-lg btn-success px-5 py-4 font-weight-bold") CHECKOUT
   .footer-light
     include ../../includes/footer.pug

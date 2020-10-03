@@ -37,8 +37,11 @@
    }
 }
 
-.cart {
+.cart-container {
    background: rgba(0, 0, 0, 0.1);
+}
+
+.cart {
    display: flex;
    flex-wrap: wrap;
    grid-template-columns: repeat(auto-fill, minmax(200px, 205px));
@@ -100,21 +103,9 @@
          border-radius: 50%;
       }
 
-      form.order {
-         position: absolute;
-         top: -10px;
-         right: -12px;
-         width: 50px;
-
-         button {
-            height: 45px;
-            width: 45px;
-         }
-      }
-
       form.remove-from-cart {
          position: absolute;
-         bottom: 1px;
+         top: 1px;
          right: -12px;
          width: 30px;
 
