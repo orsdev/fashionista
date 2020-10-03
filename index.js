@@ -15,6 +15,8 @@ const userRouter = require('./src/routes/user');
 const orderRouter = require('./src/routes/order');
 const authRouter = require('./src/routes/auth');
 const totalCartItems = require('./src/utils/totalCartItems');
+const initializeOrder = require('./src/utils/initializeOrder');
+const setOrderRequest = require('./src/utils/setOrderRequest');
 const error404Controller = require('./src/controllers/404');
 const error500Controller = require('./src/controllers/500');
 
@@ -99,8 +101,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middle for totalCartItems
+// Middlewares
 app.use(totalCartItems);
+app.use(initializeOrder);
+app.use(setOrderRequest);
 
 // ROUTER MIDDLEWARES
 app.use(adminRouter);
