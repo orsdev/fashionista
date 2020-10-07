@@ -24,9 +24,11 @@ const validateRegister = (bodyWrapper) => [
   bodyWrapper('fullName', 'Enter your full name.')
     .notEmpty()
     .trim(),
-  bodyWrapper('userPassword', 'Password must be at least 5 characters in length & contains only numbers and text.')
+  bodyWrapper('userAddress', 'Enter your address.')
+    .notEmpty()
+    .trim(),
+  bodyWrapper('userPassword', 'Password must be at least 5 characters in length.')
     .isLength({ min: 5 })
-    .isAlphanumeric()
     .trim()
 ];
 
