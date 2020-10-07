@@ -38,6 +38,10 @@ block contents
           input(type="text" name="fullName" id="fullName" value=oldInput ? oldInput.fullName : '' class="mb-2" required)
           span.text-danger.font-weight-bold.h3
         .form-group
+          label(for="address") Address
+          input(type="text" name="userAddress" id="userAddress" placeholder="House number, Street name & Country" class="mb-2" value=oldInput ? oldInput.userAddress : '' required)
+          span.text-danger.font-weight-bold.h3
+        .form-group
           label(for="email") EMAIL
           input(type="email" name="userEmail" id="userEmail" value= oldInput ? oldInput.userEmail : '' class="mb-2" required)
           span.text-danger.font-weight-bold.h3
