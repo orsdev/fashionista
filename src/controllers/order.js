@@ -56,7 +56,7 @@ exports.cancelMyOrder = (req, res) => {
   OrderClass.cancelOrders(req, res)
     .then((response) => res.redirect('/order'))
     .catch((error) => {
-      const errMessage = 'Unable to cancelled order. Please try again.';
+      const errMessage = 'Unable to cancel order. Please try again.';
       return flashError(req, res, errMessage, '/order');
     });
 };
