@@ -8,4 +8,8 @@ router.get('/order', isAuth, orderController.getOrder);
 
 router.post('/order', isAuth, orderController.postOrder);
 
+router.post('/create-payment', isAuth, orderController.createPayment);
+
+router.post('/cancel-order', isAuth, orderController.cancelMyOrder);
+
 module.exports = router;

@@ -1,5 +1,10 @@
 extends ../../layout/layout
 
+block headScripts
+  script(src="https://js.stripe.com/v3/")
+  script(src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch")
+  script(src="/assets/js/payment.js", defer)
+
 block stylesheets
   link(rel="stylesheet" href="/assets/css/headerNav.css")
   link(rel="stylesheet" href="/assets/css/order.css")
@@ -11,30 +16,57 @@ block contents
   section.header-title.text-center
     h2 ORDERS
 
-  if !orders
+  if errorMessage
+    .col-lg-6.col-md-8.col.sm-8.mx-auto
+      .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+        span.h3 #{errorMessage}
+        button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true" class="h1") &times;
+
+  if orders.length === 0
     section.text-center.empty-order.mt-3.mb-5.px-2
       p You have no orders.
       button.btn.btn-lg.mt-3
         a(href="/shop") RETURN TO SHOP
   else
-    .container.px-5.mx-auto.ptb
-      .orders.text-center
-        for prod in orders
-          .orders--item
-            .product--image.text-center.text-lg-right.px-4   
-              img(src="/"+prod.product.productImage alt=prod.product.title)
-            h2.product--title #{prod.product.title}
-            p.product--price.font-weight-bold.my-2
-              span.mr-2 TOTAL PRICE:
-              span.text-success $#{prod.product.price * prod.quantity}
-            form(action="/checkout" method="post" class="mt-5 checkout")
-              input(type="hidden" name="_csrf" value=csrfToken)
-              input(type="hidden" name="productId" value=prod.product._id)
-              button.add-to-cart-btn.btn.btn-primary.btn-lg Checkout
-            form(action="/cancel-order" method="post" class="mt-2 cancel-order")
-              input(type="hidden" name="_csrf" value=csrfToken)
-              input(type="hidden" name="productId" value=prod.product._id)
-              button.add-to-cart-btn.btn.btn-lg.text-light Cancel Order
-
-  .footer-light
+    .container.order-container.px-5.mx-auto.ptb.text-center
+      .table-responsive
+        table.table
+          thead.thead-dark
+            tr
+              th(scope="col") #
+              th(scope="col") Name
+              th(scope="col") Price
+              th(scope="col") Quantity
+              th(scope="col") Total
+          each prod, index in orders  
+            tbody
+              tr
+                th(scope="row") #{index + 1}
+                td #{prod.product.title}
+                td
+                  span.text-success.font-weight-bold $
+                  span #{prod.product.price.toLocaleString()}
+                td #{prod.quantity}
+                td 
+                  span.text-success.font-weight-bold $
+                  span #{(prod.product.price * prod.quantity).toLocaleString()}
+      h1.font-weight-bold.w-100.mt-3 
+        span Total: 
+        span $#{totalPrice.toLocaleString()}
+      form#payment-form
+        input(type="hidden" name="_csrf" value=csrfToken id="csrfToken")
+        #card-element
+        button#submit.btn.btn-lg.btn-primary.text-light 
+          .spinner.hidden#spinner
+          span#button-text Pay
+        p#card-error(role="alert")
+        p.result-message.hidden  | 
+          span Payment succeeded. Refresh the page to pay again.
+      form(action="/cancel-order" method="post" class="mt-2 cancel-order")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        button.add-to-cart-btn.btn.btn-lg.text-light Cancel Order
+  .footer-light.order-footer.w-100
     include ../../includes/footer.pug
+
+block scripts 

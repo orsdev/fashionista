@@ -51,6 +51,11 @@ orderSchema.methods.postOrder = async function (req) {
   }
 };
 
+orderSchema.methods.cancelOrder = function () {
+  this.order = [];
+  return this.save();
+};
+
 const Order = mongoose.model('Order', orderSchema);
 
 class OrderClass {
@@ -61,6 +66,10 @@ class OrderClass {
   static getAllOrders(req, res) {
     const order = Order.find({ 'user.userId': req.user._id });
     return order;
+  }
+
+  static cancelOrders(req, res) {
+    return req.order.cancelOrder(req, res);
   }
 }
 
