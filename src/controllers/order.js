@@ -1,6 +1,5 @@
-const { OrderClass } = require('../model/order');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const flashMessage = require('../utils/flashMessage');
+const { OrderClass } = require('../model/order');
 const flashError = require('../utils/flashError');
 
 exports.getOrder = (req, res, next) => {
@@ -19,8 +18,8 @@ exports.getOrder = (req, res, next) => {
 
       let totalPrice = 0;
       if (orders.length) {
-        for (let key of orders) {
-          totalPrice += (key.product.price * key.quantity)
+        for (const key of orders) {
+          totalPrice += (key.product.price * key.quantity);
         }
       }
 
@@ -55,21 +54,19 @@ exports.postOrder = async (req, res) => {
 
 exports.cancelMyOrder = (req, res) => {
   OrderClass.cancelOrders(req, res)
-    .then((response) => {
-      return res.redirect('/order')
-    })
+    .then((response) => res.redirect('/order'))
     .catch((error) => {
       const errMessage = 'Unable to cancelled order. Please try again.';
       return flashError(req, res, errMessage, '/order');
-    })
-}
+    });
+};
 
 exports.createPayment = async (req, res) => {
   const paymentIntent = await stripe.paymentIntents.create({
     amount: 100,
-    currency: "usd"
+    currency: 'usd'
   });
   res.send({
     clientSecret: paymentIntent.client_secret
-  })
-}
+  });
+};

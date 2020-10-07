@@ -51,13 +51,17 @@ exports.getRegisterPage = (req, res) => {
 };
 
 exports.postCreateUser = async (req, res) => {
-  const { fullName, userAddress, userEmail, userPassword } = req.body;
+  const {
+    fullName, userAddress, userEmail, userPassword
+  } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render('auth/register', {
       validationError: errors.array(),
-      oldInput: { fullName, userAddress, userEmail, userPassword }
+      oldInput: {
+        fullName, userAddress, userEmail, userPassword
+      }
     });
   }
 
