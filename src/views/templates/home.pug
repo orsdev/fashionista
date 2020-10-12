@@ -7,7 +7,9 @@ block stylesheets
   link(rel="stylesheet" href="/assets/css/slick-theme.css")
 
   //- EXTERNAL STYLESHEETS
-  link(rel="stylesheet" href="/assets/css/loader.css")
+  if loader === true
+    link(rel="stylesheet" href="/assets/css/loader.css")
+
   link(rel="stylesheet" href="/assets/css/headerNav.css")
   link(rel="stylesheet" href="/assets/css/home.css")
 
@@ -89,8 +91,6 @@ block scripts
   script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js")
 
   if loader === true
-    script(src="/assets/js/animation/loaderHero.js")
-  else 
-    script(src="/assets/js/animation/hero.js")
+    script(src="/assets/js/animation/home.js")
 
   script(src="/assets/js/slickSlider.js")

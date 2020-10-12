@@ -23,7 +23,7 @@ block contents
         button(type="close" class="close" data-dismiss="alert" aria-label="Close")
           span(aria-hidden="true" class="h1") &times;
 
-  if orders.length === 0
+  if !orders
     section.text-center.empty-order.mt-3.mb-5.px-2
       p You have no orders.
       button.btn.btn-lg.mt-3
@@ -63,7 +63,7 @@ block contents
         p#card-error(role="alert")
         p.result-message.hidden  | 
           span Payment succeeded. Refresh the page to pay again.
-      form(action="/cancel-order" method="post" class="mt-2 cancel-order")
+      form(action="/delete-order" method="post" class="mt-2 cancel-order")
         input(type="hidden" name="_csrf" value=csrfToken)
         button.add-to-cart-btn.btn.btn-lg.text-light Cancel Order
   .footer-light.order-footer.w-100
