@@ -4,11 +4,11 @@ var stripe = Stripe("pk_test_51HY4weLdDWfSLJV4ENHlmJnVcSSfqTLVK1SabL9QI96KJu67Eh
 const csrfToken = document.getElementById('csrfToken');
 document.querySelector("button").disabled = true;
 
-window.onload = function () {
+const data = {
+  _csrf: csrfToken.value
+};
 
-  const data = {
-    _csrf: csrfToken.value
-  };
+window.onload = function () {
 
   fetch("/create-payment", {
     method: "POST",
@@ -74,6 +74,23 @@ const payWithCard = function (stripe, card, clientSecret) {
       else {
         // The payment succeeded!
         orderComplete(result.paymentIntent.id);
+
+        console.log(result.paymentIntent.id);
+
+        // If successfull, clear order 
+        fetch("/delete-order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }).then(function (result) {
+          window.location.reload();
+          console.log(result);
+        }).catch(function (error) {
+          window.location.reload();
+        })
+
       }
     });
 };
