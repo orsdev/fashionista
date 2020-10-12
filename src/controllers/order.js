@@ -12,28 +12,21 @@ exports.getOrder = (req, res, next) => {
     error = null;
   }
 
-  OrderClass.getAllOrders(req, res)
-    .then((response) => {
-      const orders = response.length && response[0].order;
+  const orders = req.order.order.length && req.order.order;
+  let totalPrice = 0;
+  if (orders) {
+    for (const key of orders) {
+      totalPrice += (key.product.price * key.quantity);
+    }
+  }
 
-      let totalPrice = 0;
-      if (orders.length) {
-        for (const key of orders) {
-          totalPrice += (key.product.price * key.quantity);
-        }
-      }
-
-      return res.render('shop/orders', {
-        pageTitle: 'FASHIONIT | YOUR ORDERS',
-        path: '/order',
-        orders,
-        totalPrice,
-        errorMessage: error
-      });
-    }).catch(() => {
-      const error = new Error('Failed to get orders.');
-      return next(error);
-    });
+  return res.render('shop/orders', {
+    pageTitle: 'FASHIONIT | YOUR ORDERS',
+    path: '/order',
+    orders,
+    totalPrice,
+    errorMessage: error
+  });
 };
 
 exports.postOrder = async (req, res) => {
@@ -52,8 +45,8 @@ exports.postOrder = async (req, res) => {
   }
 };
 
-exports.cancelMyOrder = (req, res) => {
-  OrderClass.cancelOrders(req, res)
+exports.deleteOrder = (req, res) => {
+  OrderClass.deleteOrders(req, res)
     .then((response) => res.redirect('/order'))
     .catch((error) => {
       const errMessage = 'Unable to cancel order. Please try again.';
@@ -62,8 +55,17 @@ exports.cancelMyOrder = (req, res) => {
 };
 
 exports.createPayment = async (req, res) => {
+
+  const orders = req.order.order.length && req.order.order;
+  let totalPrice = 0;
+  if (orders) {
+    for (const key of orders) {
+      totalPrice += (key.product.price * key.quantity);
+    }
+  }
+
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 100,
+    amount: totalPrice,
     currency: 'usd'
   });
   res.send({

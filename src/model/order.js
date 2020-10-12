@@ -51,7 +51,7 @@ orderSchema.methods.postOrder = async function (req) {
   }
 };
 
-orderSchema.methods.cancelOrder = function () {
+orderSchema.methods.deleteOrder = function () {
   this.order = [];
   return this.save();
 };
@@ -63,13 +63,8 @@ class OrderClass {
     return req.order.postOrder(req);
   }
 
-  static getAllOrders(req, res) {
-    const order = Order.find({ 'user.userId': req.user._id });
-    return order;
-  }
-
-  static cancelOrders(req, res) {
-    return req.order.cancelOrder(req, res);
+  static deleteOrders(req, res) {
+    return req.order.deleteOrder(req, res);
   }
 }
 
