@@ -1,0 +1,21 @@
+extends ../../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+
+block contents
+
+  .header
+    include ../../includes/headerNav.pug
+
+  .container-fluid.px-5.ptb.mt-5
+    .row
+      .col-12.text-center
+        h1.display-3.mb-3 
+          i.fa.fa-check.text-success(aria-hidden="true")
+        h1.font-weight-bold  We appreciate your business!
+        p.h3  Thanks for your order!
+        a(href="/home" class="btn btn-outline-dark btn-lg mt-3 py-4 font-weight-bold ") Go Back Home
+
+        form(method="post" class="mt-2 d-none")
+          input(type="hidden" name="_csrf" id="csrfToken" value=csrfToken)
