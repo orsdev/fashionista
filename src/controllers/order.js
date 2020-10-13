@@ -53,22 +53,3 @@ exports.deleteOrder = (req, res) => {
       return flashError(req, res, errMessage, '/order');
     });
 };
-
-exports.createPayment = async (req, res) => {
-
-  const orders = req.order.order.length && req.order.order;
-  let totalPrice = 0;
-  if (orders) {
-    for (const key of orders) {
-      totalPrice += (key.product.price * key.quantity);
-    }
-  }
-
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: totalPrice,
-    currency: 'usd'
-  });
-  res.send({
-    clientSecret: paymentIntent.client_secret
-  });
-};

@@ -16,6 +16,13 @@ block contents
   section.header-title.text-center
     h2 ORDERS
 
+    //- Stripe error
+  .col-lg-7.col-md-8.col.sm-8.mx-auto.stripe-error.d-none
+    .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
+      span.h3.stripe-error-text 
+      button(type="close" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true" class="h1") &times;
+
   if errorMessage
     .col-lg-6.col-md-8.col.sm-8.mx-auto
       .alert.alert-danger.alert-dismissible.fade.show.text-center.px-1.py-4
@@ -54,15 +61,11 @@ block contents
       h1.font-weight-bold.w-100.mt-3 
         span Total: 
         span $#{totalPrice.toLocaleString()}
-      form#payment-form
+      form( class="mt-5" id="create-checkout")
         input(type="hidden" name="_csrf" value=csrfToken id="csrfToken")
-        #card-element
-        button#submit.btn.btn-lg.btn-primary.text-light 
-          .spinner.hidden#spinner
-          span#button-text Pay
-        p#card-error(role="alert")
-        p.result-message.hidden  | 
-          span Payment succeeded. Refresh the page to pay again.
+        button#pay.btn.btn-lg.btn-outline-primary(data-id="loader")
+          img(src="/assets/img/loader.gif" alt="Button Spinner" class="button-spinner mr-2 hidden" id="spinner") 
+          span Pay
       form(action="/delete-order" method="post" class="mt-2 cancel-order")
         input(type="hidden" name="_csrf" value=csrfToken)
         button.add-to-cart-btn.btn.btn-lg.text-light Cancel Order
