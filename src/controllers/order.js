@@ -1,4 +1,3 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { OrderClass } = require('../model/order');
 const flashError = require('../utils/flashError');
 
