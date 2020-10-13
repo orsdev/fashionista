@@ -44,18 +44,6 @@ function emptyField(data) {
       }
     }
 
-    if (!input.value && input.id === 'userAddress') {
-      let nextElement = input.nextElementSibling;
-      nextElement.classList.add('form-error');
-      nextElement.textContent = 'Enter your address';
-    } else {
-      if (input.id === 'userAddress') {
-        let nextElement = input.nextElementSibling;
-        nextElement.classList.remove('form-error');
-        nextElement.textContent = "";
-      }
-    }
-
     if (!input.value && input.id === 'userEmail') {
       let nextElement = input.nextElementSibling;
       nextElement.classList.add('form-error');
