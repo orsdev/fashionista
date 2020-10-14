@@ -1,0 +1,15 @@
+extends ../../layout/layout
+
+block stylesheets
+  link(rel="stylesheet" href="/assets/css/headerNav.css")
+
+block contents
+
+  .header
+    include ../../includes/headerNav.pug
+
+  .container-fluid.px-5.ptb.mt-5
+    .row
+      .col-12.text-center
+        p.h3 Forgot to add something to your cart? Shop around then come back to pay!
+        a(href="/home" class="btn btn-outline-dark btn-lg mt-3 py-4 font-weight-bold ") Continue Shopping
