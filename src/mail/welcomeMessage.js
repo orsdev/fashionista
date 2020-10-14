@@ -4,7 +4,7 @@ const sendWelcomeMessage = (email, name) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: email,
-    from: process.env.EMAIL_ADDRESS,
+    from: process.env.STRIPE_EMAIL_ADDRESS,
     subject: 'Fashionit Successfull Registeration',
     html: `<strong>Welcome to Fashionit, ${name}. You are all set. Log in to your new account</strong>`
   };
