@@ -22,5 +22,6 @@ module.exports = {
         "no-unused-vars": "off",
         "consistent-return": "off",
         "linebreak-style": "off",
+        "camelcase": "off",
     }
 };
