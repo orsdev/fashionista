@@ -13,6 +13,7 @@ const adminRouter = require('./src/routes/admin');
 const shopRouter = require('./src/routes/shop');
 const userRouter = require('./src/routes/user');
 const orderRouter = require('./src/routes/order');
+const stripeRouter = require('./src/routes/stripe');
 const authRouter = require('./src/routes/auth');
 const totalCartItems = require('./src/utils/totalCartItems');
 const initializeOrder = require('./src/utils/initializeOrder');
@@ -112,6 +113,7 @@ app.use(authRouter);
 app.use(userRouter);
 app.use(shopRouter);
 app.use(orderRouter);
+app.use(stripeRouter);
 
 // 404 PAGE MIDDLEWARE
 app.use(error404Controller.get404Page);
