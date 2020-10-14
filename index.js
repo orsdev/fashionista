@@ -87,7 +87,7 @@ app.use(multer({
     }
   },
   limits: {
-    fileSize: 1000000 // 1 megabyte
+    fileSize: 5000000 // 5 megabyte
   }
 }).single('productImage'));
 app.use(session(sess));
