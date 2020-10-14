@@ -128,7 +128,7 @@ const formatMessage = (order, name) => {
               </tr>
               <tbody>`;
 
-  for (let index = 0; index < order.length; index++) {
+  for (let index = 0; index < order.length; index += 1) {
     const prod = order[index];
     totalPrice += (prod.product.price * prod.quantity);
 

@@ -128,7 +128,7 @@ const formatMessage = (order, name, address) => {
               </tr>
               <tbody>`;
 
-  for (let index = 0; index < order.length; index++) {
+  for (let index = 0; index < order.length; index += 1) {
     const prod = order[index];
     totalPrice += (prod.product.price * prod.quantity);
 
@@ -169,7 +169,7 @@ const adminUserOrderSummary = (order, name, address) => {
   const msg = {
     to: process.env.ADMIN_EMAIL_ADDRESS,
     from: process.env.STRIPE_EMAIL_ADDRESS,
-    subject: `New Order`,
+    subject: 'New Order',
     html: formatMessage(order, name, address)
   };
 
