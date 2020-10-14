@@ -6,7 +6,12 @@ block stylesheets
 block contents
 
   .header
-    include ../includes/headerNav.pug
+    if path
+      if path.includes('/admin')
+        include ../includes/adminHeaderNav.pug
+      else
+        include ../includes/headerNav.pug 
+
 
   .container-fluid.px-5.ptb.mt-5
     .row

@@ -9,17 +9,18 @@ nav(class="navbar navbar-expand-md navbar-dark bg-dark py-4")
   div(class="collapse navbar-collapse" id="collapsibleNavId")
     ul(class="navbar-nav ml-auto px-5")
 
-      if path !== '/admin/home'
-        li.nav-item.mr-3
-          a(href="/admin/home" class="nav-link") ALL PRODUCTS
+      if isAuthenticated
+        if path !== '/admin/home'
+          li.nav-item.mr-3 
+            a(href="/admin/home" class="nav-link") ALL PRODUCTS
 
-      if path !== '/admin/add-product'
-        li.nav-item.mr-3
-          a(href="/admin/add-product" class="nav-link") ADD PRODUCT
+        if path !== '/admin/add-product'
+          li.nav-item.mr-3
+            a(href="/admin/add-product" class="nav-link") ADD PRODUCT
 
-      ul(class="px-md-1 ml-md-5")
-        li.nav-item.d-flex.align-items-center
-          span.username.font-weight-bold.mr-3 #{userName.fullName.split(' ')[0]}
-          form(action="/logout" method="post")
-            input(type="hidden" name="_csrf" value=csrfToken)
-            button(type="submit" class="nav-link btn") LOGOUT
+        ul(class="px-md-1 ml-md-5")
+          li.nav-item.d-flex.align-items-center
+            span.username.font-weight-bold.mr-3 #{userName.fullName.split(' ')[0]}
+            form(action="/logout" method="post")
+              input(type="hidden" name="_csrf" value=csrfToken)
+              button(type="submit" class="nav-link btn") LOGOUT
