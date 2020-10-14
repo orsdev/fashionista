@@ -27,7 +27,7 @@
 }
 .cart-link span {
   position: absolute;
-  top: 4px;
+  top: -5px;
 }
 
 .dropdown-toggle::after {
@@ -37,6 +37,10 @@
 @media (max-width: 767px) {
   .cart-link {
     padding-top: 18px;
+  }
+  .cart-link span {
+    position: absolute;
+    top: 4px;
   }
 }
 

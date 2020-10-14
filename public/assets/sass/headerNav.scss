@@ -37,7 +37,7 @@
 
    span {
       position: absolute;
-      top: 4px;
+      top: -5px;
    }
 }
 
@@ -48,5 +48,10 @@
 @media (max-width: 767px) {
    .cart-link {
       padding-top: 18px;
+
+      span {
+         position: absolute;
+         top: 4px;
+      }
    }
 }
