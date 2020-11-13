@@ -2,10 +2,13 @@
   "name": "fashionit",
   "version": "1.0.0",
   "description": "",
+   "engines": {
+    "node": "12.18.1"
+  },
   "main": "index.js",
   "scripts": {
     "start-dev": "env-cmd -f ./config/dev.env nodemon index.js",
-    "start-prod": "env-cmd -f ./config/prod.env nodemon index.js"
+    "start": "env-cmd -f ./config/prod.env node index.js"
   },
   "keywords": [],
   "author": "",
