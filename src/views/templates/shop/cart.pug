@@ -29,7 +29,7 @@ block contents
 
           for item in cart
             figure
-              img(src="/"+item.productId.productImage alt=item.productId.title)
+              img(src=item.productId.productImage alt=item.productId.title)
               figcaption #{item.productId.title}
               section
                 span.price $#{item.productId.price}

@@ -60,7 +60,7 @@ block contents
       div.slick
         for product in featured  
           figure.item
-            img(src="/"+product.productImage alt=product.title)
+            img(src=product.productImage alt=product.title)
             figcaption.products__name.text-center GREY SHIRT     
             p.products__price $#{product.price.toLocaleString()}      
             a(href="/shop/details/"+product._id class="addcart-link text-center") ADD TO CART
@@ -76,7 +76,7 @@ block contents
       div.products__grid
         each product, index in products  
           figure(class="products__grid-item-"+index)
-            img(src="/"+product.productImage alt=product.title)
+            img(src=product.productImage alt=product.title)
             figcaption.products__name #{product.title}
             p.products__price $#{product.price.toLocaleString()}
             a(href="/shop/details/"+product._id class="addcart-link text-center") ADD TO CART
