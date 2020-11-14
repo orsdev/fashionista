@@ -53,8 +53,13 @@ const storage = multer.diskStorage({
     }
   },
   filename(req, file, cb) {
-    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
-    cb(null, `${file.fieldname}-${uniqueSuffix}-${file.originalname}`);
+    const uniqueSuffix = `${Date.now()}-${Math.round(
+      Math.random() * 1e9
+    )}`;
+    cb(
+      null,
+      `${file.fieldname}-${uniqueSuffix}-${file.originalname}`
+    );
   }
 });
 
@@ -77,19 +82,22 @@ app.use(morgan('dev'));
 
 app.use(urlencoded);
 app.use(bodyParser.json());
-app.use(multer({
-  storage,
-  fileFilter(req, file, cb) {
-    if (!/\.(jpe?g|png|gif)$/i.test(file.originalname)) {
-      cb(null, false);
-    } else {
-      cb(null, true);
+app.use(
+  multer({
+    storage,
+    fileFilter(req, file, cb) {
+      if (!/\.(jpe?g|png|gif)$/i.test(file.originalname)) {
+        req.invalidFormat = 'Select an image format';
+        cb(null, false);
+      } else {
+        cb(null, true);
+      }
+    },
+    limits: {
+      fileSize: 6000000 // 6 megabyte
     }
-  },
-  limits: {
-    fileSize: 5000000 // 5 megabyte
-  }
-}).single('productImage'));
+  }).single('productImage')
+);
 app.use(session(sess));
 app.use(csrfProtection);
 
