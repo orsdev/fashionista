@@ -61,7 +61,7 @@ block contents
         for product in featured  
           figure.item
             img(src=product.productImage alt=product.title)
-            figcaption.products__name.text-center GREY SHIRT     
+            figcaption.products__name.text-center #{product.title}    
             p.products__price $#{product.price.toLocaleString()}      
             a(href="/shop/details/"+product._id class="addcart-link text-center") ADD TO CART
 
