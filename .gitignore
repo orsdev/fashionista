@@ -4,6 +4,6 @@ debug.log
 .vscode
 node_modules
 *.env
-img
+products
 images
 todos.md
