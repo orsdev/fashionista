@@ -346,15 +346,8 @@ exports.deleteProduct = (req, res, next) => {
 
   ProductClass.deleteProduct(req, res)
     .then((response) => {
-      // Delete product image
-      deleteFile(next, response.productImage, (err) => {
-        if (err) {
-          return next(err);
-        }
-
-        const message = `${response.title} Deleted.`;
-        return flashMessage(req, res, message, '/admin/home');
-      });
+      const message = `${response.title} Deleted.`;
+      return flashMessage(req, res, message, '/admin/home');
     })
     .catch((error) => {
       const errMessage =
