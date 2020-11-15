@@ -1,28 +1,36 @@
 form {
-   label,
-   p {
-      font-size: 1.8rem;
-   }
+  label,
+  p {
+    font-size: 1.8rem;
+  }
 
-   input.form-control,
-   p.form-control,
-   input.d-block,
-   textarea.form-control {
-      font-size: 2rem;
-   }
+  input.form-control,
+  p.form-control,
+  input.d-block,
+  textarea.form-control {
+    font-size: 2rem;
+  }
 
-   p.text-input {
-      word-break: break-all;
-      outline: 1px solid #ced4da;
-   }
+  p.text-input {
+    word-break: break-all;
+    outline: 1px solid #ced4da;
+  }
 
-   button.btn {
-      font-weight: bold;
-      font-size: 2rem;
-      border-radius: 0;
-   }
+  button.btn {
+    font-weight: bold;
+    font-size: 2rem;
+    border-radius: 0;
+  }
+
+  button.btn[disabled] {
+    color: #c0c0c0;
+    background-color: white;
+    cursor: not-allowed;
+    pointer-events: none;
+    border: 1px solid #999999;
+  }
 }
 
 .form-group {
-   margin-bottom: 20px;
+  margin-bottom: 20px;
 }

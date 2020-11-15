@@ -17,6 +17,13 @@ form button.btn {
   font-size: 2rem;
   border-radius: 0;
 }
+form button.btn[disabled] {
+  color: #c0c0c0;
+  background-color: white;
+  cursor: not-allowed;
+  pointer-events: none;
+  border: 1px solid #999999;
+}
 
 .form-group {
   margin-bottom: 20px;

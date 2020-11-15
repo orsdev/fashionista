@@ -8,30 +8,36 @@ function validateForm() {
     minDescription();
 
     if ($('.form-error').length === 0) {
-      const submitBtn = document.querySelector('button[data-id="loader"]');
+      const submitBtn = document.querySelector(
+        'button[data-id="loader"]'
+      );
       const img = document.createElement('img');
       img.alt = 'Loader';
       img.className = 'button-loader';
       img.src = '/assets/img/loader.gif';
 
+      // remove img loader
+      if (submitBtn.firstElementChild) {
+        submitBtn.firstElementChild.remove();
+      }
+
       submitBtn.prepend(img);
+      submitBtn.disabled = true;
       return true;
     } else {
       return false;
     }
-
   };
-};
+}
 
 function filterFormData(data) {
   const include = ['title', 'tag', 'price', 'description'];
   return data.filter(function (val) {
     return include.includes(val.name);
   });
-};
+}
 
 function emptyField(data) {
-
   data.forEach(function (val) {
     let input = document.querySelector(`#${val.name}`);
     let nextElement = input.nextElementSibling;
@@ -42,7 +48,7 @@ function emptyField(data) {
     } else {
       if (input.id === 'title') {
         nextElement.classList.remove('form-error');
-        nextElement.textContent = "";
+        nextElement.textContent = '';
       }
     }
 
@@ -52,7 +58,7 @@ function emptyField(data) {
     } else {
       if (input.id === 'tag') {
         nextElement.classList.remove('form-error');
-        nextElement.textContent = "";
+        nextElement.textContent = '';
       }
     }
 
@@ -62,7 +68,7 @@ function emptyField(data) {
     } else {
       if (input.id === 'price') {
         nextElement.classList.remove('form-error');
-        nextElement.textContent = "";
+        nextElement.textContent = '';
       }
     }
 
@@ -72,12 +78,11 @@ function emptyField(data) {
     } else {
       if (input.id === 'description') {
         nextElement.classList.remove('form-error');
-        nextElement.textContent = "";
+        nextElement.textContent = '';
       }
     }
-
   });
-};
+}
 
 function isFileValid() {
   const input = document.getElementById('productImage');
@@ -88,19 +93,20 @@ function isFileValid() {
     nextElement.textContent = 'Select an image file';
   } else {
     nextElement.classList.remove('form-error');
-    nextElement.textContent = "";
-  };
+    nextElement.textContent = '';
+  }
 
   if (input.files.length > 0) {
     if (/\/(png|jpe?g|svg|gif)/.test(input.files[0].type)) {
       nextElement.classList.remove('form-error');
-      nextElement.textContent = "";
+      nextElement.textContent = '';
     } else {
       nextElement.classList.add('form-error');
-      nextElement.textContent = 'Only jpg or png file formats supported';
+      nextElement.textContent =
+        'Only jpg or png file formats supported';
     }
   }
-};
+}
 
 function minDescription() {
   const textarea = document.getElementById('description');
@@ -109,11 +115,12 @@ function minDescription() {
   if (textarea.value.length > 0) {
     if (textarea.value.length < 50) {
       nextElement.classList.add('form-error');
-      nextElement.textContent = 'Product description must be at least 50 characters in length.';
+      nextElement.textContent =
+        'Product description must be at least 50 characters in length.';
     } else {
       nextElement.classList.remove('form-error');
-      nextElement.textContent = "";
-    };
+      nextElement.textContent = '';
+    }
   }
 }
 
