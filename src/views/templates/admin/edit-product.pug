@@ -31,7 +31,7 @@ block contents
 
     .col-lg-8.col-md-9.mx-auto.form-product     
       h5.display-4 Edit Product 
-      form(action="/admin/edit-product" method="post" enctype="multipart/form-data" id="edit-form" novalidate)
+      form(action="/admin/edit-product" method="post" enctype="multipart/form-data" id="edit-form")
         div.form-group
           input(type="hidden" name="_csrf" value=csrfToken)
 
@@ -80,4 +80,4 @@ block contents
   include ../../includes/footer.pug
 
 block scripts
-  script(src="/assets/js/admin/editProduct.js")
+  script(src="/assets/js/admin/editProduct.js") 
