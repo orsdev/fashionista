@@ -150,7 +150,9 @@ exports.getEditProductPage = async (req, res, next) => {
 };
 
 exports.postAddProduct = async (req, res, next) => {
-  const { title, tag, feature, price, description } = req.body;
+  const {
+    title, tag, feature, price, description
+  } = req.body;
   const productImage = req.file;
 
   // check if file is an image
@@ -396,8 +398,7 @@ exports.deleteProduct = (req, res, next) => {
       return flashMessage(req, res, message, '/admin/home');
     })
     .catch((error) => {
-      const errMessage =
-        'Unable to delete product. Please try again!';
+      const errMessage = 'Unable to delete product. Please try again!';
       return flashError(req, res, errMessage, '/admin/home');
     });
 };
