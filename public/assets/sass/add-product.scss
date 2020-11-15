@@ -34,3 +34,11 @@ form {
 .form-group {
   margin-bottom: 20px;
 }
+
+@media (max-width: 450px) {
+  .form-product {
+    .display-4 {
+      font-size: 2.5rem;
+    }
+  }
+}

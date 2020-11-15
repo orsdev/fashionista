@@ -29,7 +29,8 @@ block contents
         button(type="close" class="close" data-dismiss="alert" aria-label="Close")
           span(aria-hidden="true" class="h1") &times;
 
-    .col-lg-8.col-md-9.mx-auto
+    .col-lg-8.col-md-9.mx-auto.form-product   
+      h5.display-4 Add a New Product
       form.px-2(action="/admin/add-product" method="post" enctype="multipart/form-data" id="product-post")
         div.form-group
           input(type="hidden" name="_csrf" value=csrfToken)
