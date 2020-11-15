@@ -7,26 +7,33 @@ function validateForm() {
     validateEmail();
 
     if ($('.form-error').length === 0) {
-      const submitBtn = document.querySelector('button[data-id="loader"]');
+      const submitBtn = document.querySelector(
+        'button[data-id="loader"]'
+      );
       const img = document.createElement('img');
       img.alt = 'Loader';
       img.className = 'button-loader';
       img.src = '/assets/img/loader.gif';
 
+      // remove img loader
+      if (submitBtn.firstElementChild) {
+        submitBtn.firstElementChild.remove();
+      }
+
       submitBtn.prepend(img);
+      submitBtn.disabled = true;
       return true;
     } else {
       return false;
     }
-
   };
-};
+}
 
 function removeCsrfToken(data) {
   return data.filter(function (val) {
     return val.name !== '_csrf';
   });
-};
+}
 
 function emptyField(data) {
   data.forEach(function (val) {
@@ -40,7 +47,7 @@ function emptyField(data) {
       if (input.id === 'userEmail') {
         let nextElement = input.nextElementSibling;
         nextElement.classList.remove('form-error');
-        nextElement.textContent = "";
+        nextElement.textContent = '';
       }
     }
 
@@ -52,11 +59,11 @@ function emptyField(data) {
       if (input.id === 'userPassword') {
         let nextElement = input.nextElementSibling;
         nextElement.classList.remove('form-error');
-        nextElement.textContent = "";
+        nextElement.textContent = '';
       }
     }
   });
-};
+}
 
 function validateEmail() {
   let input = document.getElementById('userEmail');
@@ -70,10 +77,9 @@ function validateEmail() {
       nextElement.textContent = 'Enter a valid email';
     } else {
       nextElement.classList.remove('form-error');
-      nextElement.textContent = "";
+      nextElement.textContent = '';
     }
-  };
-
-};
+  }
+}
 
 validateForm();
