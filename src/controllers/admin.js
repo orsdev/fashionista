@@ -207,7 +207,7 @@ exports.postAddProduct = async (req, res, next) => {
       body: formData
     });
 
-    let imgResponse = await request.json();
+    const imgResponse = await request.json();
 
     const capitalizeTitle = capitalizeFirstLetters(title);
     const capitalizeTag = capitalizeFirstLetters(tag);
@@ -278,6 +278,19 @@ exports.postUpdateProduct = async (req, res, next) => {
     feature
   } = req.body;
 
+  let imgResponse = null;
+
+  // check if file is an image
+  if (req.invalidFormat) {
+    res.status(422);
+    return flashError(
+      req,
+      res,
+      'Select an image format',
+      `/admin/edit-product/${productId}`
+    );
+  }
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return flashBodyError(
@@ -288,52 +301,85 @@ exports.postUpdateProduct = async (req, res, next) => {
     );
   }
 
-  try {
-    ProductClass.postUpdateProduct(req, res)
-      .then((response) => {
-        response.title = title;
-        response.price = price;
-        response.tag = tag;
-        response.description = description;
-        response.feature = feature;
+  if (req.file) {
+    try {
+      const formData = new FormData();
+      formData.append('image', fs.createReadStream(req.file.path));
 
-        if (req.file) {
-          const oldImagePath = response.productImage;
-          // Delete old product image
-          deleteFile(next, oldImagePath, (err) => {
-            if (err) {
-              return next(err);
-            }
-          });
-
-          response.productImage = req.file.path;
-        }
-
-        return response.save();
-      })
-      .then((result) => {
-        if (result) {
-          const message = 'Product updated successfully';
-          return flashMessage(
-            req,
-            res,
-            message,
-            `/admin/edit-product/${productId}`
-          );
-        }
-      })
-      .catch(() => {
-        const errMessage = 'Product update failed. Please try again!';
-        return flashError(
-          req,
-          res,
-          errMessage,
-          `/admin/edit-product/${productId}`
-        );
+      const request = await fetch('https://api.imgur.com/3/image', {
+        method: 'post',
+        headers: {
+          Authorization: process.env.IMGUR_CLIENT_ID
+        },
+        body: formData
       });
+
+      imgResponse = await request.json();
+
+      // Delete product image
+      if (fs.existsSync(req.file.path)) {
+        deleteFile(next, req.file.path, (err) => {
+          if (err) {
+            return next(err);
+          }
+
+          console.log('file deleted');
+        });
+      }
+    } catch (e) {
+      // Delete product image
+      if (fs.existsSync(req.file.path)) {
+        deleteFile(next, req.file.path, (err) => {
+          if (err) {
+            return next(err);
+          }
+
+          console.log('file deleted');
+        });
+      }
+
+      const errMessage = 'Product update failed. Please try again!';
+      return flashError(
+        req,
+        res,
+        errMessage,
+        `/admin/edit-product/${productId}`
+      );
+    }
+  }
+
+  try {
+    const product = await ProductClass.postUpdateProduct(req, res);
+
+    const capitalizeTitle = capitalizeFirstLetters(title);
+    const capitalizeTag = capitalizeFirstLetters(tag);
+    const capitalizeDescription = capitalizeFirstLetter(description);
+
+    product.title = capitalizeTitle;
+    product.price = price;
+    product.tag = capitalizeTag;
+    product.description = capitalizeDescription;
+    product.feature = feature;
+
+    if (imgResponse) {
+      product.productImage = imgResponse.data.link;
+    }
+
+    await product.save();
+    return flashMessage(
+      req,
+      res,
+      'Product updated successfully',
+      `/admin/edit-product/${productId}`
+    );
   } catch (e) {
-    const error = new Error('Unable to update product.');
-    return next(error);
+    const errMessage = 'Product update failed. Please try again!';
+    return flashError(
+      req,
+      res,
+      errMessage,
+      `/admin/edit-product/${productId}`
+    );
   }
 };
 
